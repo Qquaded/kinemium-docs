@@ -1,0 +1,81 @@
+---
+title: MeshPart
+description: Renders a 3D Mesh in 3D Space.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `MeshObject` | `any` | `nil` |
+| `_showhitbox` | `boolean` | `false` |
+| `CollisionFidelity` | `EnumItem` | `Enum.CollisionFidelity.Default` |
+| `RenderFidelity` | `EnumItem` | `Enum.RenderFidelity.Automatic` |
+| `CollisionScale` | `number` | `1` |
+| `Anchored` | `boolean` | `true` |
+| `Name` | `string` | `"MeshPart"` |
+| `MeshScale` | `number` | `1` |
+| `Transparency` | `number` | `0` |
+| `Size` | `Vector3` | `Vector3.new(1, 1, 1)` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`syncFromCFrame`" href="#syncfromcframe" />
+  <Card title="`syncFromPosition`" href="#syncfromposition" />
+  <Card title="`instance.ApplyImpulse`" href="#instance-applyimpulse" description="Applies an impulse to the part." />
+
+</Cards>
+
+---
+
+### `syncFromCFrame` [#syncfromcframe]
+
+**Arguments**
+
+```luau
+cf
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `syncFromPosition` [#syncfromposition]
+
+**Arguments**
+
+```luau
+position
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.ApplyImpulse` [#instance-applyimpulse]
+
+Applies an impulse to the part.
+
+**Arguments**
+
+```luau
+self: table, v: Vector3
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:syncFromCFrame(cf)
+instance:syncFromPosition(position)
+instance:ApplyImpulse(self: table, v: Vector3)
+```

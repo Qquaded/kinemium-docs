@@ -1,0 +1,113 @@
+---
+title: LegIK
+description: Represents a LegIK in the environment.
+---
+
+<div style={{display:"flex",alignItems:"center",gap:"0.75rem",marginBottom:"0.5rem"}}>
+  <img src="/icons/instances/LegIK.png" alt="LegIK icon" width="36" height="36" />
+  <h1 style={{margin:0}}>LegIK</h1>
+</div>
+
+Represents a LegIK in the environment.
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"LegIK"` |
+| `Enabled` | `boolean` | `true` |
+| `Humanoid` | `any` | `nil` |
+| `Workspace` | `any` | `nil` |
+| `StepDistThreshold` | `number` | `0.55` |
+| `StepHeight` | `number` | `0.28` |
+| `StepSpeed` | `number` | `8` |
+| `PoleForwardBias` | `number` | `0.6` |
+| `PoleSideBias` | `number` | `0.2` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`solveTwoBone`" href="#solvetwobone" description="Solves two bone." />
+  <Card title="`instance:Reset`" href="#instance-reset" description="Resets." />
+  <Card title="`instance:_measureBones`" href="#instance-measurebones" description="_measures bones." />
+  <Card title="`instance:Step`" href="#instance-step" description="Steps." />
+  <Card title="`instance:Attach`" href="#instance-attach" description="Attaches." />
+
+</Cards>
+
+---
+
+### `solveTwoBone` [#solvetwobone]
+
+Solves two bone.
+
+**Arguments**
+
+```luau
+root: any, target: table, poleHint: any, upperLen: any, lowerLen: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Reset` [#instance-reset]
+
+Resets.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:_measureBones` [#instance-measurebones]
+
+_measures bones.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Step` [#instance-step]
+
+Steps.
+
+**Arguments**
+
+```luau
+dt: number, animContext: table
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Attach` [#instance-attach]
+
+Attaches.
+
+**Arguments**
+
+```luau
+humanoid: string
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>

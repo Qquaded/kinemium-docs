@@ -1,0 +1,87 @@
+---
+title: UniversalConstraint
+description: A modifier class that creates a universal constraint between two attachments.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Attachment0` | `any` | `nil` |
+| `Attachment1` | `any` | `nil` |
+| `Enabled` | `boolean` | `true` |
+| `Visible` | `boolean` | `true` |
+| `Color` | `any` | `Color3.fromRGB(0, 255, 0)` |
+| `LimitsEnabled` | `boolean` | `false` |
+| `MaxAngle` | `number` | `45` |
+| `Name` | `string` | `"UniversalConstraint"` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`cleanup`" href="#cleanup" />
+  <Card title="`rebuild`" href="#rebuild" />
+  <Card title="`onPartChanged`" href="#onpartchanged" />
+  <Card title="`drawGizmo`" href="#drawgizmo" />
+
+</Cards>
+
+---
+
+### `cleanup` [#cleanup]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `rebuild` [#rebuild]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onPartChanged` [#onpartchanged]
+
+**Arguments**
+
+```luau
+prop
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawGizmo` [#drawgizmo]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:cleanup()
+instance:rebuild()
+instance:onPartChanged(prop)
+instance:drawGizmo()
+```

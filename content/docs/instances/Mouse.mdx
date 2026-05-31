@@ -1,0 +1,152 @@
+---
+title: Mouse
+description: Represents a Mouse in the environment.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Icon` | `EnumItem` | `Enum.KinemiumMouseCursor.MOUSE_CURSOR_DEFAULT` |
+| `Target` | `any` | `nil` |
+| `Hit` | `any` | `nil` |
+| `UnitRay` | `any` | `nil` |
+| `TargetFilter` | `any` | `nil` |
+| `IsMouseHidden` | `boolean` | `false` |
+| `IsMouseOutOfBounds` | `boolean` | `false` |
+| `X` | `number` | `0` |
+| `Y` | `number` | `0` |
+| `ViewSizeX` | `number` | `0` |
+| `ViewSizeY` | `number` | `0` |
+| `Button1Down` | `any` | `Button1Down` |
+| `Button1Up` | `any` | `Button1Up` |
+| `Button2Down` | `any` | `Button2Down` |
+| `Button2Up` | `any` | `Button2Up` |
+| `Move` | `any` | `Move` |
+| `WheelForward` | `any` | `WheelForward` |
+| `WheelBackward` | `any` | `WheelBackward` |
+| `Name` | `string` | `"Mouse"` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`RayIntersectOBB`" href="#rayintersectobb" />
+  <Card title="`readRayCollision`" href="#readraycollision" />
+  <Card title="`SetIcon`" href="#seticon" description="Sets the Icon." />
+  <Card title="`GetScreenPosition`" href="#getscreenposition" description="Gets the Screen Position." />
+  <Card title="`Raycast`" href="#raycast" description="Raycasts from 2d to 3d space." />
+  <Card title="`IsButtonDown`" href="#isbuttondown" description="Detects if button is down." />
+
+</Cards>
+
+---
+
+### `RayIntersectOBB` [#rayintersectobb]
+
+**Arguments**
+
+```luau
+ox, oy, oz, dx, dy, dz, part
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `readRayCollision` [#readraycollision]
+
+**Arguments**
+
+```luau
+buf
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `SetIcon` [#seticon]
+
+Sets the Icon.
+
+**Arguments**
+
+```luau
+mouse: any, icon: any
+```
+
+**Returns**
+
+```luau
+boolean
+```
+
+---
+
+### `GetScreenPosition` [#getscreenposition]
+
+Gets the Screen Position.
+
+**Arguments**
+
+```luau
+mouse: any
+```
+
+**Returns**
+
+```luau
+boolean
+```
+
+---
+
+### `Raycast` [#raycast]
+
+Raycasts from 2d to 3d space.
+
+**Arguments**
+
+```luau
+mouse: any, distance: number
+```
+
+**Returns**
+
+```luau
+boolean
+```
+
+---
+
+### `IsButtonDown` [#isbuttondown]
+
+Detects if button is down.
+
+**Arguments**
+
+```luau
+mouse: any, button: table
+```
+
+**Returns**
+
+```luau
+boolean
+```
+
+## API
+
+```luau
+instance:RayIntersectOBB(ox, oy, oz, dx, dy, dz, part)
+instance:readRayCollision(buf)
+instance:SetIcon(mouse: any, icon: any): boolean
+instance:GetScreenPosition(mouse: any): boolean
+instance:Raycast(mouse: any, distance: number): boolean
+instance:IsButtonDown(mouse: any, button: table): boolean
+```

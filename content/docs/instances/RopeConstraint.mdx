@@ -1,0 +1,88 @@
+---
+title: RopeConstraint
+description: Maintains a flexible rope-like connection between two attachments.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Attachment0` | `any` | `nil` |
+| `Attachment1` | `any` | `nil` |
+| `Enabled` | `boolean` | `true` |
+| `Visible` | `boolean` | `true` |
+| `Color` | `any` | `Color3.fromRGB(120, 80, 40)` |
+| `Length` | `number` | `8` |
+| `Thickness` | `number` | `0.05` |
+| `Stiffness` | `number` | `0` |
+| `Damping` | `number` | `0.1` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`cleanup`" href="#cleanup" />
+  <Card title="`rebuild`" href="#rebuild" />
+  <Card title="`onPartChanged`" href="#onpartchanged" />
+  <Card title="`drawGizmo`" href="#drawgizmo" />
+
+</Cards>
+
+---
+
+### `cleanup` [#cleanup]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `rebuild` [#rebuild]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onPartChanged` [#onpartchanged]
+
+**Arguments**
+
+```luau
+prop
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawGizmo` [#drawgizmo]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:cleanup()
+instance:rebuild()
+instance:onPartChanged(prop)
+instance:drawGizmo()
+```

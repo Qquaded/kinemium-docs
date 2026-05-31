@@ -1,0 +1,322 @@
+---
+title: TextBox
+description: A text input field with rich editing capabilities.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"TextBox"` |
+| `AutoButtonColor` | `boolean` | `true` |
+| `ChangeCursorOnHover` | `boolean` | `true` |
+| `Visible` | `boolean` | `true` |
+| `Focused` | `boolean` | `false` |
+| `Text` | `string` | `""` |
+| `PlaceholderText` | `string` | `"Type here..."` |
+| `FontSize` | `number` | `18` |
+| `TextColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `BackgroundColor3` | `Color3` | `Color3.new(0.15, 0.15, 0.15)` |
+| `PlaceholderColor3` | `Color3` | `Color3.new(0.5, 0.5, 0.5)` |
+| `FocusColor3` | `Color3` | `Color3.new(0.02, 0.5, 1)` |
+| `TextXAlignment` | `EnumItem` | `Enum.TextXAlignment.Left` |
+| `Font` | `EnumItem` | `Enum.Font.DefaultEngineFont` |
+| `TextYAlignment` | `EnumItem` | `Enum.TextYAlignment.Center` |
+| `MultiLine` | `boolean` | `false` |
+| `ReadOnly` | `boolean` | `false` |
+| `MaxLength` | `any` | `nil` |
+| `Mask` | `any` | `nil` |
+| `AllowedChars` | `any` | `nil` |
+| `TrimWhitespace` | `boolean` | `false` |
+| `TabSize` | `number` | `4` |
+| `AutoPairs` | `boolean` | `true` |
+| `AutoIndent` | `boolean` | `false` |
+| `WordWrap` | `boolean` | `false` |
+| `Validator` | `any` | `nil` |
+| `Numeric` | `boolean` | `false` |
+| `NumericMin` | `any` | `nil` |
+| `NumericMax` | `any` | `nil` |
+| `NumericStep` | `number` | `1` |
+| `NumericPrecision` | `any` | `nil` |
+| `ShowStepButtons` | `boolean` | `false` |
+| `StepButtonWidth` | `number` | `20` |
+| `Slider` | `boolean` | `false` |
+| `SliderMin` | `number` | `0` |
+| `SliderMax` | `number` | `100` |
+| `SliderStep` | `number` | `1` |
+| `SliderWidth` | `number` | `100` |
+| `SliderPosition` | `string` | `"right"` |
+| `SliderGap` | `number` | `10` |
+| `Scrollable` | `boolean` | `false` |
+| `EnableScrollbar` | `boolean` | `true` |
+| `ScrollbarWidth` | `number` | `10` |
+| `ShowLineNumbers` | `boolean` | `false` |
+| `ShowLineCount` | `boolean` | `false` |
+| `ShowCharCount` | `boolean` | `false` |
+| `CornerRadius` | `number` | `0` |
+| `CornerSegments` | `number` | `8` |
+| `BorderWidth` | `number` | `1` |
+| `FocusBorderWidth` | `number` | `1` |
+| `DropShadow` | `boolean` | `false` |
+| `ShadowOffset` | `number` | `2` |
+| `LineHighlight` | `boolean` | `true` |
+| `MatchBrackets` | `boolean` | `false` |
+| `EnableAnimatedFocus` | `boolean` | `true` |
+| `EnableMinimap` | `boolean` | `false` |
+| `EnableHyperlinks` | `boolean` | `false` |
+| `EnableDragDrop` | `boolean` | `true` |
+| `EnableColumnSelection` | `boolean` | `true` |
+| `Label` | `any` | `nil` |
+| `LabelPosition` | `string` | `"left"` |
+| `LabelWidth` | `number` | `60` |
+| `LabelGap` | `number` | `10` |
+| `Prefix` | `any` | `nil` |
+| `Suffix` | `any` | `nil` |
+| `PrefixGap` | `number` | `5` |
+| `SuffixGap` | `number` | `5` |
+| `SelectAllOnFocus` | `boolean` | `false` |
+| `SubmitOnCtrlEnter` | `boolean` | `false` |
+| `BlurOnSubmit` | `boolean` | `true` |
+| `ClearOnEscape` | `boolean` | `false` |
+| `EscapeBlurs` | `boolean` | `false` |
+| `DoubleClickSelect` | `boolean` | `true` |
+| `TripleClickSelect` | `boolean` | `true` |
+| `ContextMenu` | `boolean` | `true` |
+| `OnChange` | `any` | `nil` |
+| `OnSubmit` | `any` | `nil` |
+| `OnFocus` | `any` | `nil` |
+| `OnBlur` | `any` | `nil` |
+| `OnValidationError` | `any` | `nil` |
+| `OnSearch` | `any` | `nil` |
+| `MaxHistory` | `number` | `100` |
+| `KeyRepeatInitialDelay` | `number` | `0.5` |
+| `KeyRepeatMinInterval` | `number` | `0.02` |
+| `KeyRepeatAcceleration` | `number` | `0.85` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`resolveFont`" href="#resolvefont" />
+  <Card title="`propTable.render`" href="#proptable-render" />
+  <Card title="`onChange`" href="#onchange" />
+  <Card title="`onSubmit`" href="#onsubmit" />
+  <Card title="`onFocus`" href="#onfocus" />
+  <Card title="`onBlur`" href="#onblur" />
+  <Card title="`onValidationError`" href="#onvalidationerror" />
+  <Card title="`onSearch`" href="#onsearch" />
+  <Card title="`instance._aereonInput.onChange`" href="#instance-aereoninput-onchange" />
+  <Card title="`instance._aereonInput.onSubmit`" href="#instance-aereoninput-onsubmit" />
+  <Card title="`instance._aereonInput.onFocus`" href="#instance-aereoninput-onfocus" />
+  <Card title="`instance._aereonInput.onBlur`" href="#instance-aereoninput-onblur" />
+  <Card title="`instance._aereonInput.onValidationError`" href="#instance-aereoninput-onvalidationerror" />
+  <Card title="`instance._aereonInput.onSearch`" href="#instance-aereoninput-onsearch" />
+
+</Cards>
+
+---
+
+### `resolveFont` [#resolvefont]
+
+**Arguments**
+
+```luau
+fontEnum
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.render` [#proptable-render]
+
+**Arguments**
+
+```luau
+_, object, dt, structs, renderer, datamodel
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onChange` [#onchange]
+
+**Arguments**
+
+```luau
+text
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onSubmit` [#onsubmit]
+
+**Arguments**
+
+```luau
+text
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onFocus` [#onfocus]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onBlur` [#onblur]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onValidationError` [#onvalidationerror]
+
+**Arguments**
+
+```luau
+err
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onSearch` [#onsearch]
+
+**Arguments**
+
+```luau
+query, count
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance._aereonInput.onChange` [#instance-aereoninput-onchange]
+
+**Arguments**
+
+```luau
+text
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance._aereonInput.onSubmit` [#instance-aereoninput-onsubmit]
+
+**Arguments**
+
+```luau
+text
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance._aereonInput.onFocus` [#instance-aereoninput-onfocus]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance._aereonInput.onBlur` [#instance-aereoninput-onblur]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance._aereonInput.onValidationError` [#instance-aereoninput-onvalidationerror]
+
+**Arguments**
+
+```luau
+err
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance._aereonInput.onSearch` [#instance-aereoninput-onsearch]
+
+**Arguments**
+
+```luau
+query, count
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:resolveFont(fontEnum)
+instance:render(_, object, dt, structs, renderer, datamodel)
+instance:onChange(text)
+instance:onSubmit(text)
+instance:onFocus()
+instance:onBlur()
+instance:onValidationError(err)
+instance:onSearch(query, count)
+instance:_aereonInput.onChange(text)
+instance:_aereonInput.onSubmit(text)
+instance:_aereonInput.onFocus()
+instance:_aereonInput.onBlur()
+instance:_aereonInput.onValidationError(err)
+instance:_aereonInput.onSearch(query, count)
+```

@@ -1,0 +1,115 @@
+---
+title: Fire
+description: Creates a Fire particle in 3d space.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Color` | `Color3` | `Color3.new(1, 1, 1)` |
+| `Enabled` | `boolean` | `true` |
+| `Heat` | `number` | `30` |
+| `LocalTransparencyModifier` | `number` | `0` |
+| `SecondaryColor` | `any` | `Color3.fromRGB(255, 133, 0)` |
+| `Size` | `number` | `5` |
+| `TimeScale` | `number` | `1` |
+| `Name` | `string` | `"Fire"` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`buildColorSequence`" href="#buildcolorsequence" description="Builds color sequence." />
+  <Card title="`buildSizeSequence`" href="#buildsizesequence" description="Builds size sequence." />
+  <Card title="`buildTransparencySequence`" href="#buildtransparencysequence" description="Builds transparency sequence." />
+  <Card title="`updateEmitter`" href="#updateemitter" description="Updates emitter." />
+  <Card title="`updateSmokeEmitter`" href="#updatesmokeemitter" description="Updates smoke emitter." />
+
+</Cards>
+
+---
+
+### `buildColorSequence` [#buildcolorsequence]
+
+Builds color sequence.
+
+**Arguments**
+
+```luau
+primary: number, secondary: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildSizeSequence` [#buildsizesequence]
+
+Builds size sequence.
+
+**Arguments**
+
+```luau
+size: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildTransparencySequence` [#buildtransparencysequence]
+
+Builds transparency sequence.
+
+**Arguments**
+
+```luau
+modifier: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateEmitter` [#updateemitter]
+
+Updates emitter.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateSmokeEmitter` [#updatesmokeemitter]
+
+Updates smoke emitter.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:buildColorSequence(primary: number, secondary: number)
+instance:buildSizeSequence(size: number)
+instance:buildTransparencySequence(modifier: number)
+instance:updateEmitter()
+instance:updateSmokeEmitter()
+```

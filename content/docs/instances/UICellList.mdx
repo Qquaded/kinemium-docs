@@ -1,0 +1,44 @@
+---
+title: UICellList
+description: A UI component that displays a list of cells organized into sections.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UICellList"` |
+| `AbsoluteSize` | `any` | `nil` |
+| `AbsolutePosition` | `any` | `nil` |
+| `Size` | `UDim2` | `UDim2.new(1, 0, 1, 0)` |
+| `CellHeight` | `number` | `70` |
+| `GroupSpacing` | `number` | `20` |
+| `Visible` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`instance.render`" href="#instance-render" />
+
+</Cards>
+
+---
+
+### `instance.render` [#instance-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:render(lib, object, dt, structs, renderer)
+```

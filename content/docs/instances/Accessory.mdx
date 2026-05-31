@@ -1,0 +1,82 @@
+---
+title: Accessory
+description: A customizable mesh you can place on a character.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"Accessory"` |
+| `AccessoryType` | `EnumItem` | `Enum.AccessoryType.Unknown` |
+| `AttachmentPoint` | `string` | `"Head"` |
+| `MeshObject` | `any` | `nil` |
+| `MeshScale` | `number` | `1` |
+| `Size` | `Vector3` | `Vector3.new(1, 1, 1)` |
+| `Color` | `any` | `nil` |
+| `Transparency` | `number` | `0` |
+| `TextureId` | `string` | `""` |
+| `CollisionFidelity` | `EnumItem` | `Enum.CollisionFidelity.Default` |
+| `RenderFidelity` | `EnumItem` | `Enum.RenderFidelity.Automatic` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`instance:GetAttachment`" href="#instance-getattachment" description="Gets the Attachment." />
+  <Card title="`instance:SetAttachmentOffset`" href="#instance-setattachmentoffset" description="Sets the attachment's offset" />
+  <Card title="`instance:GetAttachmentOffset`" href="#instance-getattachmentoffset" description="Gets the attachment's offset." />
+
+</Cards>
+
+---
+
+### `instance:GetAttachment` [#instance-getattachment]
+
+Gets the Attachment.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetAttachmentOffset` [#instance-setattachmentoffset]
+
+Sets the attachment's offset
+
+**Arguments**
+
+```luau
+cf: CFrame
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetAttachmentOffset` [#instance-getattachmentoffset]
+
+Gets the attachment's offset.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:GetAttachment()
+instance:SetAttachmentOffset(cf: CFrame)
+instance:GetAttachmentOffset()
+```

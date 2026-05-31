@@ -1,0 +1,54 @@
+---
+title: BindableEvent
+description: Lets you fire and recieve signals.
+---
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`instance:Fire`" href="#instance-fire" description="Fires." />
+  <Card title="`instance:Connect`" href="#instance-connect" description="Shoulds simulate." />
+
+</Cards>
+
+---
+
+### `instance:Fire` [#instance-fire]
+
+Fires.
+
+**Arguments**
+
+```luau
+...: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Connect` [#instance-connect]
+
+Shoulds simulate.
+
+**Arguments**
+
+```luau
+fn: function, priority: number
+```
+
+**Returns**
+
+```luau
+Connection
+```
+
+## API
+
+```luau
+instance:Fire(...: any)
+instance:Connect(fn: function, priority: number): Connection
+```

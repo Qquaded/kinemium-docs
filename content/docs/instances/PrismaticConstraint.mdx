@@ -1,0 +1,169 @@
+---
+title: PrismaticConstraint
+description: Constrains two attachments to slide along a single axis.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Attachment0` | `any` | `nil` |
+| `Attachment1` | `any` | `nil` |
+| `Enabled` | `boolean` | `true` |
+| `Visible` | `boolean` | `true` |
+| `Color` | `any` | `Color3.fromRGB(0, 255, 255)` |
+| `ActuatorType` | `EnumItem` | `Enum.ActuatorType.None` |
+| `Velocity` | `number` | `2` |
+| `MotorMaxForce` | `number` | `10000` |
+| `ServoMaxForce` | `number` | `10000` |
+| `TargetPosition` | `number` | `0` |
+| `LimitsEnabled` | `boolean` | `false` |
+| `LowerLimit` | `number` | `-5` |
+| `UpperLimit` | `number` | `5` |
+| `Restitution` | `number` | `0` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`cleanup`" href="#cleanup" description="Cleans up the resources." />
+  <Card title="`rebuild`" href="#rebuild" description="Rebuilds the state." />
+  <Card title="`onPartChanged`" href="#onpartchanged" description="Ons part changed." />
+  <Card title="`instance:UpdateActuator`" href="#instance-updateactuator" description="Updates actuator." />
+  <Card title="`instance:UpdateLimits`" href="#instance-updatelimits" description="Updates limits." />
+  <Card title="`drawGizmo`" href="#drawgizmo" description="Draws the visual representation." />
+  <Card title="`toRaylibColor`" href="#toraylibcolor" description="Tos raylib color." />
+  <Card title="`drawTick`" href="#drawtick" description="Draws the visual representation." />
+
+</Cards>
+
+---
+
+### `cleanup` [#cleanup]
+
+Cleans up the resources.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `rebuild` [#rebuild]
+
+Rebuilds the state.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onPartChanged` [#onpartchanged]
+
+Ons part changed.
+
+**Arguments**
+
+```luau
+property: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:UpdateActuator` [#instance-updateactuator]
+
+Updates actuator.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:UpdateLimits` [#instance-updatelimits]
+
+Updates limits.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawGizmo` [#drawgizmo]
+
+Draws the visual representation.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `toRaylibColor` [#toraylibcolor]
+
+Tos raylib color.
+
+**Arguments**
+
+```luau
+c: any, a: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawTick` [#drawtick]
+
+Draws the visual representation.
+
+**Arguments**
+
+```luau
+center: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:cleanup()
+instance:rebuild()
+instance:onPartChanged(property: number)
+instance:UpdateActuator()
+instance:UpdateLimits()
+instance:drawGizmo()
+instance:toRaylibColor(c: any, a: number)
+instance:drawTick(center: number)
+```

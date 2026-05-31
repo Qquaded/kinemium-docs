@@ -1,0 +1,101 @@
+---
+title: ViewportFrame
+description: A frame that displays a 3D viewport.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Camera` | `any` | `nil` |
+| `Name` | `string` | `"ViewportFrame"` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`ensurePreloaded`" href="#ensurepreloaded" />
+  <Card title="`resetRenderTexture`" href="#resetrendertexture" />
+  <Card title="`getRenderableMesh`" href="#getrenderablemesh" />
+  <Card title="`buildMaterial`" href="#buildmaterial" />
+  <Card title="`propTable.render`" href="#proptable-render" />
+
+</Cards>
+
+---
+
+### `ensurePreloaded` [#ensurepreloaded]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resetRenderTexture` [#resetrendertexture]
+
+**Arguments**
+
+```luau
+object, width, height
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getRenderableMesh` [#getrenderablemesh]
+
+**Arguments**
+
+```luau
+part
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildMaterial` [#buildmaterial]
+
+**Arguments**
+
+```luau
+part
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.render` [#proptable-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:ensurePreloaded()
+instance:resetRenderTexture(object, width, height)
+instance:getRenderableMesh(part)
+instance:buildMaterial(part)
+instance:render(lib, object, dt, structs, renderer)
+```

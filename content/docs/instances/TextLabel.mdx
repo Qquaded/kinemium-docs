@@ -1,0 +1,65 @@
+---
+title: TextLabel
+description: A 2D GUI component that displays text.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Position` | `UDim2` | `UDim2.new(0, 0, 0, 0)` |
+| `Size` | `UDim2` | `UDim2.new(0, 200, 0, 50)` |
+| `Text` | `string` | `"Hello World!"` |
+| `TextColor3` | `Color3` | `Color3.new(0, 0, 0)` |
+| `TextSize` | `number` | `24` |
+| `Font` | `EnumItem` | `Enum.Font.DefaultEngineFont` |
+| `TextXAlignment` | `EnumItem` | `Enum.TextXAlignment.Center` |
+| `TextYAlignment` | `EnumItem` | `Enum.TextYAlignment.Center` |
+| `TextSpacing` | `number` | `1` |
+| `TextTransparency` | `number` | `0` |
+| `TextStrokeColor` | `Color3` | `Color3.new(0, 0, 0)` |
+| `TextStrokeTransparency` | `number` | `1` |
+| `TextWrapped` | `boolean` | `false` |
+| `TextTruncate` | `EnumItem` | `Enum.TextTruncate.None` |
+| `TextScaled` | `boolean` | `false` |
+| `RichText` | `boolean` | `false` |
+| `MaxVisibleGraphemes` | `number` | `-1` |
+| `LineHeight` | `number` | `1` |
+| `BackgroundTransparency` | `number` | `0` |
+| `BackgroundColor` | `Color3` | `Color3.new(1, 1, 1)` |
+| `BorderSize` | `number` | `0` |
+| `BorderColor` | `Color3` | `Color3.new(0, 0, 0)` |
+| `BorderTransparency` | `number` | `0` |
+| `AnchorPoint` | `Vector2` | `Vector2.new(0, 0)` |
+| `Rotation` | `number` | `0` |
+| `Name` | `string` | `"TextLabel"` |
+| `BackgroundColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `Visible` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`propTable.render`" href="#proptable-render" />
+
+</Cards>
+
+---
+
+### `propTable.render` [#proptable-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:render(lib, object, dt, structs, renderer)
+```

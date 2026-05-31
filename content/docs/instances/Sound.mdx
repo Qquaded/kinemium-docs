@@ -1,0 +1,173 @@
+---
+title: Sound
+description: Plays audio files with various playback options.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `SoundId` | `string` | `"./src/assets/sounds/bqqchickenalert.mp3"` |
+| `Volume` | `number` | `1.0` |
+| `Pitch` | `number` | `1.0` |
+| `Looped` | `boolean` | `false` |
+| `Playing` | `boolean` | `false` |
+| `TimePosition` | `number` | `0` |
+| `PlayOnRemove` | `boolean` | `false` |
+| `IsLoaded` | `boolean` | `false` |
+| `Name` | `string` | `"Sound"` |
+| `AudioBackend` | `EnumItem` | `Enum.AudioBackend.RAUDIO` |
+| `IsStream` | `boolean` | `false` |
+| `SoundGroup` | `any` | `nil` |
+| `_effectiveVolume` | `number` | `1.0` |
+| `_fadeVolume` | `number` | `1.0` |
+| `Position` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `Velocity` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `Direction` | `Vector3` | `Vector3.new(0, 0, -1)` |
+| `Up` | `Vector3` | `Vector3.new(0, 1, 0)` |
+| `MinDistance` | `number` | `10.0` |
+| `MaxDistance` | `number` | `1000.0` |
+| `RollOffMode` | `number` | `0` |
+| `Is3D` | `boolean` | `false` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`updateVolume`" href="#updatevolume" />
+  <Card title="`updatePitch`" href="#updatepitch" />
+  <Card title="`loadAudio`" href="#loadaudio" />
+  <Card title="`fadeTo`" href="#fadeto" />
+  <Card title="`instance.Play`" href="#instance-play" description="Plays the audio with an optional fade duration." />
+  <Card title="`instance.Stop`" href="#instance-stop" description="Stops the audio with an optional fade duration." />
+  <Card title="`instance.Pause`" href="#instance-pause" description="Pauses the audio with an optional fade duration." />
+  <Card title="`instance.Resume`" href="#instance-resume" description="Resumes the audio." />
+
+</Cards>
+
+---
+
+### `updateVolume` [#updatevolume]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updatePitch` [#updatepitch]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `loadAudio` [#loadaudio]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `fadeTo` [#fadeto]
+
+**Arguments**
+
+```luau
+targetFade, duration
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.Play` [#instance-play]
+
+Plays the audio with an optional fade duration.
+
+**Arguments**
+
+```luau
+self: table, fadeDuration: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.Stop` [#instance-stop]
+
+Stops the audio with an optional fade duration.
+
+**Arguments**
+
+```luau
+self: table, fadeDuration: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.Pause` [#instance-pause]
+
+Pauses the audio with an optional fade duration.
+
+**Arguments**
+
+```luau
+self: table, fadeDuration: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.Resume` [#instance-resume]
+
+Resumes the audio.
+
+**Arguments**
+
+```luau
+self: table, fadeDuration: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:updateVolume()
+instance:updatePitch()
+instance:loadAudio()
+instance:fadeTo(targetFade, duration)
+instance:Play(self: table, fadeDuration: number)
+instance:Stop(self: table, fadeDuration: number)
+instance:Pause(self: table, fadeDuration: number)
+instance:Resume(self: table, fadeDuration: number)
+```

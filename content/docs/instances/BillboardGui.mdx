@@ -1,0 +1,110 @@
+---
+title: BillboardGui
+description: Renders GUI Children in a 3D Environment.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"BillboardGui"` |
+| `Enabled` | `boolean` | `true` |
+| `Camera` | `any` | `nil` |
+| `Size` | `UDim2` | `UDim2.new(0, 200, 0, 100)` |
+| `RenderOffset` | `Vector2` | `Vector2.new(0, 0)` |
+| `Adornee` | `any` | `nil` |
+| `StudsOffset` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `StudsOffsetWorldSpace` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `PixelsPerStud` | `number` | `50` |
+| `MaxDistance` | `number` | `0` |
+| `AlwaysOnTop` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`getReferenceSize`" href="#getreferencesize" />
+  <Card title="`getSizePixels`" href="#getsizepixels" />
+  <Card title="`getAdornee`" href="#getadornee" />
+  <Card title="`getWorldPosition`" href="#getworldposition" />
+  <Card title="`resetRenderTexture`" href="#resetrendertexture" />
+
+</Cards>
+
+---
+
+### `getReferenceSize` [#getreferencesize]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getSizePixels` [#getsizepixels]
+
+**Arguments**
+
+```luau
+instance
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getAdornee` [#getadornee]
+
+**Arguments**
+
+```luau
+instance
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getWorldPosition` [#getworldposition]
+
+**Arguments**
+
+```luau
+adornee, offsetLocal, offsetWorld
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resetRenderTexture` [#resetrendertexture]
+
+**Arguments**
+
+```luau
+width, height
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:getReferenceSize()
+instance:getSizePixels(instance)
+instance:getAdornee(instance)
+instance:getWorldPosition(adornee, offsetLocal, offsetWorld)
+instance:resetRenderTexture(width, height)
+```

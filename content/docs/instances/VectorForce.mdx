@@ -1,0 +1,57 @@
+---
+title: VectorForce
+description: A force that applies a constant vector to a part.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Attachment0` | `any` | `nil` |
+| `Force` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `RelativeTo` | `EnumItem` | `Enum.ActuatorRelativeTo.World` |
+| `Enabled` | `boolean` | `true` |
+| `Name` | `string` | `"VectorForce"` |
+| `ElapsedTime` | `number` | `0` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`shouldApplyPhysics`" href="#shouldapplyphysics" />
+  <Card title="`updateArrow`" href="#updatearrow" />
+
+</Cards>
+
+---
+
+### `shouldApplyPhysics` [#shouldapplyphysics]
+
+**Arguments**
+
+```luau
+part
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateArrow` [#updatearrow]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:shouldApplyPhysics(part)
+instance:updateArrow()
+```

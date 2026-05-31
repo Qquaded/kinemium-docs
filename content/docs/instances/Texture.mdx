@@ -1,0 +1,193 @@
+---
+title: Texture
+description: A 3D textured surface that can be applied to meshes or other 3D objects.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Transparency` | `number` | `0` |
+| `Color3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `Texture` | `string` | `"./src/assets/images/placeholder.png"` |
+| `Face` | `EnumItem` | `Enum.NormalId.Top` |
+| `StudsPerTileU` | `number` | `1` |
+| `StudsPerTileV` | `number` | `1` |
+| `OffsetStudsU` | `number` | `0` |
+| `OffsetStudsV` | `number` | `0` |
+| `Adornee` | `any` | `nil` |
+| `Position` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `Wrap` | `boolean` | `false` |
+| `Depth` | `number` | `0.1` |
+| `NormalThreshold` | `number` | `0` |
+| `FadeWidth` | `number` | `0` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`getFaceSize`" href="#getfacesize" />
+  <Card title="`getFaceCFrame`" href="#getfacecframe" />
+  <Card title="`buildBaseDecal`" href="#buildbasedecal" />
+  <Card title="`loadAlbedoMap`" href="#loadalbedomap" />
+  <Card title="`loadAlbedoMapFromEditable`" href="#loadalbedomapfromeditable" />
+  <Card title="`applyAlbedoColor`" href="#applyalbedocolor" />
+  <Card title="`applyDecalSettings`" href="#applydecalsettings" />
+  <Card title="`applyFaceOffset`" href="#applyfaceoffset" />
+  <Card title="`applyUvSettings`" href="#applyuvsettings" />
+  <Card title="`syncAlbedo`" href="#syncalbedo" />
+
+</Cards>
+
+---
+
+### `getFaceSize` [#getfacesize]
+
+**Arguments**
+
+```luau
+size, face
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getFaceCFrame` [#getfacecframe]
+
+**Arguments**
+
+```luau
+cf, size, face
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildBaseDecal` [#buildbasedecal]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `loadAlbedoMap` [#loadalbedomap]
+
+**Arguments**
+
+```luau
+path, color
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `loadAlbedoMapFromEditable` [#loadalbedomapfromeditable]
+
+**Arguments**
+
+```luau
+editableImage, color
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `applyAlbedoColor` [#applyalbedocolor]
+
+**Arguments**
+
+```luau
+decal, color, transparency
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `applyDecalSettings` [#applydecalsettings]
+
+**Arguments**
+
+```luau
+instance, decal
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `applyFaceOffset` [#applyfaceoffset]
+
+**Arguments**
+
+```luau
+cf, offset
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `applyUvSettings` [#applyuvsettings]
+
+**Arguments**
+
+```luau
+instance, decal, width, height
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `syncAlbedo` [#syncalbedo]
+
+**Arguments**
+
+```luau
+force
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:getFaceSize(size, face)
+instance:getFaceCFrame(cf, size, face)
+instance:buildBaseDecal()
+instance:loadAlbedoMap(path, color)
+instance:loadAlbedoMapFromEditable(editableImage, color)
+instance:applyAlbedoColor(decal, color, transparency)
+instance:applyDecalSettings(instance, decal)
+instance:applyFaceOffset(cf, offset)
+instance:applyUvSettings(instance, decal, width, height)
+instance:syncAlbedo(force)
+```

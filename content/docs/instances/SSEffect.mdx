@@ -1,0 +1,76 @@
+---
+title: SSEffect
+description: A rendering effect that applies a full-screen shader to the camera output.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Shader` | `any` | `nil` |
+| `Enabled` | `boolean` | `true` |
+| `Name` | `string` | `"SSEffect"` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`instance:SetUniform`" href="#instance-setuniform" description="Sets a shader uniform value." />
+  <Card title="`instance:SetTexture`" href="#instance-settexture" description="Sets the Texture." />
+  <Card title="`instance:AddToPipeline`" href="#instance-addtopipeline" description="Adds to pipeline." />
+
+</Cards>
+
+---
+
+### `instance:SetUniform` [#instance-setuniform]
+
+Sets a shader uniform value.
+
+**Arguments**
+
+```luau
+name: string, value: number, isFloat: boolean
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetTexture` [#instance-settexture]
+
+Sets the Texture.
+
+**Arguments**
+
+```luau
+name: string, textureObj: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:AddToPipeline` [#instance-addtopipeline]
+
+Adds to pipeline.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:SetUniform(name: string, value: number, isFloat: boolean)
+instance:SetTexture(name: string, textureObj: any)
+instance:AddToPipeline()
+```

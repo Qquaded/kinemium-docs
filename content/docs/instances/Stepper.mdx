@@ -1,0 +1,49 @@
+---
+title: Stepper
+description: A progress indicator that displays a series of steps with visual feedback.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UIStepper"` |
+| `AbsoluteSize` | `any` | `nil` |
+| `AbsolutePosition` | `any` | `nil` |
+| `Size` | `UDim2` | `UDim2.new(0, 220, 0, 30)` |
+| `Steps` | `number` | `4` |
+| `CurrentStep` | `number` | `1` |
+| `StepSize` | `number` | `30` |
+| `StepSpacing` | `number` | `60` |
+| `ActiveColor3` | `Color3` | `Color3.new(0.02, 0.5, 1)` |
+| `InactiveColor3` | `Color3` | `Color3.new(0.3, 0.3, 0.3)` |
+| `TextColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `Visible` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`instance.render`" href="#instance-render" />
+
+</Cards>
+
+---
+
+### `instance.render` [#instance-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:render(lib, object, dt, structs, renderer)
+```

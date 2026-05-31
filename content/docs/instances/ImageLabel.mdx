@@ -1,0 +1,50 @@
+---
+title: ImageLabel
+description: A 2D GUI object that displays an image.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Position` | `UDim2` | `UDim2.new(0, 0, 0, 0)` |
+| `Size` | `UDim2` | `UDim2.new(0, 100, 0, 100)` |
+| `AnchorPoint` | `Vector2` | `Vector2.new(0, 0)` |
+| `BackgroundColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `BackgroundTransparency` | `number` | `0` |
+| `Image` | `string` | `"./src/assets/images/placeholder.png"` |
+| `ImageColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `ImageTransparency` | `number` | `0` |
+| `Shader` | `any` | `nil` |
+| `Name` | `string` | `"ImageLabel"` |
+| `Visible` | `boolean` | `true` |
+| `ZIndex` | `number` | `1` |
+| `_cached` | `any` | `nil` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`propTable.render`" href="#proptable-render" />
+
+</Cards>
+
+---
+
+### `propTable.render` [#proptable-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:render(lib, object, dt, structs, renderer)
+```

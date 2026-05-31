@@ -1,0 +1,179 @@
+---
+title: UINotificationLayout
+description: A layout for managing notification overlays.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UINotificationLayout"` |
+| `Enabled` | `boolean` | `true` |
+| `Anchor` | `EnumItem` | `Enum.NotificationAnchor.TopRight` |
+| `Padding` | `UDim` | `UDim.new(0, 12)` |
+| `MarginX` | `UDim` | `UDim.new(0, 16)` |
+| `MarginY` | `UDim` | `UDim.new(0, 16)` |
+| `MaxVisible` | `number` | `5` |
+| `EnterDuration` | `number` | `0.25` |
+| `ExitDuration` | `number` | `0.2` |
+| `DefaultTimeout` | `number` | `4` |
+| `EnterEasing` | `EnumItem` | `Enum.EasingStyle.Quad` |
+| `ExitEasing` | `EnumItem` | `Enum.EasingStyle.Quad` |
+| `_notifications` | `any` | `nil` |
+| `totalH` | `any` | `totalH + h + padding` |
+| `cursor` | `any` | `screenH - marginY - totalH` |
+| `posX` | `any` | `screenW - marginX - frameW + (1 - slideT) * (frameW + marginX)` |
+| `posX` | `any` | `marginX - (1 - slideT) * (frameW + marginX)` |
+| `cursor` | `any` | `cursor + frameH + padding` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`ease`" href="#ease" />
+  <Card title="`api.Push`" href="#api-push" description="Pushes a notification." />
+  <Card title="`api.Dismiss`" href="#api-dismiss" description="Dismisses a notification." />
+  <Card title="`api.DismissAll`" href="#api-dismissall" description="Dismisses all notifications." />
+  <Card title="`render`" href="#render" />
+  <Card title="`instance.Push`" href="#instance-push" description="Pushes a notification." />
+  <Card title="`instance.Dismiss`" href="#instance-dismiss" description="Dismisses a notification." />
+  <Card title="`instance.DismissAll`" href="#instance-dismissall" description="Dismisses all notifications." />
+
+</Cards>
+
+---
+
+### `ease` [#ease]
+
+**Arguments**
+
+```luau
+t, style
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `api.Push` [#api-push]
+
+Pushes a notification.
+
+**Arguments**
+
+```luau
+layoutObject: table, frame: table, options: table
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `api.Dismiss` [#api-dismiss]
+
+Dismisses a notification.
+
+**Arguments**
+
+```luau
+layout: any, frame: table
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `api.DismissAll` [#api-dismissall]
+
+Dismisses all notifications.
+
+**Arguments**
+
+```luau
+layout: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `render` [#render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.Push` [#instance-push]
+
+Pushes a notification.
+
+**Arguments**
+
+```luau
+frame: table, options: table
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.Dismiss` [#instance-dismiss]
+
+Dismisses a notification.
+
+**Arguments**
+
+```luau
+frame: table
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.DismissAll` [#instance-dismissall]
+
+Dismisses all notifications.
+
+**Arguments**
+
+```luau
+frame: table
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:ease(t, style)
+instance:Push(layoutObject: table, frame: table, options: table)
+instance:Dismiss(layout: any, frame: table)
+instance:DismissAll(layout: any)
+instance:render(lib, object, dt, structs, renderer)
+instance:Push(frame: table, options: table)
+instance:Dismiss(frame: table)
+instance:DismissAll(frame: table)
+```

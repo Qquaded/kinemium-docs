@@ -1,0 +1,1264 @@
+---
+title: Humanoid
+description: Controls character movement, state, rigging, animation, accessories, and tools.
+---
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`isVec3`" href="#isvec3" />
+  <Card title="`isCF`" href="#iscf" />
+  <Card title="`flat`" href="#flat" />
+  <Card title="`copy`" href="#copy" />
+  <Card title="`signals`" href="#signals" />
+  <Card title="`props`" href="#props" />
+  <Card title="`controller`" href="#controller" />
+  <Card title="`characterOf`" href="#characterof" />
+  <Card title="`ownerRoot`" href="#ownerroot" />
+  <Card title="`localOwner`" href="#localowner" />
+  <Card title="`shouldSimulate`" href="#shouldsimulate" />
+  <Card title="`canSim`" href="#cansim" />
+  <Card title="`stanceOffset`" href="#stanceoffset" />
+  <Card title="`shouldLogHumanoidRoot`" href="#shouldloghumanoidroot" />
+  <Card title="`speedMul`" href="#speedmul" />
+  <Card title="`markRigPart`" href="#markrigpart" />
+  <Card title="`partFor`" href="#partfor" />
+  <Card title="`buildRig`" href="#buildrig" />
+  <Card title="`encodeRigDescriptor`" href="#encoderigdescriptor" />
+  <Card title="`decodeRigDescriptor`" href="#decoderigdescriptor" />
+  <Card title="`exportRigDescriptor`" href="#exportrigdescriptor" />
+  <Card title="`defaultRig`" href="#defaultrig" />
+  <Card title="`inferRigDescriptorFromCharacter`" href="#inferrigdescriptorfromcharacter" />
+  <Card title="`syncRoot`" href="#syncroot" />
+  <Card title="`segPose`" href="#segpose" />
+  <Card title="`poseOffset`" href="#poseoffset" />
+  <Card title="`applyPose`" href="#applypose" />
+  <Card title="`setState`" href="#setstate" />
+  <Card title="`updateStance`" href="#updatestance" />
+  <Card title="`isSeated`" href="#isseated" />
+  <Card title="`reportSpeed`" href="#reportspeed" />
+  <Card title="`restoreRigFromDescriptor`" href="#restorerigfromdescriptor" />
+  <Card title="`humanoidDefaultPose`" href="#humanoiddefaultpose" />
+  <Card title="`configureAnimator`" href="#configureanimator" />
+  <Card title="`getAnimator`" href="#getanimator" />
+  <Card title="`getAssociatedPlayer`" href="#getassociatedplayer" />
+  <Card title="`getRegistry`" href="#getregistry" />
+  <Card title="`createObject`" href="#createobject" />
+  <Card title="`bind`" href="#bind" />
+  <Card title="`h:BindRig`" href="#h-bindrig" description="Binds a rig definition to the humanoid without creating default parts." />
+  <Card title="`h:BuildRig`" href="#h-buildrig" description="Builds rig parts from a rig definition and binds them to the humanoid." />
+  <Card title="`h:CreateDefaultRig`" href="#h-createdefaultrig" description="Creates and binds a default humanoid rig." />
+  <Card title="`h:RestoreRig`" href="#h-restorerig" description="Restores rig bindings from the current rig descriptor or character parts." />
+  <Card title="`h:GetRigPart`" href="#h-getrigpart" description="Returns a rig part by binding or indexed segment name." />
+  <Card title="`h:GetRigChain`" href="#h-getrigchain" description="Returns the ordered part chain for a rig binding." />
+  <Card title="`h:GetRigBindings`" href="#h-getrigbindings" description="Returns the active rig binding table." />
+  <Card title="`h:SetAnimator`" href="#h-setanimator" description="Sets the animator instance or pose provider used by this humanoid." />
+  <Card title="`h:SetPoseOffset`" href="#h-setposeoffset" description="Sets an additional pose offset for a rig binding." />
+  <Card title="`h:ClearPoseOffset`" href="#h-clearposeoffset" description="Clears a pose offset for a rig binding." />
+  <Card title="`h:SetSpeedModifier`" href="#h-setspeedmodifier" description="Adds or replaces a named movement speed multiplier." />
+  <Card title="`h:RemoveSpeedModifier`" href="#h-removespeedmodifier" description="Removes a named movement speed multiplier." />
+  <Card title="`h:SetIKCallback`" href="#h-setikcallback" description="Sets a callback that can override or add inverse-kinematics pose data." />
+  <Card title="`h:GetEffectiveWalkSpeed`" href="#h-geteffectivewalkspeed" description="Returns WalkSpeed after sprint, crouch, and custom modifiers are applied." />
+  <Card title="`h:SetSprinting`" href="#h-setsprinting" description="Enables or disables sprinting and updates stance state." />
+  <Card title="`h:SetCrouching`" href="#h-setcrouching" description="Enables or disables crouching and updates stance state." />
+  <Card title="`h:ToggleCrouch`" href="#h-togglecrouch" description="Toggles the crouching state." />
+  <Card title="`h:EquipTool`" href="#h-equiptool" description="Equips a Tool by parenting it to the character and activating equip hooks." />
+  <Card title="`h:UnequipTools`" href="#h-unequiptools" description="Unequips all Tool children from the character." />
+  <Card title="`h:AddAccessory`" href="#h-addaccessory" description="Adds an Accessory to the character and tracks it for rig attachment." />
+  <Card title="`h:RemoveAccessory`" href="#h-removeaccessory" description="Removes a tracked Accessory from the humanoid." />
+  <Card title="`h:GetAccessories`" href="#h-getaccessories" description="Returns all accessories currently tracked by the humanoid." />
+  <Card title="`h:Move`" href="#h-move" description="Sets the humanoid's world-space movement direction." />
+  <Card title="`h:MoveRelative`" href="#h-moverelative" description="Sets movement from a local direction relative to a CFrame or look-vector provider." />
+  <Card title="`h:Face`" href="#h-face" description="Sets the desired world-space facing direction." />
+  <Card title="`h:ClearFacingDirection`" href="#h-clearfacingdirection" description="Clears the explicit facing direction so movement can drive rotation again." />
+  <Card title="`h:Stop`" href="#h-stop" description="Clears current movement input." />
+  <Card title="`h:RequestJump`" href="#h-requestjump" description="Queues a jump request for the next simulation step." />
+  <Card title="`h:CanDash`" href="#h-candash" description="Returns whether the dash cooldown has finished." />
+  <Card title="`h:Dash`" href="#h-dash" description="Starts a dash in the given direction when the cooldown allows it." />
+  <Card title="`h:GetState`" href="#h-getstate" description="Returns the humanoid controller's current state." />
+  <Card title="`h:GetRootCFrame`" href="#h-getrootcframe" description="Returns the current root part CFrame, or identity when no root exists." />
+  <Card title="`h:GetLookVector`" href="#h-getlookvector" description="Returns the current horizontal look vector." />
+  <Card title="`h:GetFocusPosition`" href="#h-getfocusposition" description="Returns the camera focus position for the current stance." />
+  <Card title="`stepHumanoid`" href="#stephumanoid" />
+
+</Cards>
+
+---
+
+### `isVec3` [#isvec3]
+
+**Arguments**
+
+```luau
+v
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `isCF` [#iscf]
+
+**Arguments**
+
+```luau
+v
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `flat` [#flat]
+
+**Arguments**
+
+```luau
+v
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `copy` [#copy]
+
+**Arguments**
+
+```luau
+tbl
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `signals` [#signals]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `props` [#props]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `controller` [#controller]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `characterOf` [#characterof]
+
+**Arguments**
+
+```luau
+h
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `ownerRoot` [#ownerroot]
+
+**Arguments**
+
+```luau
+h
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `localOwner` [#localowner]
+
+**Arguments**
+
+```luau
+h, game
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `shouldSimulate` [#shouldsimulate]
+
+**Arguments**
+
+```luau
+h, game
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `canSim` [#cansim]
+
+**Arguments**
+
+```luau
+h
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `stanceOffset` [#stanceoffset]
+
+**Arguments**
+
+```luau
+h
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `shouldLogHumanoidRoot` [#shouldloghumanoidroot]
+
+**Arguments**
+
+```luau
+root, interval
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `speedMul` [#speedmul]
+
+**Arguments**
+
+```luau
+h
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `markRigPart` [#markrigpart]
+
+**Arguments**
+
+```luau
+part, isRoot
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `partFor` [#partfor]
+
+**Arguments**
+
+```luau
+name, parent, spec, isRoot, createInstance
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildRig` [#buildrig]
+
+**Arguments**
+
+```luau
+parent, bindings, createInstance
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `encodeRigDescriptor` [#encoderigdescriptor]
+
+**Arguments**
+
+```luau
+descriptor
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `decodeRigDescriptor` [#decoderigdescriptor]
+
+**Arguments**
+
+```luau
+rawDescriptor
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `exportRigDescriptor` [#exportrigdescriptor]
+
+**Arguments**
+
+```luau
+root, bindings
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `defaultRig` [#defaultrig]
+
+**Arguments**
+
+```luau
+options
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `inferRigDescriptorFromCharacter` [#inferrigdescriptorfromcharacter]
+
+**Arguments**
+
+```luau
+char, root
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `syncRoot` [#syncroot]
+
+**Arguments**
+
+```luau
+h
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `segPose` [#segpose]
+
+**Arguments**
+
+```luau
+pose, name, i
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `poseOffset` [#poseoffset]
+
+**Arguments**
+
+```luau
+h, bindingName, segName, i
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `applyPose` [#applypose]
+
+**Arguments**
+
+```luau
+h, rootCF, pose
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `setState` [#setstate]
+
+**Arguments**
+
+```luau
+h, c, nextState
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateStance` [#updatestance]
+
+**Arguments**
+
+```luau
+h
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `isSeated` [#isseated]
+
+**Arguments**
+
+```luau
+h
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `reportSpeed` [#reportspeed]
+
+**Arguments**
+
+```luau
+h, c, speed
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `restoreRigFromDescriptor` [#restorerigfromdescriptor]
+
+**Arguments**
+
+```luau
+h, c
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `humanoidDefaultPose` [#humanoiddefaultpose]
+
+**Arguments**
+
+```luau
+animator, humanoid, context
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `configureAnimator` [#configureanimator]
+
+**Arguments**
+
+```luau
+animator, autoEnableDefaults
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getAnimator` [#getanimator]
+
+**Arguments**
+
+```luau
+h, createIfMissing, createInstance
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getAssociatedPlayer` [#getassociatedplayer]
+
+**Arguments**
+
+```luau
+humanoid
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getRegistry` [#getregistry]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `createObject` [#createobject]
+
+**Arguments**
+
+```luau
+className
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `bind` [#bind]
+
+**Arguments**
+
+```luau
+def
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:BindRig` [#h-bindrig]
+
+Binds a rig definition to the humanoid without creating default parts.
+
+**Arguments**
+
+```luau
+def: any
+```
+
+**Returns**
+
+```luau
+Model?
+```
+
+---
+
+### `h:BuildRig` [#h-buildrig]
+
+Builds rig parts from a rig definition and binds them to the humanoid.
+
+**Arguments**
+
+```luau
+def: any
+```
+
+**Returns**
+
+```luau
+Model?
+```
+
+---
+
+### `h:CreateDefaultRig` [#h-createdefaultrig]
+
+Creates and binds a default humanoid rig.
+
+**Arguments**
+
+```luau
+options: table
+```
+
+**Returns**
+
+```luau
+Model?
+```
+
+---
+
+### `h:RestoreRig` [#h-restorerig]
+
+Restores rig bindings from the current rig descriptor or character parts.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+boolean
+```
+
+---
+
+### `h:GetRigPart` [#h-getrigpart]
+
+Returns a rig part by binding or indexed segment name.
+
+**Arguments**
+
+```luau
+name: string
+```
+
+**Returns**
+
+```luau
+any
+```
+
+---
+
+### `h:GetRigChain` [#h-getrigchain]
+
+Returns the ordered part chain for a rig binding.
+
+**Arguments**
+
+```luau
+name: string
+```
+
+**Returns**
+
+```luau
+{ any }?
+```
+
+---
+
+### `h:GetRigBindings` [#h-getrigbindings]
+
+Returns the active rig binding table.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+table
+```
+
+---
+
+### `h:SetAnimator` [#h-setanimator]
+
+Sets the animator instance or pose provider used by this humanoid.
+
+**Arguments**
+
+```luau
+animatorOrProvider: any
+```
+
+**Returns**
+
+```luau
+any
+```
+
+---
+
+### `h:SetPoseOffset` [#h-setposeoffset]
+
+Sets an additional pose offset for a rig binding.
+
+**Arguments**
+
+```luau
+name: string, offset: CFrame
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:ClearPoseOffset` [#h-clearposeoffset]
+
+Clears a pose offset for a rig binding.
+
+**Arguments**
+
+```luau
+name: string
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:SetSpeedModifier` [#h-setspeedmodifier]
+
+Adds or replaces a named movement speed multiplier.
+
+**Arguments**
+
+```luau
+key: any, mult: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:RemoveSpeedModifier` [#h-removespeedmodifier]
+
+Removes a named movement speed multiplier.
+
+**Arguments**
+
+```luau
+key: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:SetIKCallback` [#h-setikcallback]
+
+Sets a callback that can override or add inverse-kinematics pose data.
+
+**Arguments**
+
+```luau
+source: any, callback: function
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:GetEffectiveWalkSpeed` [#h-geteffectivewalkspeed]
+
+Returns WalkSpeed after sprint, crouch, and custom modifiers are applied.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `h:SetSprinting` [#h-setsprinting]
+
+Enables or disables sprinting and updates stance state.
+
+**Arguments**
+
+```luau
+on: boolean
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:SetCrouching` [#h-setcrouching]
+
+Enables or disables crouching and updates stance state.
+
+**Arguments**
+
+```luau
+on: boolean
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:ToggleCrouch` [#h-togglecrouch]
+
+Toggles the crouching state.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:EquipTool` [#h-equiptool]
+
+Equips a Tool by parenting it to the character and activating equip hooks.
+
+**Arguments**
+
+```luau
+tool: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:UnequipTools` [#h-unequiptools]
+
+Unequips all Tool children from the character.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:AddAccessory` [#h-addaccessory]
+
+Adds an Accessory to the character and tracks it for rig attachment.
+
+**Arguments**
+
+```luau
+accessory: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:RemoveAccessory` [#h-removeaccessory]
+
+Removes a tracked Accessory from the humanoid.
+
+**Arguments**
+
+```luau
+accessory: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:GetAccessories` [#h-getaccessories]
+
+Returns all accessories currently tracked by the humanoid.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+{ any }
+```
+
+---
+
+### `h:Move` [#h-move]
+
+Sets the humanoid's world-space movement direction.
+
+**Arguments**
+
+```luau
+dir: Vector3
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:MoveRelative` [#h-moverelative]
+
+Sets movement from a local direction relative to a CFrame or look-vector provider.
+
+**Arguments**
+
+```luau
+localDir: Vector3, ref: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:Face` [#h-face]
+
+Sets the desired world-space facing direction.
+
+**Arguments**
+
+```luau
+dir: Vector3
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:ClearFacingDirection` [#h-clearfacingdirection]
+
+Clears the explicit facing direction so movement can drive rotation again.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:Stop` [#h-stop]
+
+Clears current movement input.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:RequestJump` [#h-requestjump]
+
+Queues a jump request for the next simulation step.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `h:CanDash` [#h-candash]
+
+Returns whether the dash cooldown has finished.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+boolean
+```
+
+---
+
+### `h:Dash` [#h-dash]
+
+Starts a dash in the given direction when the cooldown allows it.
+
+**Arguments**
+
+```luau
+dir: Vector3?
+```
+
+**Returns**
+
+```luau
+boolean
+```
+
+---
+
+### `h:GetState` [#h-getstate]
+
+Returns the humanoid controller's current state.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+Enum.HumanoidStateType
+```
+
+---
+
+### `h:GetRootCFrame` [#h-getrootcframe]
+
+Returns the current root part CFrame, or identity when no root exists.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+CFrame
+```
+
+---
+
+### `h:GetLookVector` [#h-getlookvector]
+
+Returns the current horizontal look vector.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+Vector3
+```
+
+---
+
+### `h:GetFocusPosition` [#h-getfocusposition]
+
+Returns the camera focus position for the current stance.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+Vector3
+```
+
+---
+
+### `stepHumanoid` [#stephumanoid]
+
+**Arguments**
+
+```luau
+dt
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:isVec3(v)
+instance:isCF(v)
+instance:flat(v)
+instance:copy(tbl)
+instance:signals()
+instance:props()
+instance:controller()
+instance:characterOf(h)
+instance:ownerRoot(h)
+instance:localOwner(h, game)
+instance:shouldSimulate(h, game)
+instance:canSim(h)
+instance:stanceOffset(h)
+instance:shouldLogHumanoidRoot(root, interval)
+instance:speedMul(h)
+instance:markRigPart(part, isRoot)
+instance:partFor(name, parent, spec, isRoot, createInstance)
+instance:buildRig(parent, bindings, createInstance)
+instance:encodeRigDescriptor(descriptor)
+instance:decodeRigDescriptor(rawDescriptor)
+instance:exportRigDescriptor(root, bindings)
+instance:defaultRig(options)
+instance:inferRigDescriptorFromCharacter(char, root)
+instance:syncRoot(h)
+instance:segPose(pose, name, i)
+instance:poseOffset(h, bindingName, segName, i)
+instance:applyPose(h, rootCF, pose)
+instance:setState(h, c, nextState)
+instance:updateStance(h)
+instance:isSeated(h)
+instance:reportSpeed(h, c, speed)
+instance:restoreRigFromDescriptor(h, c)
+instance:humanoidDefaultPose(animator, humanoid, context)
+instance:configureAnimator(animator, autoEnableDefaults)
+instance:getAnimator(h, createIfMissing, createInstance)
+instance:getAssociatedPlayer(humanoid)
+instance:getRegistry()
+instance:createObject(className)
+instance:bind(def)
+instance:BindRig(def: any): Model?
+instance:BuildRig(def: any): Model?
+instance:CreateDefaultRig(options: table): Model?
+instance:RestoreRig(): boolean
+instance:GetRigPart(name: string): any
+instance:GetRigChain(name: string): { any }?
+instance:GetRigBindings(): table
+instance:SetAnimator(animatorOrProvider: any): any
+instance:SetPoseOffset(name: string, offset: CFrame)
+instance:ClearPoseOffset(name: string)
+instance:SetSpeedModifier(key: any, mult: number)
+instance:RemoveSpeedModifier(key: any)
+instance:SetIKCallback(source: any, callback: function)
+instance:GetEffectiveWalkSpeed(): number
+instance:SetSprinting(on: boolean)
+instance:SetCrouching(on: boolean)
+instance:ToggleCrouch()
+instance:EquipTool(tool: any)
+instance:UnequipTools()
+instance:AddAccessory(accessory: any)
+instance:RemoveAccessory(accessory: any)
+instance:GetAccessories(): { any }
+instance:Move(dir: Vector3)
+instance:MoveRelative(localDir: Vector3, ref: any)
+instance:Face(dir: Vector3)
+instance:ClearFacingDirection()
+instance:Stop()
+instance:RequestJump()
+instance:CanDash(): boolean
+instance:Dash(dir: Vector3?): boolean
+instance:GetState(): Enum.HumanoidStateType
+instance:GetRootCFrame(): CFrame
+instance:GetLookVector(): Vector3
+instance:GetFocusPosition(): Vector3
+instance:stepHumanoid(dt)
+```

@@ -1,0 +1,215 @@
+---
+title: LinearVelocity
+description: Forces an object to travel in a straight line at a set speed and direction.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Attachment0` | `any` | `nil` |
+| `Attachment1` | `any` | `nil` |
+| `ForceLimitMode` | `EnumItem` | `Enum.ForceLimitMode.Magnitude` |
+| `ForceLimitsEnabled` | `boolean` | `false` |
+| `LineDirection` | `Vector3` | `Vector3.new(1, 0, 0)` |
+| `LineVelocity` | `number` | `0` |
+| `MaxAxesForce` | `Vector3` | `Vector3.new(math.huge, math.huge, math.huge)` |
+| `MaxForce` | `any` | `math.huge` |
+| `MaxPlanarAxesForce` | `Vector2` | `Vector2.new(math.huge, math.huge)` |
+| `PlaneVelocity` | `Vector2` | `Vector2.new(0, 0)` |
+| `PrimaryTangentAxis` | `Vector3` | `Vector3.new(1, 0, 0)` |
+| `ReactionForceEnabled` | `boolean` | `false` |
+| `RelativeTo` | `EnumItem` | `Enum.ActuatorRelativeTo.World` |
+| `SecondaryTangentAxis` | `Vector3` | `Vector3.new(0, 0, 1)` |
+| `VectorVelocity` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `VelocityConstraintMode` | `EnumItem` | `Enum.VelocityConstraintMode.Vector` |
+| `Enabled` | `boolean` | `true` |
+| `Name` | `string` | `"LinearVelocity"` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`shouldApplyPhysics`" href="#shouldapplyphysics" />
+  <Card title="`getAttachmentPart`" href="#getattachmentpart" />
+  <Card title="`resolvePart`" href="#resolvepart" />
+  <Card title="`getReferenceCFrame`" href="#getreferencecframe" />
+  <Card title="`vectorToWorld`" href="#vectortoworld" />
+  <Card title="`vectorToRelative`" href="#vectortorelative" />
+  <Card title="`orthonormalize`" href="#orthonormalize" />
+  <Card title="`resolvePlaneAxes`" href="#resolveplaneaxes" />
+  <Card title="`resolveTargetVelocity`" href="#resolvetargetvelocity" />
+  <Card title="`clampVectorMagnitude`" href="#clampvectormagnitude" />
+  <Card title="`clampPerAxis`" href="#clampperaxis" />
+
+</Cards>
+
+---
+
+### `shouldApplyPhysics` [#shouldapplyphysics]
+
+**Arguments**
+
+```luau
+part
+```
+
+**Returns**
+
+```luau
+boolean
+```
+
+---
+
+### `getAttachmentPart` [#getattachmentpart]
+
+**Arguments**
+
+```luau
+attachment
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolvePart` [#resolvepart]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getReferenceCFrame` [#getreferencecframe]
+
+**Arguments**
+
+```luau
+part
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `vectorToWorld` [#vectortoworld]
+
+**Arguments**
+
+```luau
+vectorValue, part
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `vectorToRelative` [#vectortorelative]
+
+**Arguments**
+
+```luau
+vectorValue, part
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `orthonormalize` [#orthonormalize]
+
+**Arguments**
+
+```luau
+primary, secondary
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolvePlaneAxes` [#resolveplaneaxes]
+
+**Arguments**
+
+```luau
+part
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveTargetVelocity` [#resolvetargetvelocity]
+
+**Arguments**
+
+```luau
+part
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `clampVectorMagnitude` [#clampvectormagnitude]
+
+**Arguments**
+
+```luau
+vectorValue, maxMagnitude
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `clampPerAxis` [#clampperaxis]
+
+**Arguments**
+
+```luau
+forceValue, part
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:shouldApplyPhysics(part): boolean
+instance:getAttachmentPart(attachment)
+instance:resolvePart()
+instance:getReferenceCFrame(part)
+instance:vectorToWorld(vectorValue, part)
+instance:vectorToRelative(vectorValue, part)
+instance:orthonormalize(primary, secondary)
+instance:resolvePlaneAxes(part)
+instance:resolveTargetVelocity(part)
+instance:clampVectorMagnitude(vectorValue, maxMagnitude)
+instance:clampPerAxis(forceValue, part)
+```

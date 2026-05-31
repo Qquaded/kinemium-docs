@@ -1,0 +1,108 @@
+---
+title: Actor
+description: An object that can be used for running tasks in parallel.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"Actor"` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`instance:SendMessage`" href="#instance-sendmessage" description="Sends a message to the actor's thread." />
+  <Card title="`createConnection`" href="#createconnection" />
+  <Card title="`instance:BindToMessage`" href="#instance-bindtomessage" description="Binds to message." />
+  <Card title="`instance:BindToMessageParallel`" href="#instance-bindtomessageparallel" description="Binds to message parallel." />
+  <Card title="`Disconnect`" href="#disconnect" description="Disconnects." />
+
+</Cards>
+
+---
+
+### `instance:SendMessage` [#instance-sendmessage]
+
+Sends a message to the actor's thread.
+
+**Arguments**
+
+```luau
+topic: string, ...: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `createConnection` [#createconnection]
+
+**Arguments**
+
+```luau
+list, topic, callback
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:BindToMessage` [#instance-bindtomessage]
+
+Binds to message.
+
+**Arguments**
+
+```luau
+topic: string, callback: function
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:BindToMessageParallel` [#instance-bindtomessageparallel]
+
+Binds to message parallel.
+
+**Arguments**
+
+```luau
+topic: string, callback: function
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `Disconnect` [#disconnect]
+
+Disconnects.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:SendMessage(topic: string, ...: any)
+instance:createConnection(list, topic, callback)
+instance:BindToMessage(topic: string, callback: function)
+instance:BindToMessageParallel(topic: string, callback: function)
+instance:Disconnect()
+```

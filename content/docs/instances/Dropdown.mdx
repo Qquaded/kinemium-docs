@@ -1,0 +1,101 @@
+---
+title: Dropdown
+description: GUI component that allows selection of a single option from a list.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UIDropdown"` |
+| `AbsoluteSize` | `any` | `nil` |
+| `AbsolutePosition` | `any` | `nil` |
+| `Size` | `UDim2` | `UDim2.new(0, 220, 0, 36)` |
+| `Options` | `table` | `{ "Option 1", "Option 2", "Option 3" }` |
+| `SelectedIndex` | `number` | `1` |
+| `SelectedOption` | `string` | `"Option 1"` |
+| `TextSize` | `number` | `16` |
+| `BackgroundColor3` | `Color3` | `Color3.new(0.15, 0.15, 0.18)` |
+| `HoverColor3` | `Color3` | `Color3.new(0.25, 0.35, 0.55)` |
+| `SelectedColor3` | `Color3` | `Color3.new(0.2, 0.3, 0.5)` |
+| `BorderColor3` | `Color3` | `Color3.new(0.3, 0.3, 0.35)` |
+| `TextColor3` | `Color3` | `Color3.new(0.95, 0.95, 0.97)` |
+| `SecondaryTextColor3` | `Color3` | `Color3.new(0.7, 0.7, 0.75)` |
+| `OnSelectionChanged` | `any` | `nil` |
+| `Visible` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`renderChildren`" href="#renderchildren" />
+  <Card title="`sanitizeOptions`" href="#sanitizeoptions" />
+  <Card title="`onSelect`" href="#onselect" />
+  <Card title="`instance.render`" href="#instance-render" />
+
+</Cards>
+
+---
+
+### `renderChildren` [#renderchildren]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer, pos, size
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `sanitizeOptions` [#sanitizeoptions]
+
+**Arguments**
+
+```luau
+options
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onSelect` [#onselect]
+
+**Arguments**
+
+```luau
+index, option
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.render` [#instance-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:renderChildren(lib, object, dt, structs, renderer, pos, size)
+instance:sanitizeOptions(options)
+instance:onSelect(index, option)
+instance:render(lib, object, dt, structs, renderer)
+```

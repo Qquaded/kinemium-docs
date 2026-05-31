@@ -1,0 +1,243 @@
+---
+title: Animator
+description: Manages animation playback, blending, and control for animated objects.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"Animator"` |
+| `Clock` | `number` | `0` |
+| `SpeedScale` | `number` | `1` |
+| `UseDefaultAnimations` | `boolean` | `true` |
+| `PoseProvider` | `any` | `nil` |
+| `DefaultProvider` | `any` | `nil` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`copy`" href="#copy" description="Copies." />
+  <Card title="`mergePose`" href="#mergepose" description="Merges pose." />
+  <Card title="`instance:SetPoseProvider`" href="#instance-setposeprovider" description="Sets the Pose Provider." />
+  <Card title="`instance:AddPoseLayer`" href="#instance-addposelayer" description="Adds a pose layer." />
+  <Card title="`instance:RemovePoseLayer`" href="#instance-removeposelayer" description="Removes a pose layer." />
+  <Card title="`instance:SetDefaultProvider`" href="#instance-setdefaultprovider" description="Sets the Default Provider." />
+  <Card title="`instance:ResetClock`" href="#instance-resetclock" description="Resets clock." />
+  <Card title="`instance:Advance`" href="#instance-advance" description="Advances." />
+  <Card title="`instance:SetStateValue`" href="#instance-setstatevalue" description="Sets the State Value." />
+  <Card title="`instance:GetStateValue`" href="#instance-getstatevalue" description="Gets the Stat eValue." />
+  <Card title="`instance:GetPose`" href="#instance-getpose" description="Gets the Pose." />
+  <Card title="`instance:StepAnimation`" href="#instance-stepanimation" description="Steps animation." />
+
+</Cards>
+
+---
+
+### `copy` [#copy]
+
+Copies.
+
+**Arguments**
+
+```luau
+tbl: table
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `mergePose` [#mergepose]
+
+Merges pose.
+
+**Arguments**
+
+```luau
+basePose: any, layerPose: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetPoseProvider` [#instance-setposeprovider]
+
+Sets the Pose Provider.
+
+**Arguments**
+
+```luau
+provider: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:AddPoseLayer` [#instance-addposelayer]
+
+Adds a pose layer.
+
+**Arguments**
+
+```luau
+name: string, layer: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:RemovePoseLayer` [#instance-removeposelayer]
+
+Removes a pose layer.
+
+**Arguments**
+
+```luau
+name: string
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetDefaultProvider` [#instance-setdefaultprovider]
+
+Sets the Default Provider.
+
+**Arguments**
+
+```luau
+provider: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:ResetClock` [#instance-resetclock]
+
+Resets clock.
+
+**Arguments**
+
+```luau
+value: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Advance` [#instance-advance]
+
+Advances.
+
+**Arguments**
+
+```luau
+dt: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetStateValue` [#instance-setstatevalue]
+
+Sets the State Value.
+
+**Arguments**
+
+```luau
+key: number, value: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetStateValue` [#instance-getstatevalue]
+
+Gets the Stat eValue.
+
+**Arguments**
+
+```luau
+key: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetPose` [#instance-getpose]
+
+Gets the Pose.
+
+**Arguments**
+
+```luau
+target: table, context: table
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:StepAnimation` [#instance-stepanimation]
+
+Steps animation.
+
+**Arguments**
+
+```luau
+target: table, context: table
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:copy(tbl: table)
+instance:mergePose(basePose: any, layerPose: any)
+instance:SetPoseProvider(provider: number)
+instance:AddPoseLayer(name: string, layer: number)
+instance:RemovePoseLayer(name: string)
+instance:SetDefaultProvider(provider: number)
+instance:ResetClock(value: number)
+instance:Advance(dt: number)
+instance:SetStateValue(key: number, value: number)
+instance:GetStateValue(key: number)
+instance:GetPose(target: table, context: table)
+instance:StepAnimation(target: table, context: table)
+```

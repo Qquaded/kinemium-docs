@@ -1,0 +1,75 @@
+---
+title: SeatPart
+description: A seat that can be occupied by a player.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Disabled` | `boolean` | `false` |
+| `Occupant` | `any` | `nil` |
+| `Name` | `string` | `"Seat"` |
+| `IsSeat` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`syncFromCFrame`" href="#syncfromcframe" />
+  <Card title="`syncFromPosition`" href="#syncfromposition" />
+  <Card title="`instance.ApplyImpulse`" href="#instance-applyimpulse" description="Applies a physics impulse to the object." />
+
+</Cards>
+
+---
+
+### `syncFromCFrame` [#syncfromcframe]
+
+**Arguments**
+
+```luau
+cf
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `syncFromPosition` [#syncfromposition]
+
+**Arguments**
+
+```luau
+position
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.ApplyImpulse` [#instance-applyimpulse]
+
+Applies a physics impulse to the object.
+
+**Arguments**
+
+```luau
+self: table, v: Vector3
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:syncFromCFrame(cf)
+instance:syncFromPosition(position)
+instance:ApplyImpulse(self: table, v: Vector3)
+```

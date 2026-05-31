@@ -1,0 +1,42 @@
+---
+title: Camera
+description: Defines the position, orientation, and rendering settings used to view the world.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `FieldOfView` | `number` | `70` |
+| `CFrame` | `CFrame` | `CFrame.new(Vector3.new(3, 3, 3), Vector3.new(0, 0, 0))` |
+| `Roll` | `number` | `0` |
+| `Name` | `string` | `"Camera"` |
+| `CameraType` | `EnumItem` | `Enum.CameraType.Scriptable` |
+| `CameraSubject` | `any` | `nil` |
+| `Focus` | `CFrame` | `CFrame.new(0, 0, 0)` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`syncRaylibCamera`" href="#syncraylibcamera" />
+
+</Cards>
+
+---
+
+### `syncRaylibCamera` [#syncraylibcamera]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:syncRaylibCamera()
+```

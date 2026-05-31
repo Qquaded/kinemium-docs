@@ -1,0 +1,82 @@
+---
+title: UIGraph
+description: A graph component for visualizing data.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UIGraph"` |
+| `Position` | `UDim2` | `UDim2.new(0, 0, 0, 0)` |
+| `Size` | `UDim2` | `UDim2.new(0, 200, 0, 100)` |
+| `LineColor` | `Color3` | `Color3.new(0.02, 0.5, 1)` |
+| `BgColor` | `Color3` | `Color3.new(0.1, 0.1, 0.1)` |
+| `GridColor` | `Color3` | `Color3.new(0.25, 0.25, 0.25)` |
+| `DrawGrid` | `boolean` | `true` |
+| `TooltipTextColor` | `Color3` | `Color3.new(1, 1, 1)` |
+| `TooltipBackgroundColor` | `Color3` | `Color3.new(0, 0, 0)` |
+| `TooltipFontSize` | `number` | `14` |
+| `Capacity` | `number` | `120` |
+| `Values` | `table` | `{}` |
+| `MaxPoints` | `number` | `50` |
+| `Min` | `number` | `0` |
+| `Max` | `number` | `100` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`propTable.Clear`" href="#proptable-clear" />
+  <Card title="`propTable.Push`" href="#proptable-push" />
+  <Card title="`propTable.render`" href="#proptable-render" />
+
+</Cards>
+
+---
+
+### `propTable.Clear` [#proptable-clear]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.Push` [#proptable-push]
+
+**Arguments**
+
+```luau
+value
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.render` [#proptable-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:Clear()
+instance:Push(value)
+instance:render(lib, object, dt, structs, renderer)
+```

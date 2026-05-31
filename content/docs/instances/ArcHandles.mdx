@@ -1,0 +1,73 @@
+---
+title: ArcHandles
+description: A 3d handle that can be rotated and appears under an Adornee.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Color` | `Color3` | `Color3.new(0.5, 0.5, 0.5)` |
+| `Adornee` | `any` | `nil` |
+| `CastShadows` | `boolean` | `false` |
+| `Name` | `string` | `"Handles"` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`toVector`" href="#tovector" />
+  <Card title="`drawArcRing`" href="#drawarcring" />
+  <Card title="`propTable.render`" href="#proptable-render" />
+
+</Cards>
+
+---
+
+### `toVector` [#tovector]
+
+**Arguments**
+
+```luau
+v
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawArcRing` [#drawarcring]
+
+**Arguments**
+
+```luau
+center, radius, axis, segments, color
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.render` [#proptable-render]
+
+**Arguments**
+
+```luau
+handles, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:toVector(v)
+instance:drawArcRing(center, radius, axis, segments, color)
+instance:render(handles, renderer)
+```

@@ -1,0 +1,58 @@
+---
+title: CanvasGroup
+description: Renders descendant GUI objects as a single canvas.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"CanvasGroup"` |
+| `AbsoluteSize` | `any` | `nil` |
+| `AbsolutePosition` | `any` | `nil` |
+| `GroupColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `GroupTransparency` | `number` | `0` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`improveQuality`" href="#improvequality" />
+  <Card title="`propTable.render`" href="#proptable-render" />
+
+</Cards>
+
+---
+
+### `improveQuality` [#improvequality]
+
+**Arguments**
+
+```luau
+tex
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.render` [#proptable-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:improveQuality(tex)
+instance:render(lib, object, dt, structs, renderer)
+```

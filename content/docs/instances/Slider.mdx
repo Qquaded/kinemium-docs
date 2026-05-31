@@ -1,0 +1,81 @@
+---
+title: Slider
+description: A UI element that lets users select a value by dragging a handle along a track.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UISlider"` |
+| `AbsoluteSize` | `any` | `nil` |
+| `AbsolutePosition` | `any` | `nil` |
+| `Size` | `UDim2` | `UDim2.new(0, 200, 0, 28)` |
+| `Value` | `number` | `0.5` |
+| `Min` | `number` | `0` |
+| `Max` | `number` | `1` |
+| `TrackColor3` | `Color3` | `Color3.new(0.15, 0.15, 0.15)` |
+| `FillColor3` | `Color3` | `Color3.new(0.02, 0.5, 1)` |
+| `HandleColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `OnValueChanged` | `any` | `nil` |
+| `Visible` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`renderChildren`" href="#renderchildren" />
+  <Card title="`onChanged`" href="#onchanged" />
+  <Card title="`instance.render`" href="#instance-render" />
+
+</Cards>
+
+---
+
+### `renderChildren` [#renderchildren]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer, pos, size
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onChanged` [#onchanged]
+
+**Arguments**
+
+```luau
+value
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.render` [#instance-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:renderChildren(lib, object, dt, structs, renderer, pos, size)
+instance:onChanged(value)
+instance:render(lib, object, dt, structs, renderer)
+```

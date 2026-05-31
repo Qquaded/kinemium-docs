@@ -1,0 +1,103 @@
+---
+title: Part
+description: A basic 3D primitive used for physics, collision, and world building.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Position` | `Vector3` | `Vector3.new(0, 10, 0)` |
+| `Size` | `Vector3` | `Vector3.new(4, 4, 4)` |
+| `Color` | `Color3` | `Color3.new(1, 1, 1)` |
+| `Material` | `EnumItem` | `Enum.Material.debug` |
+| `Transparency` | `number` | `0` |
+| `Anchored` | `boolean` | `true` |
+| `NeonEnergy` | `number` | `5.0` |
+| `CanCollide` | `boolean` | `true` |
+| `CollisionGroup` | `string` | `"Default"` |
+| `Velocity` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `MeshScale` | `number` | `1` |
+| `Mass` | `number` | `1` |
+| `Restitution` | `number` | `0.5` |
+| `Elasticity` | `number` | `0.5` |
+| `Friction` | `number` | `0.3` |
+| `Shape` | `EnumItem` | `Enum.PartType.Block` |
+| `CastsShadow` | `boolean` | `true` |
+| `Reflectance` | `number` | `0` |
+| `Locked` | `boolean` | `false` |
+| `Orientation` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `Rotation` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `MouseOverObject` | `boolean` | `false` |
+| `CFrame` | `CFrame` | `CFrame.new(0, 10, 0)` |
+| `ElapsedTime` | `number` | `0` |
+| `Name` | `string` | `"Part"` |
+| `_mesh` | `any` | `nil` |
+| `AssemblyAngularVelocity` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `AssemblyCenterOfMass` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `AssemblyLinearVelocity` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `AssemblyMass` | `number` | `0` |
+| `AssemblyRootPart` | `any` | `nil` |
+| `NetworkOwnerType` | `EnumItem` | `Enum.MachineNetworkOwner.Server` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`syncFromCFrame`" href="#syncfromcframe" />
+  <Card title="`syncFromPosition`" href="#syncfromposition" />
+  <Card title="`propTable.ApplyImpulse`" href="#proptable-applyimpulse" description="Applies physics impulse." />
+
+</Cards>
+
+---
+
+### `syncFromCFrame` [#syncfromcframe]
+
+**Arguments**
+
+```luau
+cf
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `syncFromPosition` [#syncfromposition]
+
+**Arguments**
+
+```luau
+position
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.ApplyImpulse` [#proptable-applyimpulse]
+
+Applies physics impulse.
+
+**Arguments**
+
+```luau
+self: table, v: Vector3
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:syncFromCFrame(cf)
+instance:syncFromPosition(position)
+instance:ApplyImpulse(self: table, v: Vector3)
+```

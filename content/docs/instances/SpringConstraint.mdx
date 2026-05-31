@@ -1,0 +1,109 @@
+---
+title: SpringConstraint
+description: A constraint that simulates a spring between two attachments.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Attachment0` | `any` | `nil` |
+| `Attachment1` | `any` | `nil` |
+| `Enabled` | `boolean` | `true` |
+| `Visible` | `boolean` | `true` |
+| `Color` | `any` | `Color3.fromRGB(255, 128, 0)` |
+| `Damping` | `number` | `0.5` |
+| `Stiffness` | `number` | `10` |
+| `Frequency` | `number` | `2` |
+| `SpringMode` | `number` | `0` |
+| `LimitsEnabled` | `boolean` | `false` |
+| `MinLength` | `number` | `0` |
+| `MaxLength` | `number` | `10` |
+| `Coils` | `number` | `4` |
+| `SegmentsPerCoil` | `number` | `24` |
+| `Radius` | `number` | `0.25` |
+| `Thickness` | `number` | `1` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`cleanup`" href="#cleanup" />
+  <Card title="`rebuild`" href="#rebuild" />
+  <Card title="`instance:UpdateSpringSettings`" href="#instance-updatespringsettings" />
+  <Card title="`instance:UpdateLimits`" href="#instance-updatelimits" description="Updates spring limits." />
+  <Card title="`drawGizmo`" href="#drawgizmo" />
+
+</Cards>
+
+---
+
+### `cleanup` [#cleanup]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `rebuild` [#rebuild]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:UpdateSpringSettings` [#instance-updatespringsettings]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:UpdateLimits` [#instance-updatelimits]
+
+Updates spring limits.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawGizmo` [#drawgizmo]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:cleanup()
+instance:rebuild()
+instance:UpdateSpringSettings()
+instance:UpdateLimits()
+instance:drawGizmo()
+```

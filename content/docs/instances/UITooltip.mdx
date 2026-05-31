@@ -1,0 +1,57 @@
+---
+title: UITooltip
+description: A modifier class that displays a tooltip when hovering over a GUI element.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UITooltip"` |
+| `BackgroundColor3` | `Color3` | `Color3.new(0, 0, 0)` |
+| `BackgroundTransparency` | `number` | `0.3` |
+| `TextColor3` | `Color3` | `Color3.new(0, 0, 0)` |
+| `TextTransparency` | `number` | `0` |
+| `TextStrokeColor` | `Color3` | `Color3.new(0, 0, 0)` |
+| `TextStrokeTransparency` | `number` | `1` |
+| `TextSize` | `number` | `18` |
+| `Visible` | `boolean` | `true` |
+| `Font` | `EnumItem` | `Enum.Font.DefaultEngineFont` |
+| `TextXAlignment` | `EnumItem` | `Enum.TextXAlignment.Left` |
+| `TextYAlignment` | `EnumItem` | `Enum.TextYAlignment.Top` |
+| `TextSpacing` | `number` | `1` |
+| `TextWrapped` | `boolean` | `false` |
+| `TextTruncate` | `EnumItem` | `Enum.TextTruncate.None` |
+| `TextScaled` | `boolean` | `false` |
+| `RichText` | `boolean` | `false` |
+| `MaxVisibleGraphemes` | `number` | `-1` |
+| `LineHeight` | `number` | `1` |
+| `Text` | `string` | `"Hello World!"` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`propTable.render`" href="#proptable-render" />
+
+</Cards>
+
+---
+
+### `propTable.render` [#proptable-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:render(lib, object, dt, structs, renderer)
+```

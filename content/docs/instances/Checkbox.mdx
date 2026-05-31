@@ -1,0 +1,62 @@
+---
+title: Checkbox
+description: A gui component that has a boolean state that can be toggled, And can be visible under gui containers.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UICheckbox"` |
+| `AbsoluteSize` | `any` | `nil` |
+| `AbsolutePosition` | `any` | `nil` |
+| `Size` | `UDim2` | `UDim2.new(0, 20, 0, 20)` |
+| `Value` | `boolean` | `false` |
+| `BoxColor3` | `Color3` | `Color3.new(0.2, 0.2, 0.2)` |
+| `CheckColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `OnValueChanged` | `any` | `nil` |
+| `Visible` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`onChanged`" href="#onchanged" />
+  <Card title="`instance.render`" href="#instance-render" />
+
+</Cards>
+
+---
+
+### `onChanged` [#onchanged]
+
+**Arguments**
+
+```luau
+value
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.render` [#instance-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:onChanged(value)
+instance:render(lib, object, dt, structs, renderer)
+```

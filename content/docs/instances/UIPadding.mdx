@@ -1,0 +1,217 @@
+---
+title: UIPadding
+description: Adds padding around child content.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UIPadding"` |
+| `Padding` | `UDim2` | `UDim2.new(0, 0, 0, 0)` |
+| `PaddingLeft` | `any` | `nil` |
+| `PaddingRight` | `any` | `nil` |
+| `PaddingTop` | `any` | `nil` |
+| `PaddingBottom` | `any` | `nil` |
+| `_CachedParentSize` | `any` | `nil` |
+| `_CachedResolved` | `any` | `nil` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`resolveLegacyPaddingSide`" href="#resolvelegacypaddingside" />
+  <Card title="`resolvePaddingSide`" href="#resolvepaddingside" />
+  <Card title="`propTable:GetResolvedPadding`" href="#proptable-getresolvedpadding" description="Gets the resolved padding." />
+  <Card title="`propTable:GetInnerSize`" href="#proptable-getinnersize" description="Get inner padding size." />
+  <Card title="`propTable:GetOffset`" href="#proptable-getoffset" description="Get cached offset padding (resolved)." />
+  <Card title="`propTable:ApplyToPosition`" href="#proptable-applytoposition" description="Applies position to padding" />
+  <Card title="`propTable.GetAll`" href="#proptable-getall" description="Gets all UIPadding objects in the container's children" />
+  <Card title="`propTable.ResolveAll`" href="#proptable-resolveall" description="Resolves padding properties." />
+  <Card title="`propTable.GetTotalInnerSize`" href="#proptable-gettotalinnersize" description="Gets the TotalInnerSize." />
+  <Card title="`propTable.GetTotalOffset`" href="#proptable-gettotaloffset" description="Gets the TotalOffset." />
+  <Card title="`render`" href="#render" />
+
+</Cards>
+
+---
+
+### `resolveLegacyPaddingSide` [#resolvelegacypaddingside]
+
+**Arguments**
+
+```luau
+padding, primaryKey, secondaryKey
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolvePaddingSide` [#resolvepaddingside]
+
+**Arguments**
+
+```luau
+instance, propertyName, primaryKey, secondaryKey
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable:GetResolvedPadding` [#proptable-getresolvedpadding]
+
+Gets the resolved padding.
+
+**Arguments**
+
+```luau
+parentSize: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable:GetInnerSize` [#proptable-getinnersize]
+
+Get inner padding size.
+
+**Arguments**
+
+```luau
+containerSize: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable:GetOffset` [#proptable-getoffset]
+
+Get cached offset padding (resolved).
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable:ApplyToPosition` [#proptable-applytoposition]
+
+Applies position to padding
+
+**Arguments**
+
+```luau
+pos: Vector3
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.GetAll` [#proptable-getall]
+
+Gets all UIPadding objects in the container's children
+
+**Arguments**
+
+```luau
+container: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.ResolveAll` [#proptable-resolveall]
+
+Resolves padding properties.
+
+**Arguments**
+
+```luau
+container: number, containerSize: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.GetTotalInnerSize` [#proptable-gettotalinnersize]
+
+Gets the TotalInnerSize.
+
+**Arguments**
+
+```luau
+container: number, containerSize: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.GetTotalOffset` [#proptable-gettotaloffset]
+
+Gets the TotalOffset.
+
+**Arguments**
+
+```luau
+container: number, containerSize: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `render` [#render]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:resolveLegacyPaddingSide(padding, primaryKey, secondaryKey)
+instance:resolvePaddingSide(instance, propertyName, primaryKey, secondaryKey)
+instance:GetResolvedPadding(parentSize: number)
+instance:GetInnerSize(containerSize: number)
+instance:GetOffset()
+instance:ApplyToPosition(pos: Vector3)
+instance:GetAll(container: number)
+instance:ResolveAll(container: number, containerSize: number)
+instance:GetTotalInnerSize(container: number, containerSize: number)
+instance:GetTotalOffset(container: number, containerSize: number)
+instance:render()
+```

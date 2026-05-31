@@ -1,0 +1,79 @@
+---
+title: Toggle
+description: A toggle switch UI component that allows users to switch between two states.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UIToggle"` |
+| `AbsoluteSize` | `any` | `nil` |
+| `AbsolutePosition` | `any` | `nil` |
+| `Size` | `UDim2` | `UDim2.new(0, 56, 0, 28)` |
+| `Value` | `boolean` | `false` |
+| `OffColor3` | `Color3` | `Color3.new(0.3, 0.3, 0.3)` |
+| `OnColor3` | `Color3` | `Color3.new(0.02, 0.5, 1)` |
+| `HandleColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `OnValueChanged` | `any` | `nil` |
+| `Visible` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`renderChildren`" href="#renderchildren" />
+  <Card title="`onChanged`" href="#onchanged" />
+  <Card title="`instance.render`" href="#instance-render" />
+
+</Cards>
+
+---
+
+### `renderChildren` [#renderchildren]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer, pos, size
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onChanged` [#onchanged]
+
+**Arguments**
+
+```luau
+value
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.render` [#instance-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:renderChildren(lib, object, dt, structs, renderer, pos, size)
+instance:onChanged(value)
+instance:render(lib, object, dt, structs, renderer)
+```

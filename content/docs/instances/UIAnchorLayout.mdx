@@ -1,0 +1,93 @@
+---
+title: UIAnchorLayout
+description: Creates an anchor layout for UI elements.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UIAnchorLayout"` |
+| `Enabled` | `boolean` | `true` |
+| `totalPaddingX` | `any` | `totalPaddingX + px.X` |
+| `totalPaddingY` | `any` | `totalPaddingY + px.Y` |
+| `sizeX` | `any` | `childSize.X` |
+| `posX` | `any` | `totalPaddingX + (effectiveWidth - sizeX) * 0.5` |
+| `posX` | `any` | `totalPaddingX + left` |
+| `sizeX` | `any` | `math.max(0, effectiveWidth - left - right)` |
+| `posX` | `any` | `totalPaddingX + left` |
+| `sizeX` | `any` | `childSize.X` |
+| `sizeX` | `any` | `childSize.X` |
+| `posX` | `any` | `totalPaddingX + effectiveWidth - right - sizeX` |
+| `posX` | `any` | `totalPaddingX + child.Position.X.Scale * effectiveWidth + child.Position.X.Offset` |
+| `sizeX` | `any` | `childSize.X` |
+| `sizeY` | `any` | `childSize.Y` |
+| `posY` | `any` | `totalPaddingY + (effectiveHeight - sizeY) * 0.5` |
+| `posY` | `any` | `totalPaddingY + top` |
+| `sizeY` | `any` | `math.max(0, effectiveHeight - top - bottom)` |
+| `posY` | `any` | `totalPaddingY + top` |
+| `sizeY` | `any` | `childSize.Y` |
+| `sizeY` | `any` | `childSize.Y` |
+| `posY` | `any` | `totalPaddingY + effectiveHeight - bottom - sizeY` |
+| `posY` | `any` | `totalPaddingY + child.Position.Y.Scale * effectiveHeight + child.Position.Y.Offset` |
+| `sizeY` | `any` | `childSize.Y` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`GetAbsoluteSize`" href="#getabsolutesize" />
+  <Card title="`resolveUDim`" href="#resolveudim" />
+  <Card title="`render`" href="#render" />
+
+</Cards>
+
+---
+
+### `GetAbsoluteSize` [#getabsolutesize]
+
+**Arguments**
+
+```luau
+obj
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveUDim` [#resolveudim]
+
+**Arguments**
+
+```luau
+udim, axis
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `render` [#render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:GetAbsoluteSize(obj)
+instance:resolveUDim(udim, axis)
+instance:render(lib, object, dt, structs)
+```

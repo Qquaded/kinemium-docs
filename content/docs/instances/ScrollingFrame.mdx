@@ -1,0 +1,92 @@
+---
+title: ScrollingFrame
+description: A container that displays a scrollable area of content.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"ScrollingFrame"` |
+| `AbsoluteSize` | `any` | `nil` |
+| `AbsolutePosition` | `any` | `nil` |
+| `ScrollBarTransparency` | `number` | `0` |
+| `ScrollBarColor3` | `Color3` | `Color3.new(0.5, 0.5, 0.5)` |
+| `ScrollBarCornerRadius` | `UDim` | `UDim.new(0, 0)` |
+| `ScrollBarBackgroundTransparency` | `number` | `1` |
+| `ScrollBarBackgroundColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `ScrollBarHoverColor3` | `Color3` | `Color3.new(0.6, 0.6, 0.6)` |
+| `Scroll` | `number` | `0` |
+| `ScrollOffset` | `number` | `0.08` |
+| `ScrollTarget` | `number` | `0` |
+| `ScrollLerpSpeed` | `number` | `18` |
+| `ContentSize` | `number` | `0` |
+| `CanvasPosition` | `number` | `0` |
+| `AutoScrollSize` | `boolean` | `true` |
+| `CanvasSize` | `number` | `0` |
+| `ScrollBarThickness` | `number` | `8` |
+| `ScrollBarVisible` | `boolean` | `true` |
+| `ScrollBarAutoHide` | `boolean` | `true` |
+| `ScrollBarFadeSpeed` | `number` | `4` |
+| `ScrollBarPadding` | `number` | `2` |
+| `ElasticEnabled` | `boolean` | `true` |
+| `ElasticStrength` | `number` | `0.8` |
+| `ElasticSnapSpeed` | `number` | `12` |
+| `MomentumEnabled` | `boolean` | `true` |
+| `MomentumFriction` | `number` | `0.92` |
+| `MomentumMinVelocity` | `number` | `0.001` |
+| `TrackClickEnabled` | `boolean` | `true` |
+| `TrackClickSmooth` | `boolean` | `true` |
+| `_draggingThumb` | `boolean` | `false` |
+| `_dragOffsetY` | `number` | `0` |
+| `_scrollBarAlpha` | `number` | `0` |
+| `_timeSinceLastScroll` | `number` | `999` |
+| `_velocity` | `number` | `0` |
+| `_isOverscrolled` | `boolean` | `false` |
+| `_lastScroll` | `number` | `0` |
+| `_isHoveringThumb` | `boolean` | `false` |
+| `_isHoveringTrack` | `boolean` | `false` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`c3tr`" href="#c3tr" />
+  <Card title="`propTable.render`" href="#proptable-render" />
+
+</Cards>
+
+---
+
+### `c3tr` [#c3tr]
+
+**Arguments**
+
+```luau
+c, transparency
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.render` [#proptable-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:c3tr(c, transparency)
+instance:render(lib, object, dt, structs, renderer)
+```

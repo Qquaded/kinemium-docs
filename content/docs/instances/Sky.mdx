@@ -1,0 +1,89 @@
+---
+title: Sky
+description: Creates a sky shader for custom rendering, Parented under lighting.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `CelestialBodiesShown` | `boolean` | `true` |
+| `StarCount` | `number` | `3000` |
+| `SunAngularSize` | `number` | `21` |
+| `MoonAngularSize` | `number` | `21` |
+| `Shader` | `any` | `default_shader` |
+| `ClockTime` | `number` | `14.0` |
+| `GeographicLatitude` | `number` | `0.0` |
+| `ZenithColor` | `Color3` | `Color3.new(0.08, 0.18, 0.55)` |
+| `HorizonColor` | `Color3` | `Color3.new(0.60, 0.75, 0.90)` |
+| `HorizonExponent` | `number` | `0.45` |
+| `HazeColor` | `Color3` | `Color3.new(0.25, 0.22, 0.15)` |
+| `HazeStrength` | `number` | `1.0` |
+| `GroundColor` | `Color3` | `Color3.new(0.15, 0.12, 0.10)` |
+| `SunDiskColor` | `Color3` | `Color3.new(1.5, 1.3, 0.9)` |
+| `SunDiskSharpness` | `number` | `0.9994` |
+| `CoronaColor` | `Color3` | `Color3.new(0.9, 0.7, 0.35)` |
+| `CoronaPower` | `number` | `128.0` |
+| `CoronaStrength` | `number` | `0.6` |
+| `ScatterColor` | `Color3` | `Color3.new(0.8, 0.4, 0.1)` |
+| `ScatterPower` | `number` | `6.0` |
+| `ScatterStrength` | `number` | `0.5` |
+| `StarDensity` | `number` | `3000.0` |
+| `StarBrightness` | `number` | `1.0` |
+| `StarSharpness` | `number` | `0.995` |
+| `StarTwinkleSpeed` | `number` | `3.0` |
+| `StarTwinkleAmount` | `number` | `0.4` |
+| `CloudCoverage` | `number` | `0.45` |
+| `CloudSharpness` | `number` | `2.5` |
+| `CloudSpeed` | `number` | `0.02` |
+| `CloudColor` | `Color3` | `Color3.new(1.0, 0.98, 0.96)` |
+| `CloudShadowColor` | `Color3` | `Color3.new(0.55, 0.60, 0.72)` |
+| `CloudShadowDepth` | `number` | `0.6` |
+| `CloudAltitude` | `number` | `0.08` |
+| `CloudOpacity` | `number` | `1.0` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`calculateSunDirection`" href="#calculatesundirection" description="Creates a sky shader for custom rendering, Parented under lighting." />
+  <Card title="`pushUniforms`" href="#pushuniforms" />
+
+</Cards>
+
+---
+
+### `calculateSunDirection` [#calculatesundirection]
+
+Creates a sky shader for custom rendering, Parented under lighting.
+
+**Arguments**
+
+```luau
+time, latitude
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `pushUniforms` [#pushuniforms]
+
+**Arguments**
+
+```luau
+shader
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:calculateSunDirection(time, latitude)
+instance:pushUniforms(shader)
+```

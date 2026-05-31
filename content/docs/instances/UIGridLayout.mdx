@@ -1,0 +1,95 @@
+---
+title: UIGridLayout
+description: A grid layout for organizing GUI components.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UIGridLayout"` |
+| `Enabled` | `boolean` | `true` |
+| `CellPaddingX` | `UDim` | `UDim.new(0, 5)` |
+| `CellPaddingY` | `UDim` | `UDim.new(0, 5)` |
+| `SortOrder` | `EnumItem` | `Enum.SortOrder.LayoutOrder` |
+| `HorizontalAlignment` | `EnumItem` | `Enum.HorizontalAlignment.Left` |
+| `VerticalAlignment` | `EnumItem` | `Enum.VerticalAlignment.Top` |
+| `FillDirection` | `EnumItem` | `Enum.FillDirection.Horizontal` |
+| `totalPaddingX` | `any` | `totalPaddingX + px.X` |
+| `totalPaddingY` | `any` | `totalPaddingY + px.Y` |
+| `currentRow` | `table` | `{ child }` |
+| `currentRowWidth` | `any` | `size.X` |
+| `currentRowWidth` | `any` | `neededWidth` |
+| `rowH` | `any` | `math.max(rowH, size.Y)` |
+| `totalContentHeight` | `any` | `totalContentHeight + rowH` |
+| `totalContentHeight` | `any` | `totalContentHeight + padY` |
+| `startY` | `any` | `totalPaddingY + math.max(0, (effectiveHeight - totalContentHeight) * 0.5)` |
+| `startY` | `any` | `totalPaddingY + math.max(0, effectiveHeight - totalContentHeight)` |
+| `rowWidth` | `any` | `rowWidth + size.X` |
+| `rowWidth` | `any` | `rowWidth + padX` |
+| `startX` | `any` | `totalPaddingX + math.max(0, (effectiveWidth - rowWidth) * 0.5)` |
+| `startX` | `any` | `totalPaddingX + math.max(0, effectiveWidth - rowWidth)` |
+| `cellY` | `any` | `curY + (rowH - size.Y) * 0.5` |
+| `cellY` | `any` | `curY + (rowH - size.Y)` |
+| `curX` | `any` | `curX + size.X + padX` |
+| `curY` | `any` | `curY + rowH + padY` |
+| `currentCol` | `table` | `{ child }` |
+| `currentColHeight` | `any` | `size.Y` |
+| `currentColHeight` | `any` | `neededHeight` |
+| `colW` | `any` | `math.max(colW, size.X)` |
+| `totalContentWidth` | `any` | `totalContentWidth + colW` |
+| `totalContentWidth` | `any` | `totalContentWidth + padX` |
+| `startX` | `any` | `totalPaddingX + math.max(0, (effectiveWidth - totalContentWidth) * 0.5)` |
+| `startX` | `any` | `totalPaddingX + math.max(0, effectiveWidth - totalContentWidth)` |
+| `colHeight` | `any` | `colHeight + size.Y` |
+| `colHeight` | `any` | `colHeight + padY` |
+| `startY` | `any` | `totalPaddingY + math.max(0, (effectiveHeight - colHeight) * 0.5)` |
+| `startY` | `any` | `totalPaddingY + math.max(0, effectiveHeight - colHeight)` |
+| `cellX` | `any` | `curX + (colW - size.X) * 0.5` |
+| `cellX` | `any` | `curX + (colW - size.X)` |
+| `curY` | `any` | `curY + size.Y + padY` |
+| `curX` | `any` | `curX + colW + padX` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`GetAbsoluteSize`" href="#getabsolutesize" />
+  <Card title="`render`" href="#render" />
+
+</Cards>
+
+---
+
+### `GetAbsoluteSize` [#getabsolutesize]
+
+**Arguments**
+
+```luau
+obj
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `render` [#render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:GetAbsoluteSize(obj)
+instance:render(lib, object, dt, structs)
+```

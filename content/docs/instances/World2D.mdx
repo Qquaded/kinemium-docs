@@ -1,0 +1,179 @@
+---
+title: World2D
+description: A 2D physics world container.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Gravity` | `Vector2` | `Vector2.new(0, 981)` |
+| `TimeScale` | `number` | `1` |
+| `Paused` | `boolean` | `false` |
+| `ResetOnSpawn` | `boolean` | `true` |
+| `Position` | `UDim2` | `UDim2.new(0, 0, 0, 0)` |
+| `Size` | `UDim2` | `UDim2.new(0, 400, 0, 400)` |
+| `RenderOffset` | `Vector2` | `Vector2.new(0, 0)` |
+| `OverrideScreenSize` | `boolean` | `false` |
+| `FixedDeltaTime` | `any` | `1 / 60` |
+| `ElapsedTime` | `number` | `0` |
+| `Accumulator` | `number` | `0` |
+| `contactHertz` | `number` | `60` |
+| `contactDampingRatio` | `number` | `1` |
+| `maximumLinearSpeed` | `number` | `4000` |
+| `maximumAngularSpeed` | `number` | `4000` |
+| `restitutionThreshold` | `number` | `1.0` |
+| `hitEventThreshold` | `number` | `0.0` |
+| `maxContactPushSpeed` | `number` | `3.0` |
+| `enableSleep` | `boolean` | `true` |
+| `enableContinuous` | `boolean` | `true` |
+| `workerCount` | `number` | `0` |
+| `Bodies` | `table` | `{}` |
+| `Constraints` | `table` | `{}` |
+| `CollisionLayers` | `table` | `{}` |
+| `UseBounds` | `boolean` | `false` |
+| `MinBounds` | `Vector2` | `Vector2.new(-math.huge, -math.huge)` |
+| `MaxBounds` | `Vector2` | `Vector2.new(math.huge, math.huge)` |
+| `VelocityIterations` | `number` | `8` |
+| `PositionIterations` | `number` | `3` |
+| `AllowSleep` | `boolean` | `true` |
+| `DebugDraw` | `boolean` | `false` |
+| `DebugColor` | `any` | `nil` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`update`" href="#update" />
+  <Card title="`AddBody`" href="#addbody" />
+  <Card title="`RemoveBody`" href="#removebody" />
+  <Card title="`AddConstraint`" href="#addconstraint" />
+  <Card title="`RemoveConstraint`" href="#removeconstraint" />
+  <Card title="`Clear`" href="#clear" />
+  <Card title="`Step`" href="#step" />
+  <Card title="`instance.render`" href="#instance-render" />
+
+</Cards>
+
+---
+
+### `update` [#update]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `AddBody` [#addbody]
+
+**Arguments**
+
+```luau
+self, body
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `RemoveBody` [#removebody]
+
+**Arguments**
+
+```luau
+self, body
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `AddConstraint` [#addconstraint]
+
+**Arguments**
+
+```luau
+self, constraint
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `RemoveConstraint` [#removeconstraint]
+
+**Arguments**
+
+```luau
+self, constraint
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `Clear` [#clear]
+
+**Arguments**
+
+```luau
+self
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `Step` [#step]
+
+**Arguments**
+
+```luau
+self, dt
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.render` [#instance-render]
+
+**Arguments**
+
+```luau
+lib, instance, dt, structs
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:update()
+instance:AddBody(self, body)
+instance:RemoveBody(self, body)
+instance:AddConstraint(self, constraint)
+instance:RemoveConstraint(self, constraint)
+instance:Clear(self)
+instance:Step(self, dt)
+instance:render(lib, instance, dt, structs)
+```

@@ -1,0 +1,342 @@
+---
+title: Model
+description: Groups parts and other instances so they can be moved, scaled, and queried together.
+---
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`instance:SetPrimaryPart`" href="#instance-setprimarypart" description="Sets the part used as this model's primary reference part." />
+  <Card title="`instance:GetPrimaryPartCFrame`" href="#instance-getprimarypartcframe" description="Returns the PrimaryPart CFrame, or the WorldPivot when no PrimaryPart is set." />
+  <Card title="`instance:GetPivot`" href="#instance-getpivot" description="Returns the model's world pivot CFrame." />
+  <Card title="`instance:SetPivot`" href="#instance-setpivot" description="Sets the model pivot and moves child parts by the same transform offset." />
+  <Card title="`instance:PivotTo`" href="#instance-pivotto" description="Moves the model to a new pivot CFrame." />
+  <Card title="`instance:MoveTo`" href="#instance-moveto" description="Moves the model pivot to a world position while preserving its orientation." />
+  <Card title="`instance:TranslateBy`" href="#instance-translateby" description="Offsets the model pivot and child parts by a world-space vector." />
+  <Card title="`instance:RotateBy`" href="#instance-rotateby" description="Rotates the model around its current world pivot." />
+  <Card title="`instance:ScaleTo`" href="#instance-scaleto" description="Scales BasePart descendants around the model pivot." />
+  <Card title="`instance:ScaleByFactor`" href="#instance-scalebyfactor" description="Scales sized descendants around the model pivot." />
+  <Card title="`instance:GetExtentsSize`" href="#instance-getextentssize" description="Returns the axis-aligned bounding size of all child parts." />
+  <Card title="`instance:GetBoundingBox`" href="#instance-getboundingbox" description="Returns the model pivot and bounding size for all child parts." />
+  <Card title="`instance:GetCenter`" href="#instance-getcenter" description="Returns the center point between child part positions." />
+  <Card title="`instance:GetAllParts`" href="#instance-getallparts" description="Returns all descendant parts with Size and CFrame properties." />
+  <Card title="`recurse`" href="#recurse" description="Returns all descendant parts with Size and CFrame properties." />
+  <Card title="`instance:IsEmpty`" href="#instance-isempty" description="Returns whether the model has no direct children." />
+  <Card title="`instance:SetVisible`" href="#instance-setvisible" description="Sets descendant part transparency to visible or hidden." />
+  <Card title="`instance:SetTransparency`" href="#instance-settransparency" description="Sets transparency on every descendant part." />
+
+</Cards>
+
+---
+
+### `instance:SetPrimaryPart` [#instance-setprimarypart]
+
+Sets the part used as this model's primary reference part.
+
+**Arguments**
+
+```luau
+part: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetPrimaryPartCFrame` [#instance-getprimarypartcframe]
+
+Returns the PrimaryPart CFrame, or the WorldPivot when no PrimaryPart is set.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+CFrame
+```
+
+---
+
+### `instance:GetPivot` [#instance-getpivot]
+
+Returns the model's world pivot CFrame.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+CFrame
+```
+
+---
+
+### `instance:SetPivot` [#instance-setpivot]
+
+Sets the model pivot and moves child parts by the same transform offset.
+
+**Arguments**
+
+```luau
+cf: CFrame
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:PivotTo` [#instance-pivotto]
+
+Moves the model to a new pivot CFrame.
+
+**Arguments**
+
+```luau
+cf: CFrame
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:MoveTo` [#instance-moveto]
+
+Moves the model pivot to a world position while preserving its orientation.
+
+**Arguments**
+
+```luau
+pos: Vector3
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:TranslateBy` [#instance-translateby]
+
+Offsets the model pivot and child parts by a world-space vector.
+
+**Arguments**
+
+```luau
+offset: Vector3
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:RotateBy` [#instance-rotateby]
+
+Rotates the model around its current world pivot.
+
+**Arguments**
+
+```luau
+rotCF: CFrame
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:ScaleTo` [#instance-scaleto]
+
+Scales BasePart descendants around the model pivot.
+
+**Arguments**
+
+```luau
+factor: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:ScaleByFactor` [#instance-scalebyfactor]
+
+Scales sized descendants around the model pivot.
+
+**Arguments**
+
+```luau
+factor: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetExtentsSize` [#instance-getextentssize]
+
+Returns the axis-aligned bounding size of all child parts.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+Vector3
+```
+
+---
+
+### `instance:GetBoundingBox` [#instance-getboundingbox]
+
+Returns the model pivot and bounding size for all child parts.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+CFrame, Vector3
+```
+
+---
+
+### `instance:GetCenter` [#instance-getcenter]
+
+Returns the center point between child part positions.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+Vector3
+```
+
+---
+
+### `instance:GetAllParts` [#instance-getallparts]
+
+Returns all descendant parts with Size and CFrame properties.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+{ any }
+```
+
+---
+
+### `recurse` [#recurse]
+
+Returns all descendant parts with Size and CFrame properties.
+
+**Arguments**
+
+```luau
+parent
+```
+
+**Returns**
+
+```luau
+{ any }
+```
+
+---
+
+### `instance:IsEmpty` [#instance-isempty]
+
+Returns whether the model has no direct children.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+boolean
+```
+
+---
+
+### `instance:SetVisible` [#instance-setvisible]
+
+Sets descendant part transparency to visible or hidden.
+
+**Arguments**
+
+```luau
+visible: boolean
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetTransparency` [#instance-settransparency]
+
+Sets transparency on every descendant part.
+
+**Arguments**
+
+```luau
+t: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:SetPrimaryPart(part: any)
+instance:GetPrimaryPartCFrame(): CFrame
+instance:GetPivot(): CFrame
+instance:SetPivot(cf: CFrame)
+instance:PivotTo(cf: CFrame)
+instance:MoveTo(pos: Vector3)
+instance:TranslateBy(offset: Vector3)
+instance:RotateBy(rotCF: CFrame)
+instance:ScaleTo(factor: number)
+instance:ScaleByFactor(factor: number)
+instance:GetExtentsSize(): Vector3
+instance:GetBoundingBox(): CFrame, Vector3
+instance:GetCenter(): Vector3
+instance:GetAllParts(): { any }
+instance:recurse(parent): { any }
+instance:IsEmpty(): boolean
+instance:SetVisible(visible: boolean)
+instance:SetTransparency(t: number)
+```

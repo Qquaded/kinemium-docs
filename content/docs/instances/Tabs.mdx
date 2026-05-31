@@ -1,0 +1,100 @@
+---
+title: Tabs
+description: A tabbed interface for organizing content.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UITabs"` |
+| `AbsoluteSize` | `any` | `nil` |
+| `AbsolutePosition` | `any` | `nil` |
+| `Size` | `UDim2` | `UDim2.new(0, 240, 0, 40)` |
+| `Tabs` | `table` | `{ "Tab 1", "Tab 2", "Tab 3" }` |
+| `ActiveIndex` | `number` | `1` |
+| `ActiveTab` | `string` | `"Tab 1"` |
+| `TextSize` | `number` | `16` |
+| `Font` | `EnumItem` | `Enum.Font.DefaultEngineFont` |
+| `BackgroundTransparency` | `number` | `0` |
+| `BackgroundColor3` | `Color3` | `Color3.new(0.15, 0.15, 0.15)` |
+| `ActiveColor3` | `Color3` | `Color3.new(0.02, 0.5, 1)` |
+| `TextColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `OnTabChanged` | `any` | `nil` |
+| `Visible` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`sanitizeTabs`" href="#sanitizetabs" />
+  <Card title="`resolveFont`" href="#resolvefont" />
+  <Card title="`onTabChange`" href="#ontabchange" />
+  <Card title="`instance.render`" href="#instance-render" />
+
+</Cards>
+
+---
+
+### `sanitizeTabs` [#sanitizetabs]
+
+**Arguments**
+
+```luau
+tabs
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveFont` [#resolvefont]
+
+**Arguments**
+
+```luau
+fontEnum
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onTabChange` [#ontabchange]
+
+**Arguments**
+
+```luau
+index, tab
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.render` [#instance-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:sanitizeTabs(tabs)
+instance:resolveFont(fontEnum)
+instance:onTabChange(index, tab)
+instance:render(lib, object, dt, structs, renderer)
+```

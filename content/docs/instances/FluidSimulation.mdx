@@ -1,0 +1,681 @@
+---
+title: FluidSimulation
+description: Simulates and renders a deforming water surface with flow, drains, and buoyancy.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"FluidSimulation"` |
+| `Position` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `Size` | `Vector3` | `Vector3.new(20, 4, 20)` |
+| `SimResolution` | `number` | `16` |
+| `FlowRate` | `number` | `0.7` |
+| `WaterLevel` | `number` | `0.5` |
+| `Contained` | `boolean` | `true` |
+| `VisResolution` | `number` | `32` |
+| `WaveHeight` | `number` | `0.12` |
+| `WaveSpeed` | `number` | `0.9` |
+| `WaveScale` | `number` | `0.45` |
+| `WaveDirection` | `Vector2` | `Vector2.new(1, 0.5)` |
+| `Color` | `Color3` | `Color3.new(0.05, 0.35, 0.72)` |
+| `Roughness` | `number` | `0.07` |
+| `Transparency` | `number` | `0.42` |
+| `FlowDirection` | `Vector2` | `Vector2.new(0, 0)` |
+| `FlowSpeed` | `number` | `0.0` |
+| `PhysicsEnabled` | `boolean` | `true` |
+| `BuoyancyFactor` | `number` | `25.0` |
+| `Dampening` | `number` | `0.55` |
+| `Container` | `any` | `nil` |
+| `FitContainer` | `boolean` | `false` |
+| `FillLevel` | `number` | `0.85` |
+| `Enabled` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`readPtr64`" href="#readptr64" />
+  <Card title="`ptrFromStructField`" href="#ptrfromstructfield" />
+  <Card title="`normalize3`" href="#normalize3" />
+  <Card title="`makeF32Buf`" href="#makef32buf" />
+  <Card title="`makeVec2Buf`" href="#makevec2buf" />
+  <Card title="`waveDisplacement`" href="#wavedisplacement" />
+  <Card title="`waveNormal`" href="#wavenormal" />
+  <Card title="`ensureOffsets`" href="#ensureoffsets" />
+  <Card title="`simIndex`" href="#simindex" />
+  <Card title="`initGrid`" href="#initgrid" />
+  <Card title="`sampleGrid`" href="#samplegrid" />
+  <Card title="`worldToNorm`" href="#worldtonorm" />
+  <Card title="`surfaceYAt`" href="#surfaceyat" />
+  <Card title="`totalWater`" href="#totalwater" />
+  <Card title="`stepSimulation`" href="#stepsimulation" />
+  <Card title="`updateDrains`" href="#updatedrains" />
+  <Card title="`buildWaveConfig`" href="#buildwaveconfig" />
+  <Card title="`buildGrid_vis`" href="#buildgrid-vis" />
+  <Card title="`buildIndices_vis`" href="#buildindices-vis" />
+  <Card title="`createMaterial`" href="#creatematerial" />
+  <Card title="`buildMesh`" href="#buildmesh" />
+  <Card title="`updateMeshVerts`" href="#updatemeshverts" />
+  <Card title="`syncShaderUniforms`" href="#syncshaderuniforms" />
+  <Card title="`syncToContainer`" href="#synctocontainer" />
+  <Card title="`runBuoyancy`" href="#runbuoyancy" />
+  <Card title="`instance:SetWaterLevel`" href="#instance-setwaterlevel" description="Sets every simulation cell to a fill level from 0 to 1." />
+  <Card title="`instance:GetWaterLevel`" href="#instance-getwaterlevel" description="Returns the current average fill level from 0 to 1." />
+  <Card title="`instance:AddWater`" href="#instance-addwater" description="Adds water uniformly across the simulation surface." />
+  <Card title="`instance:RemoveWater`" href="#instance-removewater" description="Removes water uniformly across the simulation surface." />
+  <Card title="`instance:AddWaterAt`" href="#instance-addwaterat" description="Adds water to the simulation cell nearest a world-space XZ position." />
+  <Card title="`instance:RemoveWaterAt`" href="#instance-removewaterat" description="Removes water from the simulation cell nearest a world-space XZ position and returns the amount removed." />
+  <Card title="`instance:GetWaterHeight`" href="#instance-getwaterheight" description="Returns the water surface Y position at a world-space XZ position." />
+  <Card title="`instance:IsPointSubmerged`" href="#instance-ispointsubmerged" description="Returns whether a world-space point is inside the current water volume." />
+  <Card title="`instance:GetSubmergedFraction`" href="#instance-getsubmergedfraction" description="Returns how much of a part's height is submerged, from 0 to 1." />
+  <Card title="`instance:ConnectTo`" href="#instance-connectto" description="Connects this simulation to another so water can flow through a drain point." />
+  <Card title="`instance:Disconnect`" href="#instance-disconnect" description="Removes all drain connections from this simulation to a target simulation." />
+  <Card title="`instance:Rebuild`" href="#instance-rebuild" description="Rebuilds the render mesh and resets the simulation grid when already initialized." />
+  <Card title="`avgWater`" href="#avgwater" />
+  <Card title="`addWaterUniform`" href="#addwateruniform" />
+
+</Cards>
+
+---
+
+### `readPtr64` [#readptr64]
+
+**Arguments**
+
+```luau
+buf: buffer, offset: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `ptrFromStructField` [#ptrfromstructfield]
+
+**Arguments**
+
+```luau
+structBuf: buffer, fieldOff: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `normalize3` [#normalize3]
+
+**Arguments**
+
+```luau
+x: number, y: number, z: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `makeF32Buf` [#makef32buf]
+
+**Arguments**
+
+```luau
+v: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `makeVec2Buf` [#makevec2buf]
+
+**Arguments**
+
+```luau
+x: number, y: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `waveDisplacement` [#wavedisplacement]
+
+**Arguments**
+
+```luau
+x: number, z: number, t: number, waves: { any }
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `waveNormal` [#wavenormal]
+
+**Arguments**
+
+```luau
+x: number, z: number, t: number, waves: { any }
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `ensureOffsets` [#ensureoffsets]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `simIndex` [#simindex]
+
+**Arguments**
+
+```luau
+x: number, z: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `initGrid` [#initgrid]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `sampleGrid` [#samplegrid]
+
+**Arguments**
+
+```luau
+lx: number, lz: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `worldToNorm` [#worldtonorm]
+
+**Arguments**
+
+```luau
+wx: number, wz: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `surfaceYAt` [#surfaceyat]
+
+**Arguments**
+
+```luau
+wx: number, wz: number, t: number?
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `totalWater` [#totalwater]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `stepSimulation` [#stepsimulation]
+
+**Arguments**
+
+```luau
+dt: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateDrains` [#updatedrains]
+
+**Arguments**
+
+```luau
+dt: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildWaveConfig` [#buildwaveconfig]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildGrid_vis` [#buildgrid-vis]
+
+**Arguments**
+
+```luau
+posX, posZ, halfW, halfL, resX, resZ
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildIndices_vis` [#buildindices-vis]
+
+**Arguments**
+
+```luau
+resX, resZ
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `createMaterial` [#creatematerial]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildMesh` [#buildmesh]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateMeshVerts` [#updatemeshverts]
+
+**Arguments**
+
+```luau
+t: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `syncShaderUniforms` [#syncshaderuniforms]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `syncToContainer` [#synctocontainer]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `runBuoyancy` [#runbuoyancy]
+
+**Arguments**
+
+```luau
+dt: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetWaterLevel` [#instance-setwaterlevel]
+
+Sets every simulation cell to a fill level from 0 to 1.
+
+**Arguments**
+
+```luau
+level: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetWaterLevel` [#instance-getwaterlevel]
+
+Returns the current average fill level from 0 to 1.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:AddWater` [#instance-addwater]
+
+Adds water uniformly across the simulation surface.
+
+**Arguments**
+
+```luau
+amount: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:RemoveWater` [#instance-removewater]
+
+Removes water uniformly across the simulation surface.
+
+**Arguments**
+
+```luau
+amount: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:AddWaterAt` [#instance-addwaterat]
+
+Adds water to the simulation cell nearest a world-space XZ position.
+
+**Arguments**
+
+```luau
+worldX: number, worldZ: number, amount: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:RemoveWaterAt` [#instance-removewaterat]
+
+Removes water from the simulation cell nearest a world-space XZ position and returns the amount removed.
+
+**Arguments**
+
+```luau
+worldX: number, worldZ: number, amount: number
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:GetWaterHeight` [#instance-getwaterheight]
+
+Returns the water surface Y position at a world-space XZ position.
+
+**Arguments**
+
+```luau
+worldX: number, worldZ: number
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:IsPointSubmerged` [#instance-ispointsubmerged]
+
+Returns whether a world-space point is inside the current water volume.
+
+**Arguments**
+
+```luau
+worldPos: Vector3
+```
+
+**Returns**
+
+```luau
+boolean
+```
+
+---
+
+### `instance:GetSubmergedFraction` [#instance-getsubmergedfraction]
+
+Returns how much of a part's height is submerged, from 0 to 1.
+
+**Arguments**
+
+```luau
+part: any
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:ConnectTo` [#instance-connectto]
+
+Connects this simulation to another so water can flow through a drain point.
+
+**Arguments**
+
+```luau
+targetSim: any, worldX: number, worldZ: number, thresholdH: number?, flowMult: number?
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Disconnect` [#instance-disconnect]
+
+Removes all drain connections from this simulation to a target simulation.
+
+**Arguments**
+
+```luau
+targetSim: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Rebuild` [#instance-rebuild]
+
+Rebuilds the render mesh and resets the simulation grid when already initialized.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `avgWater` [#avgwater]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `addWaterUniform` [#addwateruniform]
+
+**Arguments**
+
+```luau
+amount: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:readPtr64(buf: buffer, offset: number)
+instance:ptrFromStructField(structBuf: buffer, fieldOff: number)
+instance:normalize3(x: number, y: number, z: number)
+instance:makeF32Buf(v: number)
+instance:makeVec2Buf(x: number, y: number)
+instance:waveDisplacement(x: number, z: number, t: number, waves: { any })
+instance:waveNormal(x: number, z: number, t: number, waves: { any })
+instance:ensureOffsets()
+instance:simIndex(x: number, z: number)
+instance:initGrid()
+instance:sampleGrid(lx: number, lz: number)
+instance:worldToNorm(wx: number, wz: number)
+instance:surfaceYAt(wx: number, wz: number, t: number?)
+instance:totalWater()
+instance:stepSimulation(dt: number)
+instance:updateDrains(dt: number)
+instance:buildWaveConfig()
+instance:buildGrid_vis(posX, posZ, halfW, halfL, resX, resZ)
+instance:buildIndices_vis(resX, resZ)
+instance:createMaterial()
+instance:buildMesh()
+instance:updateMeshVerts(t: number)
+instance:syncShaderUniforms()
+instance:syncToContainer()
+instance:runBuoyancy(dt: number)
+instance:SetWaterLevel(level: number)
+instance:GetWaterLevel(): number
+instance:AddWater(amount: number)
+instance:RemoveWater(amount: number)
+instance:AddWaterAt(worldX: number, worldZ: number, amount: number)
+instance:RemoveWaterAt(worldX: number, worldZ: number, amount: number): number
+instance:GetWaterHeight(worldX: number, worldZ: number): number
+instance:IsPointSubmerged(worldPos: Vector3): boolean
+instance:GetSubmergedFraction(part: any): number
+instance:ConnectTo(targetSim: any, worldX: number, worldZ: number, thresholdH: number?, flowMult: number?)
+instance:Disconnect(targetSim: any)
+instance:Rebuild()
+instance:avgWater()
+instance:addWaterUniform(amount: number)
+```

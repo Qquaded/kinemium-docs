@@ -1,0 +1,901 @@
+---
+title: EditableImage
+description: A mutable image that can be drawn onto and modified at runtime.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Size` | `Vector2` | `Vector2.new(1024, 1024)` |
+| `Name` | `string` | `"EditableImage"` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`instance:Destroy`" href="#instance-destroy" description="Cleans up the resources." />
+  <Card title="`instance:DrawCircle`" href="#instance-drawcircle" description="Draws a circle in the image." />
+  <Card title="`instance:DrawRectangle`" href="#instance-drawrectangle" description="Draws a rectangle in the image." />
+  <Card title="`instance:DrawLine`" href="#instance-drawline" description="Draws a line in the image." />
+  <Card title="`instance:DrawImage`" href="#instance-drawimage" description="Draws an image in the editable image." />
+  <Card title="`instance:DrawImageTransformed`" href="#instance-drawimagetransformed" description="Draws a transformed image in the editable image." />
+  <Card title="`instance:DrawImageProjected`" href="#instance-drawimageprojected" description="Draws a projected image in the editable image." />
+  <Card title="`instance:ReadPixelsBuffer`" href="#instance-readpixelsbuffer" description="Returns pixels buffer" />
+  <Card title="`instance:Sharpen`" href="#instance-sharpen" description="Sharpens the image" />
+  <Card title="`instance:WritePixelsBuffer`" href="#instance-writepixelsbuffer" description="Writes pixels buffer." />
+  <Card title="`instance:Clear`" href="#instance-clear" description="Clears the image." />
+  <Card title="`instance:Fill`" href="#instance-fill" description="Fills the image with a color and transparency." />
+  <Card title="`instance:DrawRectangleOutline`" href="#instance-drawrectangleoutline" description="Draws an outlined rectangle in the image." />
+  <Card title="`instance:Rotate`" href="#instance-rotate" description="Rotates the image." />
+  <Card title="`instance:FlipHorizontal`" href="#instance-fliphorizontal" description="Flips the image horizontally." />
+  <Card title="`instance:FlipVertical`" href="#instance-flipvertical" description="Flips the image vertically." />
+  <Card title="`instance:Flip`" href="#instance-flip" description="Flips the image." />
+  <Card title="`instance:Crop`" href="#instance-crop" description="Crops the image." />
+  <Card title="`instance:Resize`" href="#instance-resize" description="Resizes the image to a new Vector2." />
+  <Card title="`instance:GetPixelColor`" href="#instance-getpixelcolor" description="Gets the Pixel Color at the inputted Position." />
+  <Card title="`instance:SetPixelColor`" href="#instance-setpixelcolor" description="Sets the Pixel Color." />
+  <Card title="`instance:Blur`" href="#instance-blur" description="Blurs the image." />
+  <Card title="`instance:ApplyGrayscale`" href="#instance-applygrayscale" description="Applies grayscale." />
+  <Card title="`instance:ApplyInvert`" href="#instance-applyinvert" description="Applies invert." />
+  <Card title="`instance:ApplyContrast`" href="#instance-applycontrast" description="Applies contrast." />
+  <Card title="`instance:ApplyBrightness`" href="#instance-applybrightness" description="Applies brightness." />
+  <Card title="`instance:DrawGradient`" href="#instance-drawgradient" description="Draws a gradient." />
+  <Card title="`instance:ExportToFile`" href="#instance-exporttofile" description="Exports to file." />
+  <Card title="`instance:GetDimensions`" href="#instance-getdimensions" description="Gets the Dimensions." />
+  <Card title="`instance:GetArea`" href="#instance-getarea" description="Gets the Area." />
+  <Card title="`instance:IsDirty`" href="#instance-isdirty" description="Is it dirty?" />
+  <Card title="`instance:MarkDirty`" href="#instance-markdirty" description="Marks dirty." />
+  <Card title="`instance:ClearDirty`" href="#instance-cleardirty" description="Clears dirty." />
+  <Card title="`instance:DrawPixel`" href="#instance-drawpixel" description="Draws a pixel at the inputted position with color argument and an optional transparency." />
+  <Card title="`instance:DrawLineEx`" href="#instance-drawlineex" description="Draws a line in the image, with more customization options such as thickness." />
+  <Card title="`instance:DrawCircleLines`" href="#instance-drawcirclelines" description="Draws circle lines in the image." />
+  <Card title="`instance:DrawRectangleV`" href="#instance-drawrectanglev" description="Draws a rectangle in the image." />
+  <Card title="`instance:DrawRectangleLines`" href="#instance-drawrectanglelines" description="Draws rectangle lines in the image." />
+  <Card title="`instance:DrawTriangle`" href="#instance-drawtriangle" description="Draws a triangle in the image." />
+  <Card title="`instance:DrawTriangleEx`" href="#instance-drawtriangleex" description="Draws a triangle in the image, with more color options." />
+  <Card title="`instance:DrawTriangleLines`" href="#instance-drawtrianglelines" description="Draws triangle lines in the image." />
+  <Card title="`instance:DrawText`" href="#instance-drawtext" description="Draws text in the image." />
+  <Card title="`instance:DrawTextEx`" href="#instance-drawtextex" description="Draws text with more customization options." />
+  <Card title="`instance:ColorReplace`" href="#instance-colorreplace" description="Replaces the old color with a new color." />
+  <Card title="`instance:AlphaMask`" href="#instance-alphamask" description="Alpha masks an image." />
+  <Card title="`instance:AlphaCrop`" href="#instance-alphacrop" description="Alpha crops with a threshold." />
+  <Card title="`instance:AlphaClear`" href="#instance-alphaclear" description="Alpha clears." />
+  <Card title="`instance:AlphaPremultiply`" href="#instance-alphapremultiply" description="Alpha premultiplies the image." />
+  <Card title="`instance:Dither`" href="#instance-dither" description="Dithers the image." />
+  <Card title="`instance:GetImageAlphaBorder`" href="#instance-getimagealphaborder" description="Gets the Image Alpha Border." />
+
+</Cards>
+
+---
+
+### `instance:Destroy` [#instance-destroy]
+
+Cleans up the resources.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawCircle` [#instance-drawcircle]
+
+Draws a circle in the image.
+
+**Arguments**
+
+```luau
+center: Vector2, radius: number, color: any, transparency: number, combineType: string
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawRectangle` [#instance-drawrectangle]
+
+Draws a rectangle in the image.
+
+**Arguments**
+
+```luau
+position: Vector2, size: Vector2, color: any, transparency: number, combineType: string
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawLine` [#instance-drawline]
+
+Draws a line in the image.
+
+**Arguments**
+
+```luau
+p1: Vector2, p2: Vector2, color: any, transparency: number, combineType: string
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawImage` [#instance-drawimage]
+
+Draws an image in the editable image.
+
+**Arguments**
+
+```luau
+position: Vector2, imageInstance: any, combineType: string
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawImageTransformed` [#instance-drawimagetransformed]
+
+Draws a transformed image in the editable image.
+
+**Arguments**
+
+```luau
+position: Vector2, scale: Vector2, rotation: number, imageInstance: any, options: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawImageProjected` [#instance-drawimageprojected]
+
+Draws a projected image in the editable image.
+
+**Arguments**
+
+```luau
+mesh: any, projection: any, brushConfig: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:ReadPixelsBuffer` [#instance-readpixelsbuffer]
+
+Returns pixels buffer
+
+**Arguments**
+
+```luau
+position: Vector2, size: Vector2
+```
+
+**Returns**
+
+```luau
+buffer
+```
+
+---
+
+### `instance:Sharpen` [#instance-sharpen]
+
+Sharpens the image
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:WritePixelsBuffer` [#instance-writepixelsbuffer]
+
+Writes pixels buffer.
+
+**Arguments**
+
+```luau
+position: Vector2, size: Vector2, buf: buffer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Clear` [#instance-clear]
+
+Clears the image.
+
+**Arguments**
+
+```luau
+color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Fill` [#instance-fill]
+
+Fills the image with a color and transparency.
+
+**Arguments**
+
+```luau
+color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawRectangleOutline` [#instance-drawrectangleoutline]
+
+Draws an outlined rectangle in the image.
+
+**Arguments**
+
+```luau
+position: Vector2, size: Vector2, color: any, transparency: number, thickness: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Rotate` [#instance-rotate]
+
+Rotates the image.
+
+**Arguments**
+
+```luau
+angle: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:FlipHorizontal` [#instance-fliphorizontal]
+
+Flips the image horizontally.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:FlipVertical` [#instance-flipvertical]
+
+Flips the image vertically.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Flip` [#instance-flip]
+
+Flips the image.
+
+**Arguments**
+
+```luau
+horizontal: boolean, vertical: boolean
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Crop` [#instance-crop]
+
+Crops the image.
+
+**Arguments**
+
+```luau
+position: Vector2, size: Vector2
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Resize` [#instance-resize]
+
+Resizes the image to a new Vector2.
+
+**Arguments**
+
+```luau
+newSize: Vector2
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetPixelColor` [#instance-getpixelcolor]
+
+Gets the Pixel Color at the inputted Position.
+
+**Arguments**
+
+```luau
+position: Vector2
+```
+
+**Returns**
+
+```luau
+any
+```
+
+---
+
+### `instance:SetPixelColor` [#instance-setpixelcolor]
+
+Sets the Pixel Color.
+
+**Arguments**
+
+```luau
+position: Vector2, color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Blur` [#instance-blur]
+
+Blurs the image.
+
+**Arguments**
+
+```luau
+strength: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:ApplyGrayscale` [#instance-applygrayscale]
+
+Applies grayscale.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:ApplyInvert` [#instance-applyinvert]
+
+Applies invert.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:ApplyContrast` [#instance-applycontrast]
+
+Applies contrast.
+
+**Arguments**
+
+```luau
+contrast: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:ApplyBrightness` [#instance-applybrightness]
+
+Applies brightness.
+
+**Arguments**
+
+```luau
+brightness: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawGradient` [#instance-drawgradient]
+
+Draws a gradient.
+
+**Arguments**
+
+```luau
+fromPos: Vector2, toPos: Vector2, color1: any, color2: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:ExportToFile` [#instance-exporttofile]
+
+Exports to file.
+
+**Arguments**
+
+```luau
+filepath: string
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetDimensions` [#instance-getdimensions]
+
+Gets the Dimensions.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetArea` [#instance-getarea]
+
+Gets the Area.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:IsDirty` [#instance-isdirty]
+
+Is it dirty?
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:MarkDirty` [#instance-markdirty]
+
+Marks dirty.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:ClearDirty` [#instance-cleardirty]
+
+Clears dirty.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawPixel` [#instance-drawpixel]
+
+Draws a pixel at the inputted position with color argument and an optional transparency.
+
+**Arguments**
+
+```luau
+position: Vector2, color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawLineEx` [#instance-drawlineex]
+
+Draws a line in the image, with more customization options such as thickness.
+
+**Arguments**
+
+```luau
+p1: Vector2, p2: Vector2, thickness: number, color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawCircleLines` [#instance-drawcirclelines]
+
+Draws circle lines in the image.
+
+**Arguments**
+
+```luau
+center: Vector2, radius: number, color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawRectangleV` [#instance-drawrectanglev]
+
+Draws a rectangle in the image.
+
+**Arguments**
+
+```luau
+position: Vector2, size: Vector2, color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawRectangleLines` [#instance-drawrectanglelines]
+
+Draws rectangle lines in the image.
+
+**Arguments**
+
+```luau
+position: Vector2, size: Vector2, thickness: number, color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawTriangle` [#instance-drawtriangle]
+
+Draws a triangle in the image.
+
+**Arguments**
+
+```luau
+v1: Vector2, v2: Vector2, v3: Vector2, color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawTriangleEx` [#instance-drawtriangleex]
+
+Draws a triangle in the image, with more color options.
+
+**Arguments**
+
+```luau
+v1: Vector2, v2: Vector2, v3: Vector2, color1: any, color2: any, color3: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawTriangleLines` [#instance-drawtrianglelines]
+
+Draws triangle lines in the image.
+
+**Arguments**
+
+```luau
+v1: Vector2, v2: Vector2, v3: Vector2, color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawText` [#instance-drawtext]
+
+Draws text in the image.
+
+**Arguments**
+
+```luau
+text: string, position: Vector2, fontSize: number, color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:DrawTextEx` [#instance-drawtextex]
+
+Draws text with more customization options.
+
+**Arguments**
+
+```luau
+font: any, text: string, position: Vector2, fontSize: number, spacing: number, color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:ColorReplace` [#instance-colorreplace]
+
+Replaces the old color with a new color.
+
+**Arguments**
+
+```luau
+oldColor: any, newColor: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:AlphaMask` [#instance-alphamask]
+
+Alpha masks an image.
+
+**Arguments**
+
+```luau
+alphaMaskImage: any
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:AlphaCrop` [#instance-alphacrop]
+
+Alpha crops with a threshold.
+
+**Arguments**
+
+```luau
+alphaThreshold: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:AlphaClear` [#instance-alphaclear]
+
+Alpha clears.
+
+**Arguments**
+
+```luau
+color: any, transparency: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:AlphaPremultiply` [#instance-alphapremultiply]
+
+Alpha premultiplies the image.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:Dither` [#instance-dither]
+
+Dithers the image.
+
+**Arguments**
+
+```luau
+rBpp: number, gBpp: number, bBpp: number, aBpp: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetImageAlphaBorder` [#instance-getimagealphaborder]
+
+Gets the Image Alpha Border.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:Destroy()
+instance:DrawCircle(center: Vector2, radius: number, color: any, transparency: number, combineType: string)
+instance:DrawRectangle(position: Vector2, size: Vector2, color: any, transparency: number, combineType: string)
+instance:DrawLine(p1: Vector2, p2: Vector2, color: any, transparency: number, combineType: string)
+instance:DrawImage(position: Vector2, imageInstance: any, combineType: string)
+instance:DrawImageTransformed(position: Vector2, scale: Vector2, rotation: number, imageInstance: any, options: any)
+instance:DrawImageProjected(mesh: any, projection: any, brushConfig: any)
+instance:ReadPixelsBuffer(position: Vector2, size: Vector2): buffer
+instance:Sharpen()
+instance:WritePixelsBuffer(position: Vector2, size: Vector2, buf: buffer)
+instance:Clear(color: any, transparency: number)
+instance:Fill(color: any, transparency: number)
+instance:DrawRectangleOutline(position: Vector2, size: Vector2, color: any, transparency: number, thickness: number)
+instance:Rotate(angle: number)
+instance:FlipHorizontal()
+instance:FlipVertical()
+instance:Flip(horizontal: boolean, vertical: boolean)
+instance:Crop(position: Vector2, size: Vector2)
+instance:Resize(newSize: Vector2)
+instance:GetPixelColor(position: Vector2): any
+instance:SetPixelColor(position: Vector2, color: any, transparency: number)
+instance:Blur(strength: number)
+instance:ApplyGrayscale()
+instance:ApplyInvert()
+instance:ApplyContrast(contrast: number)
+instance:ApplyBrightness(brightness: number)
+instance:DrawGradient(fromPos: Vector2, toPos: Vector2, color1: any, color2: any, transparency: number)
+instance:ExportToFile(filepath: string)
+instance:GetDimensions()
+instance:GetArea()
+instance:IsDirty()
+instance:MarkDirty()
+instance:ClearDirty()
+instance:DrawPixel(position: Vector2, color: any, transparency: number)
+instance:DrawLineEx(p1: Vector2, p2: Vector2, thickness: number, color: any, transparency: number)
+instance:DrawCircleLines(center: Vector2, radius: number, color: any, transparency: number)
+instance:DrawRectangleV(position: Vector2, size: Vector2, color: any, transparency: number)
+instance:DrawRectangleLines(position: Vector2, size: Vector2, thickness: number, color: any, transparency: number)
+instance:DrawTriangle(v1: Vector2, v2: Vector2, v3: Vector2, color: any, transparency: number)
+instance:DrawTriangleEx(v1: Vector2, v2: Vector2, v3: Vector2, color1: any, color2: any, color3: any, transparency: number)
+instance:DrawTriangleLines(v1: Vector2, v2: Vector2, v3: Vector2, color: any, transparency: number)
+instance:DrawText(text: string, position: Vector2, fontSize: number, color: any, transparency: number)
+instance:DrawTextEx(font: any, text: string, position: Vector2, fontSize: number, spacing: number, color: any, transparency: number)
+instance:ColorReplace(oldColor: any, newColor: any)
+instance:AlphaMask(alphaMaskImage: any)
+instance:AlphaCrop(alphaThreshold: number)
+instance:AlphaClear(color: any, transparency: number)
+instance:AlphaPremultiply()
+instance:Dither(rBpp: number, gBpp: number, bBpp: number, aBpp: number)
+instance:GetImageAlphaBorder()
+```

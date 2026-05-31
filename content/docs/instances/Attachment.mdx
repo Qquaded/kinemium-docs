@@ -1,0 +1,52 @@
+---
+title: Attachment
+description: Represents a 3d point in 3d space, Usually used for physics, particles, etc.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Position` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `Orientation` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `Rotation` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `CFrame` | `CFrame` | `CFrame.new(0, 0, 0)` |
+| `Axis` | `Vector3` | `Vector3.new(1, 0, 0)` |
+| `SecondaryAxis` | `Vector3` | `Vector3.new(0, 1, 0)` |
+| `Visible` | `boolean` | `true` |
+| `WorldPosition` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `WorldOrientation` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `WorldRotation` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `WorldCFrame` | `CFrame` | `CFrame.new(0, 0, 0)` |
+| `WorldAxis` | `Vector3` | `Vector3.new(1, 0, 0)` |
+| `WorldSecondaryAxis` | `Vector3` | `Vector3.new(0, 1, 0)` |
+| `Name` | `string` | `"Attachment"` |
+| `ElapsedTime` | `number` | `0` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`propTable.render`" href="#proptable-render" />
+
+</Cards>
+
+---
+
+### `propTable.render` [#proptable-render]
+
+**Arguments**
+
+```luau
+part, camera, lib
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:render(part, camera, lib)
+```

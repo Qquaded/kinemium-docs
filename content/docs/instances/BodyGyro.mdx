@@ -1,0 +1,60 @@
+---
+title: BodyGyro
+description: Uses torque to rotate an object toward and maintain a specified CFrame orientation.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Part` | `any` | `nil` |
+| `P` | `number` | `500` |
+| `D` | `number` | `50` |
+| `MaxTorque` | `Vector3` | `Vector3.new(10000, 0, 10000)` |
+| `CFrame` | `CFrame` | `CFrame.new()` |
+| `Enabled` | `boolean` | `true` |
+| `Name` | `string` | `"BodyGyro"` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`shouldApplyPhysics`" href="#shouldapplyphysics" />
+  <Card title="`clamp`" href="#clamp" />
+
+</Cards>
+
+---
+
+### `shouldApplyPhysics` [#shouldapplyphysics]
+
+**Arguments**
+
+```luau
+part
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `clamp` [#clamp]
+
+**Arguments**
+
+```luau
+v, lo, hi
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:shouldApplyPhysics(part)
+instance:clamp(v, lo, hi)
+```

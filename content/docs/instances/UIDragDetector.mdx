@@ -1,0 +1,57 @@
+---
+title: UIDragDetector
+description: A drag detection component for UI elements.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UIDragDetector"` |
+| `isDragging` | `boolean` | `false` |
+| `RespectScreenBounds` | `boolean` | `true` |
+| `dragOffset` | `Vector3` | `Vector3.new(0, 0, 0)` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`getParentMetrics`" href="#getparentmetrics" />
+  <Card title="`propTable.render`" href="#proptable-render" />
+
+</Cards>
+
+---
+
+### `getParentMetrics` [#getparentmetrics]
+
+**Arguments**
+
+```luau
+parent
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.render` [#proptable-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:getParentMetrics(parent)
+instance:render(lib, object, dt, structs, renderer)
+```

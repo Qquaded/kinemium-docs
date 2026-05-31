@@ -1,0 +1,149 @@
+---
+title: HingeConstraint
+description: Creates a hinge joint that allows rotation around one axis, like a door or wheel.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Attachment0` | `any` | `nil` |
+| `Attachment1` | `any` | `nil` |
+| `Enabled` | `boolean` | `true` |
+| `Visible` | `boolean` | `true` |
+| `Color` | `any` | `Color3.fromRGB(255, 255, 0)` |
+| `ActuatorType` | `EnumItem` | `Enum.ActuatorType.None` |
+| `AngularVelocity` | `number` | `2` |
+| `MotorMaxAcceleration` | `number` | `100` |
+| `MotorMaxTorque` | `number` | `10000` |
+| `ServoMaxTorque` | `number` | `10000` |
+| `TargetAngle` | `number` | `0` |
+| `LimitsEnabled` | `boolean` | `false` |
+| `LowerAngle` | `number` | `-45` |
+| `UpperAngle` | `number` | `45` |
+| `Restitution` | `number` | `0` |
+| `Offset` | `CFrame` | `CFrame.new(0, 0, 0)` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`cleanup`" href="#cleanup" />
+  <Card title="`rebuild`" href="#rebuild" />
+  <Card title="`onPartChanged`" href="#onpartchanged" description="Ons part changed." />
+  <Card title="`instance:UpdateActuator`" href="#instance-updateactuator" description="Updates actuator." />
+  <Card title="`instance:UpdateLimits`" href="#instance-updatelimits" description="Updates limits." />
+  <Card title="`drawGizmo`" href="#drawgizmo" description="Draws the visual representation." />
+  <Card title="`toRaylibColor`" href="#toraylibcolor" description="Tos raylib color." />
+
+</Cards>
+
+---
+
+### `cleanup` [#cleanup]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `rebuild` [#rebuild]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `onPartChanged` [#onpartchanged]
+
+Ons part changed.
+
+**Arguments**
+
+```luau
+property: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:UpdateActuator` [#instance-updateactuator]
+
+Updates actuator.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:UpdateLimits` [#instance-updatelimits]
+
+Updates limits.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawGizmo` [#drawgizmo]
+
+Draws the visual representation.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `toRaylibColor` [#toraylibcolor]
+
+Tos raylib color.
+
+**Arguments**
+
+```luau
+c: any, a: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:cleanup()
+instance:rebuild()
+instance:onPartChanged(property: number)
+instance:UpdateActuator()
+instance:UpdateLimits()
+instance:drawGizmo()
+instance:toRaylibColor(c: any, a: number)
+```

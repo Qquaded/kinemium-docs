@@ -1,0 +1,67 @@
+---
+title: UIFlowLayout
+description: A flow layout manager for UI elements.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `FillDirection` | `EnumItem` | `Enum.FillDirection.Horizontal` |
+| `Padding` | `UDim` | `UDim.new(0, 5)` |
+| `SortOrder` | `EnumItem` | `Enum.SortOrder.LayoutOrder` |
+| `HorizontalAlignment` | `EnumItem` | `Enum.HorizontalAlignment.Left` |
+| `VerticalAlignment` | `EnumItem` | `Enum.VerticalAlignment.Top` |
+| `ItemAlignment` | `EnumItem` | `Enum.VerticalAlignment.Top` |
+| `Enabled` | `boolean` | `true` |
+| `Name` | `string` | `"UIFlowLayout"` |
+| `currentRow` | `table` | `{ children = {}, size = Vector2.new(0, 0) }` |
+| `currentRow` | `table` | `{ children = {}, size = Vector2.new(0, 0) }` |
+| `itemOffset` | `any` | `(row.size.Y - size.Y) * 0.5` |
+| `itemOffset` | `any` | `row.size.Y - size.Y` |
+| `itemOffset` | `any` | `(row.size.X - size.X) * 0.5` |
+| `itemOffset` | `any` | `row.size.X - size.X` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`GetAbsoluteSize`" href="#getabsolutesize" />
+  <Card title="`render`" href="#render" />
+
+</Cards>
+
+---
+
+### `GetAbsoluteSize` [#getabsolutesize]
+
+**Arguments**
+
+```luau
+obj
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `render` [#render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:GetAbsoluteSize(obj)
+instance:render(lib, object, dt, structs)
+```

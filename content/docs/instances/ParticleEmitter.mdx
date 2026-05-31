@@ -1,0 +1,672 @@
+---
+title: ParticleEmitter
+description: Emits particles in 3D space with a custom image template, and with configurable properties such as Color, Transparency, etc
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Enabled` | `boolean` | `true` |
+| `Rate` | `number` | `20` |
+| `Lifetime` | `any` | `NumberRange.new(1, 2)` |
+| `Speed` | `any` | `NumberRange.new(4, 7)` |
+| `Rotation` | `any` | `NumberRange.new(0, 0)` |
+| `RotSpeed` | `any` | `NumberRange.new(0, 0)` |
+| `Size` | `any` | `buildDefaultSize()` |
+| `Color` | `any` | `buildDefaultColor()` |
+| `Transparency` | `any` | `buildDefaultTransparency()` |
+| `Acceleration` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `Drag` | `number` | `0` |
+| `Restitution` | `number` | `0.5` |
+| `CollisionGroup` | `string` | `"Particles"` |
+| `Friction` | `number` | `0.3` |
+| `VelocityInheritance` | `number` | `0` |
+| `TimeScale` | `number` | `1` |
+| `WindAffectsDrag` | `boolean` | `false` |
+| `CollideParticles` | `boolean` | `false` |
+| `CollisionRadius` | `number` | `0.5` |
+| `EmissionDirection` | `EnumItem` | `Enum.NormalId.Top` |
+| `SpreadAngle` | `Vector2` | `Vector2.new(0, 0)` |
+| `Texture` | `string` | `"./src/assets/images/placeholder.png"` |
+| `EmissionTexture` | `any` | `nil` |
+| `EmissionColor` | `Color3` | `Color3.new(1, 1, 1)` |
+| `EmissionEnergy` | `number` | `0` |
+| `TransparencyMode` | `EnumItem` | `Enum.ParticleTransparencyMode.Alpha` |
+| `BlendMode` | `EnumItem` | `Enum.ParticleBlendMode.Mix` |
+| `CullMode` | `EnumItem` | `Enum.ParticleCullMode.None` |
+| `BillboardMode` | `EnumItem` | `Enum.ParticleBillboardMode.Front` |
+| `UVScale` | `Vector2` | `Vector2.new(1, 1)` |
+| `UVOffset` | `Vector2` | `Vector2.new(0, 0)` |
+| `FlipbookColumns` | `number` | `1` |
+| `FlipbookRows` | `number` | `1` |
+| `FlipbookFramerate` | `number` | `0` |
+| `FlipbookMode` | `EnumItem` | `Enum.ParticleFlipbookMode.Loop` |
+| `FlipbookStartRandom` | `boolean` | `false` |
+| `MaxParticles` | `number` | `256` |
+| `LockedToPart` | `boolean` | `false` |
+| `CastShadow` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`getRange`" href="#getrange" />
+  <Card title="`randomRange`" href="#randomrange" />
+  <Card title="`clamp01`" href="#clamp01" />
+  <Card title="`resolveTransparencyMode`" href="#resolvetransparencymode" />
+  <Card title="`resolveBillboardMode`" href="#resolvebillboardmode" />
+  <Card title="`resolveCullMode`" href="#resolvecullmode" />
+  <Card title="`resolveBlendMode`" href="#resolveblendmode" />
+  <Card title="`getVector2`" href="#getvector2" />
+  <Card title="`getColor3`" href="#getcolor3" />
+  <Card title="`evalNumberSequence`" href="#evalnumbersequence" />
+  <Card title="`evalColorSequence`" href="#evalcolorsequence" />
+  <Card title="`getFlipbookMode`" href="#getflipbookmode" />
+  <Card title="`getEmitterCFrame`" href="#getemittercframe" />
+  <Card title="`getEmissionDirection`" href="#getemissiondirection" />
+  <Card title="`getEmitterVelocity`" href="#getemittervelocity" />
+  <Card title="`applySpread`" href="#applyspread" />
+  <Card title="`buildDefaultColor`" href="#builddefaultcolor" />
+  <Card title="`buildDefaultTransparency`" href="#builddefaulttransparency" />
+  <Card title="`buildDefaultSize`" href="#builddefaultsize" />
+  <Card title="`createMaterial`" href="#creatematerial" />
+  <Card title="`writePositionMapped`" href="#writepositionmapped" />
+  <Card title="`writeRotationMapped`" href="#writerotationmapped" />
+  <Card title="`writeScaleMapped`" href="#writescalemapped" />
+  <Card title="`writeColorMapped`" href="#writecolormapped" />
+  <Card title="`writePositionBuffer`" href="#writepositionbuffer" />
+  <Card title="`writeRotationBuffer`" href="#writerotationbuffer" />
+  <Card title="`writeScaleBuffer`" href="#writescalebuffer" />
+  <Card title="`writeColorBuffer`" href="#writecolorbuffer" />
+  <Card title="`rebuildInstanceBuffer`" href="#rebuildinstancebuffer" />
+  <Card title="`applyMaterialSettings`" href="#applymaterialsettings" />
+  <Card title="`updateMaterial`" href="#updatematerial" />
+  <Card title="`applyShadowMode`" href="#applyshadowmode" />
+  <Card title="`emitParticle`" href="#emitparticle" />
+  <Card title="`emit`" href="#emit" />
+  <Card title="`updateParticles`" href="#updateparticles" />
+  <Card title="`updateInstanceBuffer`" href="#updateinstancebuffer" />
+  <Card title="`writeInstances`" href="#writeinstances" description="Writes instances." />
+  <Card title="`instance.Emit`" href="#instance-emit" description="Emits a specified amount of particles." />
+  <Card title="`updateFlipbook`" href="#updateflipbook" description="Updates flipbook." />
+
+</Cards>
+
+---
+
+### `getRange` [#getrange]
+
+**Arguments**
+
+```luau
+value, defaultMin, defaultMax
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `randomRange` [#randomrange]
+
+**Arguments**
+
+```luau
+value, defaultMin, defaultMax
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `clamp01` [#clamp01]
+
+**Arguments**
+
+```luau
+v
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveTransparencyMode` [#resolvetransparencymode]
+
+**Arguments**
+
+```luau
+value
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveBillboardMode` [#resolvebillboardmode]
+
+**Arguments**
+
+```luau
+value
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveCullMode` [#resolvecullmode]
+
+**Arguments**
+
+```luau
+value
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveBlendMode` [#resolveblendmode]
+
+**Arguments**
+
+```luau
+value
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getVector2` [#getvector2]
+
+**Arguments**
+
+```luau
+value, fallback
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getColor3` [#getcolor3]
+
+**Arguments**
+
+```luau
+value, fallback
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `evalNumberSequence` [#evalnumbersequence]
+
+**Arguments**
+
+```luau
+seq, t, fallback
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `evalColorSequence` [#evalcolorsequence]
+
+**Arguments**
+
+```luau
+seq, t, fallback
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getFlipbookMode` [#getflipbookmode]
+
+**Arguments**
+
+```luau
+value
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getEmitterCFrame` [#getemittercframe]
+
+**Arguments**
+
+```luau
+instance
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getEmissionDirection` [#getemissiondirection]
+
+**Arguments**
+
+```luau
+cf, normalId
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getEmitterVelocity` [#getemittervelocity]
+
+**Arguments**
+
+```luau
+instance
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `applySpread` [#applyspread]
+
+**Arguments**
+
+```luau
+baseDir, basisRight, basisUp, spread
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildDefaultColor` [#builddefaultcolor]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildDefaultTransparency` [#builddefaulttransparency]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildDefaultSize` [#builddefaultsize]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `createMaterial` [#creatematerial]
+
+**Arguments**
+
+```luau
+texturePath
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `writePositionMapped` [#writepositionmapped]
+
+**Arguments**
+
+```luau
+mappedPosition
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `writeRotationMapped` [#writerotationmapped]
+
+**Arguments**
+
+```luau
+mappedRotation
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `writeScaleMapped` [#writescalemapped]
+
+**Arguments**
+
+```luau
+mappedScale
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `writeColorMapped` [#writecolormapped]
+
+**Arguments**
+
+```luau
+mappedColor
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `writePositionBuffer` [#writepositionbuffer]
+
+**Arguments**
+
+```luau
+targetBuffer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `writeRotationBuffer` [#writerotationbuffer]
+
+**Arguments**
+
+```luau
+targetBuffer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `writeScaleBuffer` [#writescalebuffer]
+
+**Arguments**
+
+```luau
+targetBuffer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `writeColorBuffer` [#writecolorbuffer]
+
+**Arguments**
+
+```luau
+targetBuffer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `rebuildInstanceBuffer` [#rebuildinstancebuffer]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `applyMaterialSettings` [#applymaterialsettings]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateMaterial` [#updatematerial]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `applyShadowMode` [#applyshadowmode]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `emitParticle` [#emitparticle]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `emit` [#emit]
+
+**Arguments**
+
+```luau
+count
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateParticles` [#updateparticles]
+
+**Arguments**
+
+```luau
+self: table, count: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateInstanceBuffer` [#updateinstancebuffer]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `writeInstances` [#writeinstances]
+
+Writes instances.
+
+**Arguments**
+
+```luau
+writePosition: any, writeRotation: number, writeScale: number, writeColor: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.Emit` [#instance-emit]
+
+Emits a specified amount of particles.
+
+**Arguments**
+
+```luau
+self: table, count: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateFlipbook` [#updateflipbook]
+
+Updates flipbook.
+
+**Arguments**
+
+```luau
+dt: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:getRange(value, defaultMin, defaultMax)
+instance:randomRange(value, defaultMin, defaultMax)
+instance:clamp01(v)
+instance:resolveTransparencyMode(value)
+instance:resolveBillboardMode(value)
+instance:resolveCullMode(value)
+instance:resolveBlendMode(value)
+instance:getVector2(value, fallback)
+instance:getColor3(value, fallback)
+instance:evalNumberSequence(seq, t, fallback)
+instance:evalColorSequence(seq, t, fallback)
+instance:getFlipbookMode(value)
+instance:getEmitterCFrame(instance)
+instance:getEmissionDirection(cf, normalId)
+instance:getEmitterVelocity(instance)
+instance:applySpread(baseDir, basisRight, basisUp, spread)
+instance:buildDefaultColor()
+instance:buildDefaultTransparency()
+instance:buildDefaultSize()
+instance:createMaterial(texturePath)
+instance:writePositionMapped(mappedPosition)
+instance:writeRotationMapped(mappedRotation)
+instance:writeScaleMapped(mappedScale)
+instance:writeColorMapped(mappedColor)
+instance:writePositionBuffer(targetBuffer)
+instance:writeRotationBuffer(targetBuffer)
+instance:writeScaleBuffer(targetBuffer)
+instance:writeColorBuffer(targetBuffer)
+instance:rebuildInstanceBuffer()
+instance:applyMaterialSettings()
+instance:updateMaterial()
+instance:applyShadowMode()
+instance:emitParticle()
+instance:emit(count)
+instance:updateParticles(self: table, count: number)
+instance:updateInstanceBuffer()
+instance:writeInstances(writePosition: any, writeRotation: number, writeScale: number, writeColor: number)
+instance:Emit(self: table, count: number)
+instance:updateFlipbook(dt: number)
+```

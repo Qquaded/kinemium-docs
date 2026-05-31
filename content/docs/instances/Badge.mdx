@@ -1,0 +1,65 @@
+---
+title: Badge
+description: A GUI component class that can be used under a gui container.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UIBadge"` |
+| `AbsoluteSize` | `any` | `nil` |
+| `AbsolutePosition` | `any` | `nil` |
+| `Size` | `UDim2` | `UDim2.new(0, 18, 0, 18)` |
+| `Text` | `string` | `"1"` |
+| `Font` | `EnumItem` | `Enum.Font.DefaultEngineFont` |
+| `FontSize` | `number` | `12` |
+| `Spacing` | `number` | `1` |
+| `BackgroundColor3` | `Color3` | `Color3.new(1, 0.2, 0.2)` |
+| `TextColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `MinWidth` | `number` | `18` |
+| `Visible` | `boolean` | `true` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`resolveFont`" href="#resolvefont" />
+  <Card title="`instance.render`" href="#instance-render" />
+
+</Cards>
+
+---
+
+### `resolveFont` [#resolvefont]
+
+**Arguments**
+
+```luau
+fontEnum
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.render` [#instance-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:resolveFont(fontEnum)
+instance:render(lib, object, dt, structs, renderer)
+```

@@ -1,0 +1,1486 @@
+---
+title: EditableMesh
+description: Stores editable mesh geometry, attributes, bones, and generated render data.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `FixedSize` | `boolean` | `false` |
+| `SkinningEnabled` | `boolean` | `false` |
+| `Name` | `string` | `"EditableMesh"` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`buildRawGeometry`" href="#buildrawgeometry" />
+  <Card title="`notifyLinkedMeshParts`" href="#notifylinkedmeshparts" />
+  <Card title="`instance:AddVertex`" href="#instance-addvertex" description="Adds a vertex position to the mesh and returns its vertex id." />
+  <Card title="`instance:AddNormal`" href="#instance-addnormal" description="Adds a normal vector to the mesh and returns its normal id." />
+  <Card title="`instance:AddUV`" href="#instance-adduv" description="Adds a UV coordinate to the mesh and returns its UV id." />
+  <Card title="`instance:AddColor`" href="#instance-addcolor" description="Adds a vertex color and alpha value to the mesh and returns its color id." />
+  <Card title="`instance:AddTriangle`" href="#instance-addtriangle" description="Adds a triangular face from three vertex ids and returns its face id." />
+  <Card title="`instance:SetPosition`" href="#instance-setposition" description="Updates the stored position for an existing vertex." />
+  <Card title="`instance:GetPosition`" href="#instance-getposition" description="Returns the stored position for a vertex, or the zero vector when missing." />
+  <Card title="`instance:SetNormal`" href="#instance-setnormal" description="Updates an existing normal vector and marks the mesh dirty." />
+  <Card title="`instance:GetNormal`" href="#instance-getnormal" description="Returns a normal vector by id, or nil when missing." />
+  <Card title="`instance:SetUV`" href="#instance-setuv" description="Updates an existing UV coordinate and marks the mesh dirty." />
+  <Card title="`instance:GetUV`" href="#instance-getuv" description="Returns a UV coordinate by id, or nil when missing." />
+  <Card title="`instance:SetColor`" href="#instance-setcolor" description="Updates an existing color entry." />
+  <Card title="`instance:SetColorAlpha`" href="#instance-setcoloralpha" description="Updates the alpha value for an existing color entry." />
+  <Card title="`instance:GetColor`" href="#instance-getcolor" description="Returns a color by id, or nil when missing." />
+  <Card title="`instance:GetColorAlpha`" href="#instance-getcoloralpha" description="Returns a color alpha value by id, or nil when missing." />
+  <Card title="`instance:SetVertexFaceColor`" href="#instance-setvertexfacecolor" description="Assigns a color id to a vertex corner on a specific face." />
+  <Card title="`instance:SetVertexFaceNormal`" href="#instance-setvertexfacenormal" description="Assigns a normal id to a vertex corner on a specific face." />
+  <Card title="`instance:SetVertexFaceUV`" href="#instance-setvertexfaceuv" description="Assigns a UV id to a vertex corner on a specific face." />
+  <Card title="`instance:GetVertexFaceColor`" href="#instance-getvertexfacecolor" description="Returns the color id assigned to a vertex corner on a face, or 0 when unset." />
+  <Card title="`instance:GetVertexFaceNormal`" href="#instance-getvertexfacenormal" description="Returns the normal id assigned to a vertex corner on a face, or 0 when unset." />
+  <Card title="`instance:GetVertexFaceUV`" href="#instance-getvertexfaceuv" description="Returns the UV id assigned to a vertex corner on a face, or 0 when unset." />
+  <Card title="`instance:GetVertices`" href="#instance-getvertices" description="Returns all vertex ids currently stored in the mesh." />
+  <Card title="`instance:GetNormals`" href="#instance-getnormals" description="Returns all normal ids currently stored in the mesh." />
+  <Card title="`instance:GetUVs`" href="#instance-getuvs" description="Returns all UV ids currently stored in the mesh." />
+  <Card title="`instance:GetColors`" href="#instance-getcolors" description="Returns all color ids currently stored in the mesh." />
+  <Card title="`instance:GetFaces`" href="#instance-getfaces" description="Returns all face ids currently stored in the mesh." />
+  <Card title="`instance:GetFaceVertices`" href="#instance-getfacevertices" description="Returns the three vertex ids used by a face." />
+  <Card title="`instance:SetFaceColors`" href="#instance-setfacecolors" description="Assigns color ids to the three corners of a face." />
+  <Card title="`instance:SetFaceNormals`" href="#instance-setfacenormals" description="Assigns normal ids to the three corners of a face." />
+  <Card title="`instance:SetFaceUVs`" href="#instance-setfaceuvs" description="Assigns UV ids to the three corners of a face." />
+  <Card title="`instance:GetFaceColors`" href="#instance-getfacecolors" description="Returns the three color ids assigned to a face." />
+  <Card title="`instance:GetFaceNormals`" href="#instance-getfacenormals" description="Returns the three normal ids assigned to a face." />
+  <Card title="`instance:GetFaceUVs`" href="#instance-getfaceuvs" description="Returns the three UV ids assigned to a face." />
+  <Card title="`instance:RemoveFace`" href="#instance-removeface" description="Removes a face from the mesh and marks geometry dirty." />
+  <Card title="`instance:RemoveUnused`" href="#instance-removeunused" description="Placeholder for removing unused mesh data; currently returns an empty list." />
+  <Card title="`instance:IdDebugString`" href="#instance-iddebugstring" description="Returns a debug string for an internal mesh id." />
+  <Card title="`instance:FindClosestVertex`" href="#instance-findclosestvertex" description="Returns the id of the vertex nearest to the given point." />
+  <Card title="`instance:FindVerticesWithinSphere`" href="#instance-findverticeswithinsphere" description="Returns vertex ids whose positions are inside or on a sphere." />
+  <Card title="`instance:GetCenter`" href="#instance-getcenter" description="Returns the average position of all vertices." />
+  <Card title="`instance:GetSize`" href="#instance-getsize" description="Returns the axis-aligned bounding box size of the mesh vertices." />
+  <Card title="`instance:GetAdjacentFaces`" href="#instance-getadjacentfaces" description="Returns faces that share an edge with the given face." />
+  <Card title="`instance:GetAdjacentVertices`" href="#instance-getadjacentvertices" description="Returns vertices connected to the given vertex by any face." />
+  <Card title="`instance:GetVertexFaces`" href="#instance-getvertexfaces" description="Returns face ids that reference the given vertex." />
+  <Card title="`instance:AddBone`" href="#instance-addbone" description="Adds a bone definition and returns its bone id." />
+  <Card title="`instance:GetBones`" href="#instance-getbones" description="Returns all bone ids currently stored in the mesh." />
+  <Card title="`instance:GetBoneName`" href="#instance-getbonename" description="Returns the name assigned to a bone, or an empty string when missing." />
+  <Card title="`instance:GetBoneCFrame`" href="#instance-getbonecframe" description="Returns the local CFrame assigned to a bone." />
+  <Card title="`instance:GetBoneIsVirtual`" href="#instance-getboneisvirtual" description="Returns whether a bone is marked as virtual." />
+  <Card title="`instance:GetBoneParent`" href="#instance-getboneparent" description="Returns the parent bone id for a bone, or 0 when none is set." />
+  <Card title="`instance:GetBoneByName`" href="#instance-getbonebyname" description="Returns the first bone id matching the given name, or 0 when not found." />
+  <Card title="`instance:SetBoneName`" href="#instance-setbonename" description="Updates the name assigned to an existing bone." />
+  <Card title="`instance:SetBoneCFrame`" href="#instance-setbonecframe" description="Updates the local CFrame assigned to an existing bone." />
+  <Card title="`instance:SetBoneIsVirtual`" href="#instance-setboneisvirtual" description="Marks an existing bone as virtual or non-virtual." />
+  <Card title="`instance:SetBoneParent`" href="#instance-setboneparent" description="Updates the parent bone id assigned to an existing bone." />
+  <Card title="`instance:RemoveBone`" href="#instance-removebone" description="Removes a bone definition by id." />
+  <Card title="`instance:SetVertexBones`" href="#instance-setvertexbones" description="Assigns influencing bone ids to a vertex." />
+  <Card title="`instance:SetVertexBoneWeights`" href="#instance-setvertexboneweights" description="Assigns bone weights to a vertex." />
+  <Card title="`instance:GetVertexBones`" href="#instance-getvertexbones" description="Returns the influencing bone ids assigned to a vertex." />
+  <Card title="`instance:GetVertexBoneWeights`" href="#instance-getvertexboneweights" description="Returns the bone weights assigned to a vertex." />
+  <Card title="`instance:Triangulate`" href="#instance-triangulate" description="Builds renderable mesh data from the current faces, vertices, and attributes." />
+  <Card title="`instance:FlushIfDirty`" href="#instance-flushifdirty" description="Rebuilds mesh data only when geometry has changed." />
+  <Card title="`instance:ApplyUVProjection`" href="#instance-applyuvprojection" description="Creates planar UVs for vertices along an axis and assigns them to each face corner." />
+  <Card title="`instance:RecalculateNormals`" href="#instance-recalculatenormals" description="Recomputes face corner normals from the current geometry." />
+  <Card title="`instance:MergeVertices`" href="#instance-mergevertices" description="Computes a welded vertex remap using the given merge tolerance." />
+  <Card title="`instance:GetFacesWithColor`" href="#instance-getfaceswithcolor" description="Returns face ids that use the given color id on any corner." />
+  <Card title="`instance:GetFacesWithNormal`" href="#instance-getfaceswithnormal" description="Returns face ids that use the given normal id on any corner." />
+  <Card title="`instance:GetFacesWithUV`" href="#instance-getfaceswithuv" description="Returns face ids that use the given UV id on any corner." />
+  <Card title="`instance:GetVerticesWithColor`" href="#instance-getverticeswithcolor" description="Returns vertex ids that use the given color id on any face corner." />
+  <Card title="`instance:GetVerticesWithNormal`" href="#instance-getverticeswithnormal" description="Returns vertex ids that use the given normal id on any face corner." />
+  <Card title="`instance:GetVerticesWithUV`" href="#instance-getverticeswithuv" description="Returns vertex ids that use the given UV id on any face corner." />
+  <Card title="`instance:GetFacesWithAttribute`" href="#instance-getfaceswithattribute" description="Placeholder for custom attribute face lookup; currently returns an empty list." />
+  <Card title="`instance:GetVerticesWithAttribute`" href="#instance-getverticeswithattribute" description="Placeholder for custom attribute vertex lookup; currently returns an empty list." />
+  <Card title="`instance:RaycastLocal`" href="#instance-raycastlocal" description="Raycasts against mesh triangles in local space." />
+  <Card title="`instance:FindClosestPointOnSurface`" href="#instance-findclosestpointonsurface" description="Returns the closest surface point, distance, and face id for a local-space point." />
+  <Card title="`bary`" href="#bary" />
+
+</Cards>
+
+---
+
+### `buildRawGeometry` [#buildrawgeometry]
+
+**Arguments**
+
+```luau
+self
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `notifyLinkedMeshParts` [#notifylinkedmeshparts]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:AddVertex` [#instance-addvertex]
+
+Adds a vertex position to the mesh and returns its vertex id.
+
+**Arguments**
+
+```luau
+p: Vector3
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:AddNormal` [#instance-addnormal]
+
+Adds a normal vector to the mesh and returns its normal id.
+
+**Arguments**
+
+```luau
+normal: Vector3?
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:AddUV` [#instance-adduv]
+
+Adds a UV coordinate to the mesh and returns its UV id.
+
+**Arguments**
+
+```luau
+uv: Vector2
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:AddColor` [#instance-addcolor]
+
+Adds a vertex color and alpha value to the mesh and returns its color id.
+
+**Arguments**
+
+```luau
+color: Color3, alpha: number?
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:AddTriangle` [#instance-addtriangle]
+
+Adds a triangular face from three vertex ids and returns its face id.
+
+**Arguments**
+
+```luau
+vertexId0: number, vertexId1: number, vertexId2: number
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:SetPosition` [#instance-setposition]
+
+Updates the stored position for an existing vertex.
+
+**Arguments**
+
+```luau
+vertexId: number, p: Vector3
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetPosition` [#instance-getposition]
+
+Returns the stored position for a vertex, or the zero vector when missing.
+
+**Arguments**
+
+```luau
+vertexId: number
+```
+
+**Returns**
+
+```luau
+Vector3
+```
+
+---
+
+### `instance:SetNormal` [#instance-setnormal]
+
+Updates an existing normal vector and marks the mesh dirty.
+
+**Arguments**
+
+```luau
+normalId: number, normal: Vector3
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetNormal` [#instance-getnormal]
+
+Returns a normal vector by id, or nil when missing.
+
+**Arguments**
+
+```luau
+normalId: number
+```
+
+**Returns**
+
+```luau
+Vector3?
+```
+
+---
+
+### `instance:SetUV` [#instance-setuv]
+
+Updates an existing UV coordinate and marks the mesh dirty.
+
+**Arguments**
+
+```luau
+uvId: number, uv: Vector2
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetUV` [#instance-getuv]
+
+Returns a UV coordinate by id, or nil when missing.
+
+**Arguments**
+
+```luau
+uvId: number
+```
+
+**Returns**
+
+```luau
+Vector2?
+```
+
+---
+
+### `instance:SetColor` [#instance-setcolor]
+
+Updates an existing color entry.
+
+**Arguments**
+
+```luau
+colorId: number, color: Color3
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetColorAlpha` [#instance-setcoloralpha]
+
+Updates the alpha value for an existing color entry.
+
+**Arguments**
+
+```luau
+colorId: number, alpha: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetColor` [#instance-getcolor]
+
+Returns a color by id, or nil when missing.
+
+**Arguments**
+
+```luau
+colorId: number
+```
+
+**Returns**
+
+```luau
+Color3?
+```
+
+---
+
+### `instance:GetColorAlpha` [#instance-getcoloralpha]
+
+Returns a color alpha value by id, or nil when missing.
+
+**Arguments**
+
+```luau
+colorId: number
+```
+
+**Returns**
+
+```luau
+number?
+```
+
+---
+
+### `instance:SetVertexFaceColor` [#instance-setvertexfacecolor]
+
+Assigns a color id to a vertex corner on a specific face.
+
+**Arguments**
+
+```luau
+vertexId: number, faceId: number, colorId: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetVertexFaceNormal` [#instance-setvertexfacenormal]
+
+Assigns a normal id to a vertex corner on a specific face.
+
+**Arguments**
+
+```luau
+vertexId: number, faceId: number, normalId: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetVertexFaceUV` [#instance-setvertexfaceuv]
+
+Assigns a UV id to a vertex corner on a specific face.
+
+**Arguments**
+
+```luau
+vertexId: number, faceId: number, uvId: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetVertexFaceColor` [#instance-getvertexfacecolor]
+
+Returns the color id assigned to a vertex corner on a face, or 0 when unset.
+
+**Arguments**
+
+```luau
+vertexId: number, faceId: number
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:GetVertexFaceNormal` [#instance-getvertexfacenormal]
+
+Returns the normal id assigned to a vertex corner on a face, or 0 when unset.
+
+**Arguments**
+
+```luau
+vertexId: number, faceId: number
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:GetVertexFaceUV` [#instance-getvertexfaceuv]
+
+Returns the UV id assigned to a vertex corner on a face, or 0 when unset.
+
+**Arguments**
+
+```luau
+vertexId: number, faceId: number
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:GetVertices` [#instance-getvertices]
+
+Returns all vertex ids currently stored in the mesh.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetNormals` [#instance-getnormals]
+
+Returns all normal ids currently stored in the mesh.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetUVs` [#instance-getuvs]
+
+Returns all UV ids currently stored in the mesh.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetColors` [#instance-getcolors]
+
+Returns all color ids currently stored in the mesh.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetFaces` [#instance-getfaces]
+
+Returns all face ids currently stored in the mesh.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetFaceVertices` [#instance-getfacevertices]
+
+Returns the three vertex ids used by a face.
+
+**Arguments**
+
+```luau
+faceId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:SetFaceColors` [#instance-setfacecolors]
+
+Assigns color ids to the three corners of a face.
+
+**Arguments**
+
+```luau
+faceId: number, ids: { number }
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetFaceNormals` [#instance-setfacenormals]
+
+Assigns normal ids to the three corners of a face.
+
+**Arguments**
+
+```luau
+faceId: number, ids: { number }
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetFaceUVs` [#instance-setfaceuvs]
+
+Assigns UV ids to the three corners of a face.
+
+**Arguments**
+
+```luau
+faceId: number, ids: { number }
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetFaceColors` [#instance-getfacecolors]
+
+Returns the three color ids assigned to a face.
+
+**Arguments**
+
+```luau
+faceId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetFaceNormals` [#instance-getfacenormals]
+
+Returns the three normal ids assigned to a face.
+
+**Arguments**
+
+```luau
+faceId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetFaceUVs` [#instance-getfaceuvs]
+
+Returns the three UV ids assigned to a face.
+
+**Arguments**
+
+```luau
+faceId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:RemoveFace` [#instance-removeface]
+
+Removes a face from the mesh and marks geometry dirty.
+
+**Arguments**
+
+```luau
+faceId: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:RemoveUnused` [#instance-removeunused]
+
+Placeholder for removing unused mesh data; currently returns an empty list.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+{ any }
+```
+
+---
+
+### `instance:IdDebugString` [#instance-iddebugstring]
+
+Returns a debug string for an internal mesh id.
+
+**Arguments**
+
+```luau
+id: number
+```
+
+**Returns**
+
+```luau
+string
+```
+
+---
+
+### `instance:FindClosestVertex` [#instance-findclosestvertex]
+
+Returns the id of the vertex nearest to the given point.
+
+**Arguments**
+
+```luau
+toThisPoint: Vector3
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:FindVerticesWithinSphere` [#instance-findverticeswithinsphere]
+
+Returns vertex ids whose positions are inside or on a sphere.
+
+**Arguments**
+
+```luau
+center: Vector3, radius: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetCenter` [#instance-getcenter]
+
+Returns the average position of all vertices.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+Vector3
+```
+
+---
+
+### `instance:GetSize` [#instance-getsize]
+
+Returns the axis-aligned bounding box size of the mesh vertices.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+Vector3
+```
+
+---
+
+### `instance:GetAdjacentFaces` [#instance-getadjacentfaces]
+
+Returns faces that share an edge with the given face.
+
+**Arguments**
+
+```luau
+faceId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetAdjacentVertices` [#instance-getadjacentvertices]
+
+Returns vertices connected to the given vertex by any face.
+
+**Arguments**
+
+```luau
+vertexId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetVertexFaces` [#instance-getvertexfaces]
+
+Returns face ids that reference the given vertex.
+
+**Arguments**
+
+```luau
+vertexId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:AddBone` [#instance-addbone]
+
+Adds a bone definition and returns its bone id.
+
+**Arguments**
+
+```luau
+boneProperties: { Name: string?, CFrame: CFrame?, ParentId: number?, IsVirtual: boolean? }
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:GetBones` [#instance-getbones]
+
+Returns all bone ids currently stored in the mesh.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetBoneName` [#instance-getbonename]
+
+Returns the name assigned to a bone, or an empty string when missing.
+
+**Arguments**
+
+```luau
+boneId: number
+```
+
+**Returns**
+
+```luau
+string
+```
+
+---
+
+### `instance:GetBoneCFrame` [#instance-getbonecframe]
+
+Returns the local CFrame assigned to a bone.
+
+**Arguments**
+
+```luau
+boneId: number
+```
+
+**Returns**
+
+```luau
+CFrame
+```
+
+---
+
+### `instance:GetBoneIsVirtual` [#instance-getboneisvirtual]
+
+Returns whether a bone is marked as virtual.
+
+**Arguments**
+
+```luau
+boneId: number
+```
+
+**Returns**
+
+```luau
+boolean
+```
+
+---
+
+### `instance:GetBoneParent` [#instance-getboneparent]
+
+Returns the parent bone id for a bone, or 0 when none is set.
+
+**Arguments**
+
+```luau
+boneId: number
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:GetBoneByName` [#instance-getbonebyname]
+
+Returns the first bone id matching the given name, or 0 when not found.
+
+**Arguments**
+
+```luau
+boneName: string
+```
+
+**Returns**
+
+```luau
+number
+```
+
+---
+
+### `instance:SetBoneName` [#instance-setbonename]
+
+Updates the name assigned to an existing bone.
+
+**Arguments**
+
+```luau
+boneId: number, name: string
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetBoneCFrame` [#instance-setbonecframe]
+
+Updates the local CFrame assigned to an existing bone.
+
+**Arguments**
+
+```luau
+boneId: number, cframe: CFrame
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetBoneIsVirtual` [#instance-setboneisvirtual]
+
+Marks an existing bone as virtual or non-virtual.
+
+**Arguments**
+
+```luau
+boneId: number, virtual: boolean
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetBoneParent` [#instance-setboneparent]
+
+Updates the parent bone id assigned to an existing bone.
+
+**Arguments**
+
+```luau
+boneId: number, parentId: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:RemoveBone` [#instance-removebone]
+
+Removes a bone definition by id.
+
+**Arguments**
+
+```luau
+boneId: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetVertexBones` [#instance-setvertexbones]
+
+Assigns influencing bone ids to a vertex.
+
+**Arguments**
+
+```luau
+vertexId: number, boneIDs: { number }
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:SetVertexBoneWeights` [#instance-setvertexboneweights]
+
+Assigns bone weights to a vertex.
+
+**Arguments**
+
+```luau
+vertexId: number, boneWeights: { number }
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:GetVertexBones` [#instance-getvertexbones]
+
+Returns the influencing bone ids assigned to a vertex.
+
+**Arguments**
+
+```luau
+vertexId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetVertexBoneWeights` [#instance-getvertexboneweights]
+
+Returns the bone weights assigned to a vertex.
+
+**Arguments**
+
+```luau
+vertexId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:Triangulate` [#instance-triangulate]
+
+Builds renderable mesh data from the current faces, vertices, and attributes.
+
+**Arguments**
+
+```luau
+opts: { smooth: boolean?, flat: boolean?, generateTangents: boolean?, weld: boolean?, weldTolerance: number? }?
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:FlushIfDirty` [#instance-flushifdirty]
+
+Rebuilds mesh data only when geometry has changed.
+
+**Arguments**
+
+```luau
+opts: { smooth: boolean?, flat: boolean?, generateTangents: boolean?, weld: boolean?, weldTolerance: number? }?
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:ApplyUVProjection` [#instance-applyuvprojection]
+
+Creates planar UVs for vertices along an axis and assigns them to each face corner.
+
+**Arguments**
+
+```luau
+axis: string?, scale: { number }?, offset: { number }?
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:RecalculateNormals` [#instance-recalculatenormals]
+
+Recomputes face corner normals from the current geometry.
+
+**Arguments**
+
+```luau
+smooth: boolean
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance:MergeVertices` [#instance-mergevertices]
+
+Computes a welded vertex remap using the given merge tolerance.
+
+**Arguments**
+
+```luau
+mergeTolerance: number
+```
+
+**Returns**
+
+```luau
+{ [number]: number }
+```
+
+---
+
+### `instance:GetFacesWithColor` [#instance-getfaceswithcolor]
+
+Returns face ids that use the given color id on any corner.
+
+**Arguments**
+
+```luau
+colorId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetFacesWithNormal` [#instance-getfaceswithnormal]
+
+Returns face ids that use the given normal id on any corner.
+
+**Arguments**
+
+```luau
+normalId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetFacesWithUV` [#instance-getfaceswithuv]
+
+Returns face ids that use the given UV id on any corner.
+
+**Arguments**
+
+```luau
+uvId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetVerticesWithColor` [#instance-getverticeswithcolor]
+
+Returns vertex ids that use the given color id on any face corner.
+
+**Arguments**
+
+```luau
+colorId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetVerticesWithNormal` [#instance-getverticeswithnormal]
+
+Returns vertex ids that use the given normal id on any face corner.
+
+**Arguments**
+
+```luau
+normalId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetVerticesWithUV` [#instance-getverticeswithuv]
+
+Returns vertex ids that use the given UV id on any face corner.
+
+**Arguments**
+
+```luau
+uvId: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetFacesWithAttribute` [#instance-getfaceswithattribute]
+
+Placeholder for custom attribute face lookup; currently returns an empty list.
+
+**Arguments**
+
+```luau
+_id: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:GetVerticesWithAttribute` [#instance-getverticeswithattribute]
+
+Placeholder for custom attribute vertex lookup; currently returns an empty list.
+
+**Arguments**
+
+```luau
+_id: number
+```
+
+**Returns**
+
+```luau
+{ number }
+```
+
+---
+
+### `instance:RaycastLocal` [#instance-raycastlocal]
+
+Raycasts against mesh triangles in local space.
+
+**Arguments**
+
+```luau
+origin: Vector3, direction: Vector3
+```
+
+**Returns**
+
+```luau
+Vector3?, Vector3?, number?, number?
+```
+
+---
+
+### `instance:FindClosestPointOnSurface` [#instance-findclosestpointonsurface]
+
+Returns the closest surface point, distance, and face id for a local-space point.
+
+**Arguments**
+
+```luau
+point: Vector3
+```
+
+**Returns**
+
+```luau
+Vector3, number, number
+```
+
+---
+
+### `bary` [#bary]
+
+**Arguments**
+
+```luau
+p, a, b, c
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:buildRawGeometry(self)
+instance:notifyLinkedMeshParts()
+instance:AddVertex(p: Vector3): number
+instance:AddNormal(normal: Vector3?): number
+instance:AddUV(uv: Vector2): number
+instance:AddColor(color: Color3, alpha: number?): number
+instance:AddTriangle(vertexId0: number, vertexId1: number, vertexId2: number): number
+instance:SetPosition(vertexId: number, p: Vector3)
+instance:GetPosition(vertexId: number): Vector3
+instance:SetNormal(normalId: number, normal: Vector3)
+instance:GetNormal(normalId: number): Vector3?
+instance:SetUV(uvId: number, uv: Vector2)
+instance:GetUV(uvId: number): Vector2?
+instance:SetColor(colorId: number, color: Color3)
+instance:SetColorAlpha(colorId: number, alpha: number)
+instance:GetColor(colorId: number): Color3?
+instance:GetColorAlpha(colorId: number): number?
+instance:SetVertexFaceColor(vertexId: number, faceId: number, colorId: number)
+instance:SetVertexFaceNormal(vertexId: number, faceId: number, normalId: number)
+instance:SetVertexFaceUV(vertexId: number, faceId: number, uvId: number)
+instance:GetVertexFaceColor(vertexId: number, faceId: number): number
+instance:GetVertexFaceNormal(vertexId: number, faceId: number): number
+instance:GetVertexFaceUV(vertexId: number, faceId: number): number
+instance:GetVertices(): { number }
+instance:GetNormals(): { number }
+instance:GetUVs(): { number }
+instance:GetColors(): { number }
+instance:GetFaces(): { number }
+instance:GetFaceVertices(faceId: number): { number }
+instance:SetFaceColors(faceId: number, ids: { number })
+instance:SetFaceNormals(faceId: number, ids: { number })
+instance:SetFaceUVs(faceId: number, ids: { number })
+instance:GetFaceColors(faceId: number): { number }
+instance:GetFaceNormals(faceId: number): { number }
+instance:GetFaceUVs(faceId: number): { number }
+instance:RemoveFace(faceId: number)
+instance:RemoveUnused(): { any }
+instance:IdDebugString(id: number): string
+instance:FindClosestVertex(toThisPoint: Vector3): number
+instance:FindVerticesWithinSphere(center: Vector3, radius: number): { number }
+instance:GetCenter(): Vector3
+instance:GetSize(): Vector3
+instance:GetAdjacentFaces(faceId: number): { number }
+instance:GetAdjacentVertices(vertexId: number): { number }
+instance:GetVertexFaces(vertexId: number): { number }
+instance:AddBone(boneProperties: { Name: string?, CFrame: CFrame?, ParentId: number?, IsVirtual: boolean? }): number
+instance:GetBones(): { number }
+instance:GetBoneName(boneId: number): string
+instance:GetBoneCFrame(boneId: number): CFrame
+instance:GetBoneIsVirtual(boneId: number): boolean
+instance:GetBoneParent(boneId: number): number
+instance:GetBoneByName(boneName: string): number
+instance:SetBoneName(boneId: number, name: string)
+instance:SetBoneCFrame(boneId: number, cframe: CFrame)
+instance:SetBoneIsVirtual(boneId: number, virtual: boolean)
+instance:SetBoneParent(boneId: number, parentId: number)
+instance:RemoveBone(boneId: number)
+instance:SetVertexBones(vertexId: number, boneIDs: { number })
+instance:SetVertexBoneWeights(vertexId: number, boneWeights: { number })
+instance:GetVertexBones(vertexId: number): { number }
+instance:GetVertexBoneWeights(vertexId: number): { number }
+instance:Triangulate(opts: { smooth: boolean?, flat: boolean?, generateTangents: boolean?, weld: boolean?, weldTolerance: number? }?)
+instance:FlushIfDirty(opts: { smooth: boolean?, flat: boolean?, generateTangents: boolean?, weld: boolean?, weldTolerance: number? }?)
+instance:ApplyUVProjection(axis: string?, scale: { number }?, offset: { number }?)
+instance:RecalculateNormals(smooth: boolean)
+instance:MergeVertices(mergeTolerance: number): { [number]: number }
+instance:GetFacesWithColor(colorId: number): { number }
+instance:GetFacesWithNormal(normalId: number): { number }
+instance:GetFacesWithUV(uvId: number): { number }
+instance:GetVerticesWithColor(colorId: number): { number }
+instance:GetVerticesWithNormal(normalId: number): { number }
+instance:GetVerticesWithUV(uvId: number): { number }
+instance:GetFacesWithAttribute(_id: number): { number }
+instance:GetVerticesWithAttribute(_id: number): { number }
+instance:RaycastLocal(origin: Vector3, direction: Vector3): Vector3?, Vector3?, number?, number?
+instance:FindClosestPointOnSurface(point: Vector3): Vector3, number, number
+instance:bary(p, a, b, c)
+```

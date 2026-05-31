@@ -1,0 +1,68 @@
+---
+title: UIListLayout
+description: A layout that arranges GUI components in a list.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `FillDirection` | `EnumItem` | `Enum.FillDirection.Vertical` |
+| `Padding` | `UDim` | `UDim.new(0, 5)` |
+| `SortOrder` | `EnumItem` | `Enum.SortOrder.LayoutOrder` |
+| `HorizontalAlignment` | `EnumItem` | `Enum.HorizontalAlignment.Left` |
+| `VerticalAlignment` | `EnumItem` | `Enum.VerticalAlignment.Top` |
+| `Enabled` | `boolean` | `true` |
+| `Name` | `string` | `"UIListLayout"` |
+| `Virtualized` | `boolean` | `true` |
+| `Overscan` | `number` | `100` |
+| `cursor` | `any` | `paddingX` |
+| `cursor` | `any` | `paddingY` |
+| `x` | `any` | `(containerSize.X - size.X) * 0.5` |
+| `x` | `any` | `containerSize.X - size.X` |
+| `y` | `any` | `(containerSize.Y - size.Y) * 0.5` |
+| `y` | `any` | `containerSize.Y - size.Y` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`GetAbsoluteSize`" href="#getabsolutesize" />
+  <Card title="`render`" href="#render" />
+
+</Cards>
+
+---
+
+### `GetAbsoluteSize` [#getabsolutesize]
+
+**Arguments**
+
+```luau
+obj
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `render` [#render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:GetAbsoluteSize(obj)
+instance:render(lib, object, dt, structs)
+```

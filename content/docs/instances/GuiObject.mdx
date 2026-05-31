@@ -1,0 +1,894 @@
+---
+title: GuiObject
+description: Base class for 2D GUI elements with layout, rendering, input, and tween helpers.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Position` | `UDim2` | `UDim2.new(0, 0, 0, 0)` |
+| `Size` | `UDim2` | `UDim2.new(0, 100, 0, 100)` |
+| `BackgroundColor3` | `Color3` | `Color3.new(1, 1, 1)` |
+| `BackgroundTransparency` | `number` | `0` |
+| `Visible` | `boolean` | `true` |
+| `BorderSize` | `number` | `0` |
+| `BorderColor` | `Color3` | `Color3.new(0, 0, 0)` |
+| `BorderTransparency` | `number` | `0` |
+| `Rotation` | `number` | `0` |
+| `AbsolutePosition` | `any` | `nil` |
+| `Anchored` | `boolean` | `true` |
+| `AbsoluteSize` | `any` | `nil` |
+| `AutomaticSize` | `EnumItem` | `Enum.AutomaticSize.None` |
+| `ClipsDescendants` | `boolean` | `false` |
+| `ZIndex` | `number` | `1` |
+| `AnchorPoint` | `any` | `ZERO_V` |
+| `MouseIsInObject` | `boolean` | `false` |
+| `tilt` | `any` | `child` |
+| `corner` | `any` | `child` |
+| `stroke` | `any` | `child` |
+| `gradient` | `any` | `child` |
+| `shadow` | `any` | `child` |
+| `glow` | `any` | `child` |
+| `ripple` | `any` | `child` |
+| `vignette` | `any` | `child` |
+| `bevel` | `any` | `child` |
+| `squircle` | `any` | `child` |
+| `blend` | `any` | `child` |
+| `blur` | `any` | `child` |
+| `drawPos` | `any` | `vector.create(drawPos.X + nx * maxOffset.X, drawPos.Y + ny * maxOffset.Y, 0)` |
+| `selfBlendActive` | `boolean` | `true` |
+| `cornerRadius` | `any` | `math.min(cornerRadius, minDim / 2)` |
+| `offsetRight` | `any` | `offsetLeft` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`resolveUDim2`" href="#resolveudim2" />
+  <Card title="`resolveBlendMode`" href="#resolveblendmode" />
+  <Card title="`drawCornerArc`" href="#drawcornerarc" />
+  <Card title="`drawRoundedRectangleEx`" href="#drawroundedrectangleex" />
+  <Card title="`resolveAutomaticSizeAxes`" href="#resolveautomaticsizeaxes" />
+  <Card title="`resolvePaddingBounds`" href="#resolvepaddingbounds" />
+  <Card title="`getContentMetrics`" href="#getcontentmetrics" />
+  <Card title="`precomputeLayoutChildren`" href="#precomputelayoutchildren" />
+  <Card title="`calculateResolvedSize`" href="#calculateresolvedsize" />
+  <Card title="`GetAbsoluteSize`" href="#getabsolutesize" />
+  <Card title="`getAbsoluteDrawPos`" href="#getabsolutedrawpos" />
+  <Card title="`isMouseInRect`" href="#ismouseinrect" />
+  <Card title="`calculateDrawParams`" href="#calculatedrawparams" />
+  <Card title="`resolveGuiPoint`" href="#resolveguipoint" />
+  <Card title="`getGuiMetrics`" href="#getguimetrics" />
+  <Card title="`getGuiTweenRegistry`" href="#getguitweenregistry" />
+  <Card title="`isTweenBusy`" href="#istweenbusy" />
+  <Card title="`playGuiTween`" href="#playguitween" />
+  <Card title="`resolveCornerRadii`" href="#resolvecornerradii" />
+  <Card title="`isDefaultCornerValue`" href="#isdefaultcornervalue" />
+  <Card title="`resolve`" href="#resolve" />
+  <Card title="`isDifferent`" href="#isdifferent" />
+  <Card title="`appendPoint`" href="#appendpoint" />
+  <Card title="`appendSquircleArc`" href="#appendsquirclearc" />
+  <Card title="`buildSquirclePoints`" href="#buildsquirclepoints" />
+  <Card title="`drawSquircleFilled`" href="#drawsquirclefilled" />
+  <Card title="`drawSquircleOutline`" href="#drawsquircleoutline" />
+  <Card title="`getRoundedHorizontalInset`" href="#getroundedhorizontalinset" />
+  <Card title="`edgeInset`" href="#edgeinset" />
+  <Card title="`drawShadow`" href="#drawshadow" />
+  <Card title="`drawShapeFill`" href="#drawshapefill" />
+  <Card title="`drawShapeOutline`" href="#drawshapeoutline" />
+  <Card title="`drawGlow`" href="#drawglow" />
+  <Card title="`drawVignette`" href="#drawvignette" />
+  <Card title="`drawBevel`" href="#drawbevel" />
+  <Card title="`drawRipple`" href="#drawripple" />
+  <Card title="`createSignals`" href="#createsignals" />
+  <Card title="`GetBounds`" href="#getbounds" description="Returns the absolute top-left position and size of the GUI object." />
+  <Card title="`GetCenter`" href="#getcenter" description="Returns the absolute center point of the GUI object." />
+  <Card title="`IsPointInside`" href="#ispointinside" description="Returns whether a screen-space point is inside the GUI object bounds." />
+  <Card title="`GetRelativePoint`" href="#getrelativepoint" description="Converts a screen-space point into coordinates relative to the GUI object." />
+  <Card title="`CancelGuiTweens`" href="#cancelguitweens" description="Cancels active GUI tweens started by this object." />
+  <Card title="`TweenPosition`" href="#tweenposition" description="Tweens the Position property to a target value." />
+  <Card title="`TweenSize`" href="#tweensize" description="Tweens the Size property to a target value." />
+  <Card title="`TweenSizeAndPosition`" href="#tweensizeandposition" description="Tweens Size and Position together." />
+  <Card title="`render`" href="#render" description="Renders this GUI object and updates absolute bounds and hover state." />
+  <Card title="`IsParentGuiContainer`" href="#isparentguicontainer" description="Returns whether an object is parented directly under a GUI container." />
+  <Card title="`renderChildren`" href="#renderchildren" description="Renders visible GUI children with clipping and blend modifiers applied." />
+  <Card title="`calculatePositions`" href="#calculatepositions" description="Updates absolute position, absolute size, and hover state without drawing." />
+
+</Cards>
+
+---
+
+### `resolveUDim2` [#resolveudim2]
+
+**Arguments**
+
+```luau
+val, parentDim
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveBlendMode` [#resolveblendmode]
+
+**Arguments**
+
+```luau
+raylib, value
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawCornerArc` [#drawcornerarc]
+
+**Arguments**
+
+```luau
+lib, cx, cy, radius, angleStart, angleEnd, color
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawRoundedRectangleEx` [#drawroundedrectangleex]
+
+**Arguments**
+
+```luau
+lib, x, y, w, h, tl, tr, bl, br, color
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveAutomaticSizeAxes` [#resolveautomaticsizeaxes]
+
+**Arguments**
+
+```luau
+mode
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolvePaddingBounds` [#resolvepaddingbounds]
+
+**Arguments**
+
+```luau
+object, parentSize
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getContentMetrics` [#getcontentmetrics]
+
+**Arguments**
+
+```luau
+object, size
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `precomputeLayoutChildren` [#precomputelayoutchildren]
+
+**Arguments**
+
+```luau
+object, lib, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `calculateResolvedSize` [#calculateresolvedsize]
+
+**Arguments**
+
+```luau
+object, parentSize, lib, dt, structs, renderer, depth
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `GetAbsoluteSize` [#getabsolutesize]
+
+**Arguments**
+
+```luau
+object, lib, dt, structs, renderer, depth
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getAbsoluteDrawPos` [#getabsolutedrawpos]
+
+**Arguments**
+
+```luau
+object, lib, dt, structs, renderer, depth
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `isMouseInRect` [#ismouseinrect]
+
+**Arguments**
+
+```luau
+mousePos, drawPos, size
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `calculateDrawParams` [#calculatedrawparams]
+
+**Arguments**
+
+```luau
+object, lib, dt, structs, renderer, depth
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveGuiPoint` [#resolveguipoint]
+
+**Arguments**
+
+```luau
+point
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getGuiMetrics` [#getguimetrics]
+
+**Arguments**
+
+```luau
+object
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getGuiTweenRegistry` [#getguitweenregistry]
+
+**Arguments**
+
+```luau
+object
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `isTweenBusy` [#istweenbusy]
+
+**Arguments**
+
+```luau
+tween
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `playGuiTween` [#playguitween]
+
+**Arguments**
+
+```luau
+object,
+	propertyNames,
+	properties,
+	easingDirection,
+	easingStyle,
+	duration,
+	override,
+	callback
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveCornerRadii` [#resolvecornerradii]
+
+**Arguments**
+
+```luau
+corner, minDim
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `isDefaultCornerValue` [#isdefaultcornervalue]
+
+**Arguments**
+
+```luau
+prop
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolve` [#resolve]
+
+**Arguments**
+
+```luau
+prop
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `isDifferent` [#isdifferent]
+
+**Arguments**
+
+```luau
+prop
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `appendPoint` [#appendpoint]
+
+**Arguments**
+
+```luau
+points, x, y
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `appendSquircleArc` [#appendsquirclearc]
+
+**Arguments**
+
+```luau
+points, cx, cy, radius, sx, sy, angleStart, angleEnd, exponent, skipFirst
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildSquirclePoints` [#buildsquirclepoints]
+
+**Arguments**
+
+```luau
+x, y, w, h, tl, tr, bl, br, exponent
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawSquircleFilled` [#drawsquirclefilled]
+
+**Arguments**
+
+```luau
+lib, x, y, w, h, tl, tr, bl, br, exponent, color
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawSquircleOutline` [#drawsquircleoutline]
+
+**Arguments**
+
+```luau
+lib, x, y, w, h, tl, tr, bl, br, exponent, thickness, color
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getRoundedHorizontalInset` [#getroundedhorizontalinset]
+
+**Arguments**
+
+```luau
+localY, height, radius, exponent
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `edgeInset` [#edgeinset]
+
+**Arguments**
+
+```luau
+distanceToEdge
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawShadow` [#drawshadow]
+
+**Arguments**
+
+```luau
+lib, structs, object, shadow, drawPos, size, corner, squircle
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawShapeFill` [#drawshapefill]
+
+**Arguments**
+
+```luau
+lib, structs, object, modifier, x, y, w, h, color
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawShapeOutline` [#drawshapeoutline]
+
+**Arguments**
+
+```luau
+lib, structs, object, modifier, x, y, w, h, thickness, color
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawGlow` [#drawglow]
+
+**Arguments**
+
+```luau
+lib, structs, object, glow, drawPos, size, shapeModifier
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawVignette` [#drawvignette]
+
+**Arguments**
+
+```luau
+lib, structs, object, vignette, drawPos, size, shapeModifier
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawBevel` [#drawbevel]
+
+**Arguments**
+
+```luau
+lib, structs, object, bevel, drawPos, size, shapeModifier
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `drawRipple` [#drawripple]
+
+**Arguments**
+
+```luau
+lib, raylib, ripple, object, drawPos, size, dt
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `createSignals` [#createsignals]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `GetBounds` [#getbounds]
+
+Returns the absolute top-left position and size of the GUI object.
+
+**Arguments**
+
+```luau
+self: table
+```
+
+**Returns**
+
+```luau
+Vector2, Vector2
+```
+
+---
+
+### `GetCenter` [#getcenter]
+
+Returns the absolute center point of the GUI object.
+
+**Arguments**
+
+```luau
+self: table
+```
+
+**Returns**
+
+```luau
+Vector2
+```
+
+---
+
+### `IsPointInside` [#ispointinside]
+
+Returns whether a screen-space point is inside the GUI object bounds.
+
+**Arguments**
+
+```luau
+self: table, point: Vector2
+```
+
+**Returns**
+
+```luau
+boolean
+```
+
+---
+
+### `GetRelativePoint` [#getrelativepoint]
+
+Converts a screen-space point into coordinates relative to the GUI object.
+
+**Arguments**
+
+```luau
+self: table, point: Vector2
+```
+
+**Returns**
+
+```luau
+Vector2?
+```
+
+---
+
+### `CancelGuiTweens` [#cancelguitweens]
+
+Cancels active GUI tweens started by this object.
+
+**Arguments**
+
+```luau
+self: table
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `TweenPosition` [#tweenposition]
+
+Tweens the Position property to a target value.
+
+**Arguments**
+
+```luau
+self: table, endPosition: UDim2, easingDirection: string, easingStyle: string, time: number, override: boolean?, callback: function?
+```
+
+**Returns**
+
+```luau
+boolean, any
+```
+
+---
+
+### `TweenSize` [#tweensize]
+
+Tweens the Size property to a target value.
+
+**Arguments**
+
+```luau
+self: table, endSize: UDim2, easingDirection: string, easingStyle: string, time: number, override: boolean?, callback: function?
+```
+
+**Returns**
+
+```luau
+boolean, any
+```
+
+---
+
+### `TweenSizeAndPosition` [#tweensizeandposition]
+
+Tweens Size and Position together.
+
+**Arguments**
+
+```luau
+self: table, endSize: UDim2, endPosition: UDim2, easingDirection: string, easingStyle: string, time: number, override: boolean?, callback: function?
+```
+
+**Returns**
+
+```luau
+boolean, any
+```
+
+---
+
+### `render` [#render]
+
+Renders this GUI object and updates absolute bounds and hover state.
+
+**Arguments**
+
+```luau
+lib: number, object: table, dt: number, structs: table, renderer: number
+```
+
+**Returns**
+
+```luau
+Vector3?, Vector3?
+```
+
+---
+
+### `IsParentGuiContainer` [#isparentguicontainer]
+
+Returns whether an object is parented directly under a GUI container.
+
+**Arguments**
+
+```luau
+object: table
+```
+
+**Returns**
+
+```luau
+boolean
+```
+
+---
+
+### `renderChildren` [#renderchildren]
+
+Renders visible GUI children with clipping and blend modifiers applied.
+
+**Arguments**
+
+```luau
+lib: number, object: table, dt: number, structs: table, renderer: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `calculatePositions` [#calculatepositions]
+
+Updates absolute position, absolute size, and hover state without drawing.
+
+**Arguments**
+
+```luau
+lib: number, object: table, dt: number, structs: table, renderer: number
+```
+
+**Returns**
+
+```luau
+Vector3, Vector3
+```
+
+## API
+
+```luau
+instance:resolveUDim2(val, parentDim)
+instance:resolveBlendMode(raylib, value)
+instance:drawCornerArc(lib, cx, cy, radius, angleStart, angleEnd, color)
+instance:drawRoundedRectangleEx(lib, x, y, w, h, tl, tr, bl, br, color)
+instance:resolveAutomaticSizeAxes(mode)
+instance:resolvePaddingBounds(object, parentSize)
+instance:getContentMetrics(object, size)
+instance:precomputeLayoutChildren(object, lib, dt, structs, renderer)
+instance:calculateResolvedSize(object, parentSize, lib, dt, structs, renderer, depth)
+instance:GetAbsoluteSize(object, lib, dt, structs, renderer, depth)
+instance:getAbsoluteDrawPos(object, lib, dt, structs, renderer, depth)
+instance:isMouseInRect(mousePos, drawPos, size)
+instance:calculateDrawParams(object, lib, dt, structs, renderer, depth)
+instance:resolveGuiPoint(point)
+instance:getGuiMetrics(object)
+instance:getGuiTweenRegistry(object)
+instance:isTweenBusy(tween)
+instance:playGuiTween(object,
+	propertyNames,
+	properties,
+	easingDirection,
+	easingStyle,
+	duration,
+	override,
+	callback)
+instance:resolveCornerRadii(corner, minDim)
+instance:isDefaultCornerValue(prop)
+instance:resolve(prop)
+instance:isDifferent(prop)
+instance:appendPoint(points, x, y)
+instance:appendSquircleArc(points, cx, cy, radius, sx, sy, angleStart, angleEnd, exponent, skipFirst)
+instance:buildSquirclePoints(x, y, w, h, tl, tr, bl, br, exponent)
+instance:drawSquircleFilled(lib, x, y, w, h, tl, tr, bl, br, exponent, color)
+instance:drawSquircleOutline(lib, x, y, w, h, tl, tr, bl, br, exponent, thickness, color)
+instance:getRoundedHorizontalInset(localY, height, radius, exponent)
+instance:edgeInset(distanceToEdge)
+instance:drawShadow(lib, structs, object, shadow, drawPos, size, corner, squircle)
+instance:drawShapeFill(lib, structs, object, modifier, x, y, w, h, color)
+instance:drawShapeOutline(lib, structs, object, modifier, x, y, w, h, thickness, color)
+instance:drawGlow(lib, structs, object, glow, drawPos, size, shapeModifier)
+instance:drawVignette(lib, structs, object, vignette, drawPos, size, shapeModifier)
+instance:drawBevel(lib, structs, object, bevel, drawPos, size, shapeModifier)
+instance:drawRipple(lib, raylib, ripple, object, drawPos, size, dt)
+instance:createSignals()
+instance:GetBounds(self: table): Vector2, Vector2
+instance:GetCenter(self: table): Vector2
+instance:IsPointInside(self: table, point: Vector2): boolean
+instance:GetRelativePoint(self: table, point: Vector2): Vector2?
+instance:CancelGuiTweens(self: table)
+instance:TweenPosition(self: table, endPosition: UDim2, easingDirection: string, easingStyle: string, time: number, override: boolean?, callback: function?): boolean, any
+instance:TweenSize(self: table, endSize: UDim2, easingDirection: string, easingStyle: string, time: number, override: boolean?, callback: function?): boolean, any
+instance:TweenSizeAndPosition(self: table, endSize: UDim2, endPosition: UDim2, easingDirection: string, easingStyle: string, time: number, override: boolean?, callback: function?): boolean, any
+instance:render(lib: number, object: table, dt: number, structs: table, renderer: number): Vector3?, Vector3?
+instance:IsParentGuiContainer(object: table): boolean
+instance:renderChildren(lib: number, object: table, dt: number, structs: table, renderer: number)
+instance:calculatePositions(lib: number, object: table, dt: number, structs: table, renderer: number): Vector3, Vector3
+```

@@ -1,0 +1,194 @@
+---
+title: SurfaceGui
+description: Displays a 2D UI element on a 3D surface.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"SurfaceGui"` |
+| `Enabled` | `boolean` | `true` |
+| `Adornee` | `any` | `nil` |
+| `Face` | `EnumItem` | `Enum.NormalId.Front` |
+| `CanvasSize` | `Vector2` | `Vector2.new(800, 600)` |
+| `PixelsPerStud` | `number` | `50` |
+| `SizingMode` | `EnumItem` | `Enum.SurfaceGuiSizingMode.FixedSize` |
+| `AlwaysOnTop` | `boolean` | `false` |
+| `LightInfluence` | `number` | `1` |
+| `Brightness` | `number` | `1` |
+| `ZIndexBehavior` | `EnumItem` | `Enum.ZIndexBehavior.Sibling` |
+| `ZOffset` | `number` | `0` |
+| `Size` | `UDim2` | `UDim2.new(0, 800, 0, 600)` |
+| `RenderOffset` | `Vector2` | `Vector2.new(0, 0)` |
+| `Texture` | `any` | `nil` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`getAdornee`" href="#getadornee" />
+  <Card title="`getFaceSize`" href="#getfacesize" />
+  <Card title="`getFaceCorners`" href="#getfacecorners" />
+  <Card title="`resolveTextureSource`" href="#resolvetexturesource" />
+  <Card title="`loadTextureFromPath`" href="#loadtexturefrompath" />
+  <Card title="`loadTextureFromEditable`" href="#loadtexturefromeditable" />
+  <Card title="`resetRenderTexture`" href="#resetrendertexture" />
+  <Card title="`getCanvasSize`" href="#getcanvassize" />
+  <Card title="`syncTexture`" href="#synctexture" />
+  <Card title="`instance.GetRelativeMousePosition`" href="#instance-getrelativemouseposition" description="Gets the relative mouse position in the SurfaceGui." />
+
+</Cards>
+
+---
+
+### `getAdornee` [#getadornee]
+
+**Arguments**
+
+```luau
+instance
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getFaceSize` [#getfacesize]
+
+**Arguments**
+
+```luau
+size, face
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getFaceCorners` [#getfacecorners]
+
+**Arguments**
+
+```luau
+cf, size, face
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveTextureSource` [#resolvetexturesource]
+
+**Arguments**
+
+```luau
+instance
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `loadTextureFromPath` [#loadtexturefrompath]
+
+**Arguments**
+
+```luau
+path
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `loadTextureFromEditable` [#loadtexturefromeditable]
+
+**Arguments**
+
+```luau
+editableImage
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resetRenderTexture` [#resetrendertexture]
+
+**Arguments**
+
+```luau
+width, height
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getCanvasSize` [#getcanvassize]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `syncTexture` [#synctexture]
+
+**Arguments**
+
+```luau
+force
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.GetRelativeMousePosition` [#instance-getrelativemouseposition]
+
+Gets the relative mouse position in the SurfaceGui.
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:getAdornee(instance)
+instance:getFaceSize(size, face)
+instance:getFaceCorners(cf, size, face)
+instance:resolveTextureSource(instance)
+instance:loadTextureFromPath(path)
+instance:loadTextureFromEditable(editableImage)
+instance:resetRenderTexture(width, height)
+instance:getCanvasSize()
+instance:syncTexture(force)
+instance:GetRelativeMousePosition()
+```

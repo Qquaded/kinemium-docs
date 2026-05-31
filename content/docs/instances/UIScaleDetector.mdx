@@ -1,0 +1,78 @@
+---
+title: UIScaleDetector
+description: A modifier class that detects scale changes on a GUI element.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Name` | `string` | `"UIScaleDetector"` |
+| `isResizing` | `boolean` | `false` |
+| `activeHandle` | `any` | `nil` |
+| `MinSize` | `Vector2` | `Vector2.new(40, 40)` |
+| `RespectScreenBounds` | `boolean` | `true` |
+| `newSizeCallback` | `any` | `nil` |
+| `_startMouse` | `Vector3` | `Vector3.new(0, 0, 0)` |
+| `_startAbsPos` | `Vector2` | `Vector2.new(0, 0)` |
+| `_startAbsSz` | `Vector2` | `Vector2.new(0, 0)` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`getParentMetrics`" href="#getparentmetrics" />
+  <Card title="`getHandleRect`" href="#gethandlerect" />
+  <Card title="`propTable.render`" href="#proptable-render" />
+
+</Cards>
+
+---
+
+### `getParentMetrics` [#getparentmetrics]
+
+**Arguments**
+
+```luau
+parent
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getHandleRect` [#gethandlerect]
+
+**Arguments**
+
+```luau
+key, absPos, absSize
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `propTable.render` [#proptable-render]
+
+**Arguments**
+
+```luau
+lib, object, dt, structs, renderer
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:getParentMetrics(parent)
+instance:getHandleRect(key, absPos, absSize)
+instance:render(lib, object, dt, structs, renderer)
+```

@@ -1,0 +1,63 @@
+---
+title: Attachment2D
+description: Represents an attachment in 2d, usually used for 2D Physics.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Position` | `Vector2` | `Vector2.new(0, 0)` |
+| `Rotation` | `number` | `0` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`GetWorldPosition`" href="#getworldposition" description="Gets the World Position." />
+  <Card title="`GetWorldRotation`" href="#getworldrotation" description="Gets the World Rotation." />
+
+</Cards>
+
+---
+
+### `GetWorldPosition` [#getworldposition]
+
+Gets the World Position.
+
+**Arguments**
+
+```luau
+self: table
+```
+
+**Returns**
+
+```luau
+Vector2
+```
+
+---
+
+### `GetWorldRotation` [#getworldrotation]
+
+Gets the World Rotation.
+
+**Arguments**
+
+```luau
+self: table
+```
+
+**Returns**
+
+```luau
+number
+```
+
+## API
+
+```luau
+instance:GetWorldPosition(self: table): Vector2
+instance:GetWorldRotation(self: table): number
+```

@@ -1,0 +1,382 @@
+---
+title: ParticleEmitter2D
+description: Emits 2D particles in 2D space, Works if parented under a gui container.
+---
+
+## Properties [#properties]
+
+| Property | Type | Default |
+| --- | --- | --- |
+| `Enabled` | `boolean` | `true` |
+| `Rate` | `number` | `10` |
+| `Lifetime` | `any` | `NumberRange.new(1, 2)` |
+| `Speed` | `any` | `NumberRange.new(30, 60)` |
+| `Rotation` | `any` | `NumberRange.new(0, 0)` |
+| `RotSpeed` | `any` | `NumberRange.new(0, 0)` |
+| `Size` | `Vector2` | `Vector2.new(16, 16)` |
+| `SizeScale` | `any` | `buildDefaultSize()` |
+| `SizeSpread` | `Vector2` | `Vector2.new(0, 0)` |
+| `Shape` | `EnumItem` | `Enum.UIParticleEmitterShape.Point` |
+| `ShapeSize` | `Vector2` | `Vector2.new(100, 100)` |
+| `ShapeThickness` | `number` | `0` |
+| `ShapeRotation` | `number` | `0` |
+| `EmitFromEdge` | `boolean` | `false` |
+| `AlignToVelocity` | `boolean` | `false` |
+| `Color` | `any` | `buildDefaultColor()` |
+| `Transparency` | `any` | `buildDefaultTransparency()` |
+| `Acceleration` | `Vector2` | `Vector2.new(0, 0)` |
+| `Drag` | `number` | `0` |
+| `EmissionDirection` | `EnumItem` | `Enum.NormalId.Top` |
+| `SpreadAngle` | `Vector2` | `Vector2.new(0, 0)` |
+| `Texture` | `string` | `"./src/assets/images/placeholder.png"` |
+| `BlendMode` | `EnumItem` | `Enum.ParticleBlendMode.Mix` |
+| `UVScale` | `Vector2` | `Vector2.new(1, 1)` |
+| `UVOffset` | `Vector2` | `Vector2.new(0, 0)` |
+| `FlipbookColumns` | `number` | `1` |
+| `FlipbookRows` | `number` | `1` |
+| `FlipbookFramerate` | `number` | `0` |
+| `FlipbookMode` | `EnumItem` | `Enum.ParticleFlipbookMode.Loop` |
+| `FlipbookStartRandom` | `boolean` | `false` |
+| `MaxParticles` | `number` | `256` |
+| `LockedToParent` | `boolean` | `false` |
+| `Position` | `Vector2` | `Vector2.new(0, 0)` |
+
+## Functions [#functions]
+
+<Cards>
+
+  <Card title="`getRange`" href="#getrange" />
+  <Card title="`randomRange`" href="#randomrange" />
+  <Card title="`clamp01`" href="#clamp01" />
+  <Card title="`evalNumberSequence`" href="#evalnumbersequence" />
+  <Card title="`evalColorSequence`" href="#evalcolorsequence" />
+  <Card title="`getSpreadAngle`" href="#getspreadangle" />
+  <Card title="`resolveUIBlendMode`" href="#resolveuiblendmode" />
+  <Card title="`getFlipbookMode`" href="#getflipbookmode" />
+  <Card title="`getEmissionDirection`" href="#getemissiondirection" />
+  <Card title="`buildDefaultColor`" href="#builddefaultcolor" />
+  <Card title="`buildDefaultTransparency`" href="#builddefaulttransparency" />
+  <Card title="`buildDefaultSize`" href="#builddefaultsize" />
+  <Card title="`getEnumValue`" href="#getenumvalue" />
+  <Card title="`rotateVector2`" href="#rotatevector2" />
+  <Card title="`randomSign`" href="#randomsign" />
+  <Card title="`randomPointInShape`" href="#randompointinshape" />
+  <Card title="`updateTexture`" href="#updatetexture" />
+  <Card title="`updateFlipbook`" href="#updateflipbook" />
+  <Card title="`emitParticle`" href="#emitparticle" />
+  <Card title="`updateParticles`" href="#updateparticles" />
+  <Card title="`instance.Emit`" href="#instance-emit" description="Emits a specified amount of particles" />
+
+</Cards>
+
+---
+
+### `getRange` [#getrange]
+
+**Arguments**
+
+```luau
+value, defaultMin, defaultMax
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `randomRange` [#randomrange]
+
+**Arguments**
+
+```luau
+value, defaultMin, defaultMax
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `clamp01` [#clamp01]
+
+**Arguments**
+
+```luau
+v
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `evalNumberSequence` [#evalnumbersequence]
+
+**Arguments**
+
+```luau
+seq, t, fallback
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `evalColorSequence` [#evalcolorsequence]
+
+**Arguments**
+
+```luau
+seq, t, fallback
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getSpreadAngle` [#getspreadangle]
+
+**Arguments**
+
+```luau
+spread
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `resolveUIBlendMode` [#resolveuiblendmode]
+
+**Arguments**
+
+```luau
+value
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getFlipbookMode` [#getflipbookmode]
+
+**Arguments**
+
+```luau
+value
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getEmissionDirection` [#getemissiondirection]
+
+**Arguments**
+
+```luau
+direction
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildDefaultColor` [#builddefaultcolor]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildDefaultTransparency` [#builddefaulttransparency]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `buildDefaultSize` [#builddefaultsize]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `getEnumValue` [#getenumvalue]
+
+**Arguments**
+
+```luau
+value, fallback
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `rotateVector2` [#rotatevector2]
+
+**Arguments**
+
+```luau
+vec, degrees
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `randomSign` [#randomsign]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `randomPointInShape` [#randompointinshape]
+
+**Arguments**
+
+```luau
+shapeValue, shapeSize, shapeThickness, emitFromEdge, shapeRotation
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateTexture` [#updatetexture]
+
+**Arguments**
+
+<Callout type="info">This function takes no arguments.</Callout>
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateFlipbook` [#updateflipbook]
+
+**Arguments**
+
+```luau
+dt
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `emitParticle` [#emitparticle]
+
+**Arguments**
+
+```luau
+origin
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `updateParticles` [#updateparticles]
+
+**Arguments**
+
+```luau
+dt
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+---
+
+### `instance.Emit` [#instance-emit]
+
+Emits a specified amount of particles
+
+**Arguments**
+
+```luau
+self: table, count: number
+```
+
+**Returns**
+
+<Callout type="info">This function returns nothing.</Callout>
+
+## API
+
+```luau
+instance:getRange(value, defaultMin, defaultMax)
+instance:randomRange(value, defaultMin, defaultMax)
+instance:clamp01(v)
+instance:evalNumberSequence(seq, t, fallback)
+instance:evalColorSequence(seq, t, fallback)
+instance:getSpreadAngle(spread)
+instance:resolveUIBlendMode(value)
+instance:getFlipbookMode(value)
+instance:getEmissionDirection(direction)
+instance:buildDefaultColor()
+instance:buildDefaultTransparency()
+instance:buildDefaultSize()
+instance:getEnumValue(value, fallback)
+instance:rotateVector2(vec, degrees)
+instance:randomSign()
+instance:randomPointInShape(shapeValue, shapeSize, shapeThickness, emitFromEdge, shapeRotation)
+instance:updateTexture()
+instance:updateFlipbook(dt)
+instance:emitParticle(origin)
+instance:updateParticles(dt)
+instance:Emit(self: table, count: number)
+```
