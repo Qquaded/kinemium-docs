@@ -90,9 +90,7 @@ description: Base class for 2D GUI elements with layout, rendering, input, and t
   <Card title="`TweenPosition`" href="#tweenposition" description="Tweens the Position property to a target value." />
   <Card title="`TweenSize`" href="#tweensize" description="Tweens the Size property to a target value." />
   <Card title="`TweenSizeAndPosition`" href="#tweensizeandposition" description="Tweens Size and Position together." />
-  <Card title="`render`" href="#render" description="Renders this GUI object and updates absolute bounds and hover state." />
   <Card title="`IsParentGuiContainer`" href="#isparentguicontainer" description="Returns whether an object is parented directly under a GUI container." />
-  <Card title="`renderChildren`" href="#renderchildren" description="Renders visible GUI children with clipping and blend modifiers applied." />
   <Card title="`calculatePositions`" href="#calculatepositions" description="Updates absolute position, absolute size, and hover state without drawing." />
 
 </Cards>
@@ -764,24 +762,6 @@ boolean, any
 
 ---
 
-### `render` [#render]
-
-Renders this GUI object and updates absolute bounds and hover state.
-
-**Arguments**
-
-```luau
-lib: number, object: table, dt: number, structs: table, renderer: number
-```
-
-**Returns**
-
-```luau
-Vector3?, Vector3?
-```
-
----
-
 ### `IsParentGuiContainer` [#isparentguicontainer]
 
 Returns whether an object is parented directly under a GUI container.
@@ -797,22 +777,6 @@ object: table
 ```luau
 boolean
 ```
-
----
-
-### `renderChildren` [#renderchildren]
-
-Renders visible GUI children with clipping and blend modifiers applied.
-
-**Arguments**
-
-```luau
-lib: number, object: table, dt: number, structs: table, renderer: number
-```
-
-**Returns**
-
-<Callout type="info">This function returns nothing.</Callout>
 
 ---
 
@@ -887,8 +851,6 @@ instance:CancelGuiTweens(self: table)
 instance:TweenPosition(self: table, endPosition: UDim2, easingDirection: string, easingStyle: string, time: number, override: boolean?, callback: function?): boolean, any
 instance:TweenSize(self: table, endSize: UDim2, easingDirection: string, easingStyle: string, time: number, override: boolean?, callback: function?): boolean, any
 instance:TweenSizeAndPosition(self: table, endSize: UDim2, endPosition: UDim2, easingDirection: string, easingStyle: string, time: number, override: boolean?, callback: function?): boolean, any
-instance:render(lib: number, object: table, dt: number, structs: table, renderer: number): Vector3?, Vector3?
 instance:IsParentGuiContainer(object: table): boolean
-instance:renderChildren(lib: number, object: table, dt: number, structs: table, renderer: number)
 instance:calculatePositions(lib: number, object: table, dt: number, structs: table, renderer: number): Vector3, Vector3
 ```

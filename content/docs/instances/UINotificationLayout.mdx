@@ -34,7 +34,6 @@ description: A layout for managing notification overlays.
   <Card title="`api.Push`" href="#api-push" description="Pushes a notification." />
   <Card title="`api.Dismiss`" href="#api-dismiss" description="Dismisses a notification." />
   <Card title="`api.DismissAll`" href="#api-dismissall" description="Dismisses all notifications." />
-  <Card title="`render`" href="#render" />
   <Card title="`instance.Push`" href="#instance-push" description="Pushes a notification." />
   <Card title="`instance.Dismiss`" href="#instance-dismiss" description="Dismisses a notification." />
   <Card title="`instance.DismissAll`" href="#instance-dismissall" description="Dismisses all notifications." />
@@ -105,20 +104,6 @@ layout: any
 
 ---
 
-### `render` [#render]
-
-**Arguments**
-
-```luau
-lib, object, dt, structs, renderer
-```
-
-**Returns**
-
-<Callout type="info">This function returns nothing.</Callout>
-
----
-
 ### `instance.Push` [#instance-push]
 
 Pushes a notification.
@@ -172,7 +157,6 @@ instance:ease(t, style)
 instance:Push(layoutObject: table, frame: table, options: table)
 instance:Dismiss(layout: any, frame: table)
 instance:DismissAll(layout: any)
-instance:render(lib, object, dt, structs, renderer)
 instance:Push(frame: table, options: table)
 instance:Dismiss(frame: table)
 instance:DismissAll(frame: table)

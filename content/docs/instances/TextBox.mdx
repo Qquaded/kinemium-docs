@@ -98,7 +98,6 @@ description: A text input field with rich editing capabilities.
 <Cards>
 
   <Card title="`resolveFont`" href="#resolvefont" />
-  <Card title="`propTable.render`" href="#proptable-render" />
   <Card title="`onChange`" href="#onchange" />
   <Card title="`onSubmit`" href="#onsubmit" />
   <Card title="`onFocus`" href="#onfocus" />
@@ -122,20 +121,6 @@ description: A text input field with rich editing capabilities.
 
 ```luau
 fontEnum
-```
-
-**Returns**
-
-<Callout type="info">This function returns nothing.</Callout>
-
----
-
-### `propTable.render` [#proptable-render]
-
-**Arguments**
-
-```luau
-_, object, dt, structs, renderer, datamodel
 ```
 
 **Returns**
@@ -306,7 +291,6 @@ query, count
 
 ```luau
 instance:resolveFont(fontEnum)
-instance:render(_, object, dt, structs, renderer, datamodel)
 instance:onChange(text)
 instance:onSubmit(text)
 instance:onFocus()

@@ -30,7 +30,6 @@ description: A tabbed interface for organizing content.
   <Card title="`sanitizeTabs`" href="#sanitizetabs" />
   <Card title="`resolveFont`" href="#resolvefont" />
   <Card title="`onTabChange`" href="#ontabchange" />
-  <Card title="`instance.render`" href="#instance-render" />
 
 </Cards>
 
@@ -76,25 +75,10 @@ index, tab
 
 <Callout type="info">This function returns nothing.</Callout>
 
----
-
-### `instance.render` [#instance-render]
-
-**Arguments**
-
-```luau
-lib, object, dt, structs, renderer
-```
-
-**Returns**
-
-<Callout type="info">This function returns nothing.</Callout>
-
 ## API
 
 ```luau
 instance:sanitizeTabs(tabs)
 instance:resolveFont(fontEnum)
 instance:onTabChange(index, tab)
-instance:render(lib, object, dt, structs, renderer)
 ```

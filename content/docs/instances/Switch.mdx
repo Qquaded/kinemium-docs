@@ -22,25 +22,9 @@ description: A toggle switch UI element.
 
 <Cards>
 
-  <Card title="`renderChildren`" href="#renderchildren" />
   <Card title="`onChanged`" href="#onchanged" />
-  <Card title="`instance.render`" href="#instance-render" />
 
 </Cards>
-
----
-
-### `renderChildren` [#renderchildren]
-
-**Arguments**
-
-```luau
-lib, object, dt, structs, renderer, pos, size
-```
-
-**Returns**
-
-<Callout type="info">This function returns nothing.</Callout>
 
 ---
 
@@ -56,24 +40,8 @@ value
 
 <Callout type="info">This function returns nothing.</Callout>
 
----
-
-### `instance.render` [#instance-render]
-
-**Arguments**
-
-```luau
-lib, object, dt, structs, renderer
-```
-
-**Returns**
-
-<Callout type="info">This function returns nothing.</Callout>
-
 ## API
 
 ```luau
-instance:renderChildren(lib, object, dt, structs, renderer, pos, size)
 instance:onChanged(value)
-instance:render(lib, object, dt, structs, renderer)
 ```

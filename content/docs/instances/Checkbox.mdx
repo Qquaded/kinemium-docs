@@ -1,6 +1,6 @@
 ---
 title: Checkbox
-description: A gui component that has a boolean state that can be toggled, And can be visible under gui containers.
+description: A GUI component that has a boolean state that can be toggled, and can be visible under GUI containers.
 ---
 
 ## Properties [#properties]
@@ -22,7 +22,6 @@ description: A gui component that has a boolean state that can be toggled, And c
 <Cards>
 
   <Card title="`onChanged`" href="#onchanged" />
-  <Card title="`instance.render`" href="#instance-render" />
 
 </Cards>
 
@@ -40,23 +39,8 @@ value
 
 <Callout type="info">This function returns nothing.</Callout>
 
----
-
-### `instance.render` [#instance-render]
-
-**Arguments**
-
-```luau
-lib, object, dt, structs, renderer
-```
-
-**Returns**
-
-<Callout type="info">This function returns nothing.</Callout>
-
 ## API
 
 ```luau
 instance:onChanged(value)
-instance:render(lib, object, dt, structs, renderer)
 ```

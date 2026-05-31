@@ -51,7 +51,6 @@ description: A 2D physics world container.
   <Card title="`RemoveConstraint`" href="#removeconstraint" />
   <Card title="`Clear`" href="#clear" />
   <Card title="`Step`" href="#step" />
-  <Card title="`instance.render`" href="#instance-render" />
 
 </Cards>
 
@@ -151,20 +150,6 @@ self, dt
 
 <Callout type="info">This function returns nothing.</Callout>
 
----
-
-### `instance.render` [#instance-render]
-
-**Arguments**
-
-```luau
-lib, instance, dt, structs
-```
-
-**Returns**
-
-<Callout type="info">This function returns nothing.</Callout>
-
 ## API
 
 ```luau
@@ -175,5 +160,4 @@ instance:AddConstraint(self, constraint)
 instance:RemoveConstraint(self, constraint)
 instance:Clear(self)
 instance:Step(self, dt)
-instance:render(lib, instance, dt, structs)
 ```

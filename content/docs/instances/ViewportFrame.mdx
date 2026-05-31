@@ -18,7 +18,6 @@ description: A frame that displays a 3D viewport.
   <Card title="`resetRenderTexture`" href="#resetrendertexture" />
   <Card title="`getRenderableMesh`" href="#getrenderablemesh" />
   <Card title="`buildMaterial`" href="#buildmaterial" />
-  <Card title="`propTable.render`" href="#proptable-render" />
 
 </Cards>
 
@@ -76,20 +75,6 @@ part
 
 <Callout type="info">This function returns nothing.</Callout>
 
----
-
-### `propTable.render` [#proptable-render]
-
-**Arguments**
-
-```luau
-lib, object, dt, structs, renderer
-```
-
-**Returns**
-
-<Callout type="info">This function returns nothing.</Callout>
-
 ## API
 
 ```luau
@@ -97,5 +82,4 @@ instance:ensurePreloaded()
 instance:resetRenderTexture(object, width, height)
 instance:getRenderableMesh(part)
 instance:buildMaterial(part)
-instance:render(lib, object, dt, structs, renderer)
 ```
