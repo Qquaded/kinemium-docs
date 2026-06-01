@@ -18,3 +18,9 @@ export async function GET(
     },
   });
 }
+
+export function generateStaticParams() {
+  return source.getPages()
+    .filter(page => page.slugs[0] === 'instances')
+    .map(page => ({ class: page.slugs[1] }));
+}
