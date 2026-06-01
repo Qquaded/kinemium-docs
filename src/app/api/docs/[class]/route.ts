@@ -20,7 +20,9 @@ export async function GET(
 }
 
 export function generateStaticParams() {
-  return source.getPages()
-    .filter(page => page.slugs[0] === 'instances')
+  const pages = source.getPages();
+  console.log(pages.map(p => p.slugs));
+  return pages
+    .filter(page => page.slugs[0] === 'instances' && page.slugs[1] !== undefined)
     .map(page => ({ class: page.slugs[1] }));
 }
